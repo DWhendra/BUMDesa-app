@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="text-uppercase text-sm">User Information</p>
+                            <p class="text-uppercase text-sm">Data BUM Desa</p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
