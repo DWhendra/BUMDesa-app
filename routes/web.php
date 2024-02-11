@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BUMDesaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,11 @@ Route::get('home', function () {
     return view('home.index');
 })->name('home');
 
-Route::get('bumdesa', function () {
-    return view('bumdesa.index');
-})->name('bumdesa');
+Route::get('/bumdesa',[BUMDesaController::class, 'index'])->name('bumdesa.index');
 
-Route::get('bumdesa/create', function () {
-    return view('bumdesa.create');
-})->name('bumdesa.create');
+//Route::get('bumdesa/create',[BUMDesaController::class, 'create'])->name('bumdesa.create');
+Route::get('/bumdesa/create',[BUMDesaController::class, 'create'])->name('bumdesa.create');
+Route::get('/create/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
+Route::post('/bumdesa/store',[BUMDesaController::class, 'store'])->name('bumdesa.store');
+
+//Route::get('/edit/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
