@@ -33,5 +33,5 @@ Route::get('/bumdesa',[BUMDesaController::class, 'index'])->name('bumdesa.index'
 Route::get('/bumdesa/create',[BUMDesaController::class, 'create'])->name('bumdesa.create');
 Route::get('/create/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 Route::post('/bumdesa/store',[BUMDesaController::class, 'store'])->name('bumdesa.store');
-
+Route::get('/bumdesa/{bumdes}/detail',[BUMDesaController::class, 'detail'])->name('bumdesa.detail');
 //Route::get('/edit/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');

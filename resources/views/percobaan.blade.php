@@ -10,6 +10,4 @@
 
 
     </x-slot:topmenu>
-
-    
 </x-app>

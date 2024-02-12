@@ -23,20 +23,12 @@
                                                 Username</th> -->
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 NAMA BUM Desa</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                TAHUN BERDIRINYA BUM Desa</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                JENIS UNIT USAHA BUM Desa</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 UNIT USAHA UTAMA</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA KECAMATAN</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA DESA</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                TAHUN LAPORAN</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                WAKTU SIMPAN</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
                                             <th class="text-secondary opacity-7"></th>
@@ -48,18 +40,14 @@
                                             <th scope="row">{{ $data->id }}</th>
 
                                             <td>{{ $data->nama_bumdes }}</td>
-                                            <td>{{ $data->tahun_berdiri }}</td>
-                                            <td>{{ $data->jenis_unit }}</td>
                                             <td>{{ $data->unit_usaha }}</td>
                                             <td>{{ $data->nama_kecamatan }}</td>
                                             <td>{{ $data->nama_desa }}</td>
-                                            <td>{{ $data->tahun_laporan }}</td>
-                                            <td>{{ $data->created_at }}</td>
 
                                             <td>
 
                                                 <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-success text-gradient px-3 mb-0" href=""><i class="fas fa-clipboard-list me-2"></i>Detail</a>
+                                                    <a class="btn btn-link text-success text-gradient px-3 mb-0" href="{{ route('bumdesa.detail', $data->id) }}"><i class="fas fa-clipboard-list me-2"></i>Detail</a>
                                                     <a class="btn btn-link text-dark px-3 mb-0" href=""><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                                     <a class="btn btn-link text-danger text-gradient px-3 mb-0" href=""><i class="far fa-trash-alt me-2"></i>Delete</a>
                                                 </div>
