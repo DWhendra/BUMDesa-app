@@ -78,7 +78,7 @@ class BUMDesaController extends Controller
         return redirect()->route('bumdesa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
-    public function update(Request $request, Bumdesa $bumdesa)
+    public function update(Request $request, Bumdesa $bumdes)
     {
         // $awal=$bumdes->bukti_laporan;
         // $files = $request->file('bukti_laporan');
@@ -120,20 +120,20 @@ class BUMDesaController extends Controller
         // dd($dt['bukti_laporan']->getClientOriginalExtension());
         //dd($dt);
         if(empty($dt['bukti_laporan'])){
-            $dt['bukti_laporan']= $bumdesa->bukti_laporan;
+            $dt['bukti_laporan']= $bumdes->bukti_laporan;
             // $bumdes->bukti_laporan = old('bukti_laporan');
-            $bumdesa->update($dt);
+            $bumdes->update($dt);
         }
         else{
             // $files = $request->file('bukti_laporan');
-            $file=public_path('/fileup/').$bumdesa->bukti_laporan;
+            $file=public_path('/fileup/').$bumdes->bukti_laporan;
             if(file_exists($file)){
                 @unlink($file);
             }
             $namafile = time() . rand(100, 999) . "." . $dt['bukti_laporan']->getClientOriginalExtension();
             $dt['bukti_laporan']->move(public_path().'/fileup', $namafile);
             $dt['bukti_laporan']= $namafile;
-            $bumdesa->update($dt);
+            $bumdes->update($dt);
             
         };
        
@@ -150,5 +150,24 @@ class BUMDesaController extends Controller
             ->where('bumdesas.id', $bumdes->id)
             ->get();
         return view('bumdesa.detail', ['bumdesa' => $joinedData]);
+    }
+    public function edit(Bumdesa $bumdes)
+    {
+        $joinedData = DB::table('bumdesas')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->where('bumdesas.id', $bumdes->id)
+            ->get();
+        return view('bumdesa.edit', ['bumdesa' => $joinedData, 'kecamatan' => kecamatan::all(), 'desa' => desa::all()]);
+    }
+    public function destroy(Bumdesa $bumdes)
+    {
+        $file=public_path('/fileup/').$bumdes->bukti_laporan;
+        if(file_exists($file)){
+            @unlink($file);
+        }
+        $bumdes->delete();
+        return redirect()->route('bumdesa.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

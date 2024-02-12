@@ -11,7 +11,6 @@
                 <?php //dd($bumdes); 
                 ?>
                 <div class="container-fluid px-4">
-                    <a class="btn btn-primary mb-4" href="{{ route('bumdesa.index')}}" role="button">Back</a>
                     <div class="card mb-4">
 
                     <div class="card-header pb-0">

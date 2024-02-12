@@ -14,47 +14,62 @@
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
+                                <table class="table w-100 align-items-center mb-0">
+                                    <thead class="text-center">
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 ID BUM Desa</th>
                                             <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Username</th> -->
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 NAMA BUM Desa</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                UNIT USAHA UTAMA</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA KECAMATAN</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA DESA</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
-                                            <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($bumdesa as $data)
-                                        <tr>
-                                            <th scope="row">{{ $data->id }}</th>
+                                            <tr class="text-center w-100">
+                                                <th scope="row">{{ $data->id }}</th>
 
-                                            <td>{{ $data->nama_bumdes }}</td>
-                                            <td>{{ $data->unit_usaha }}</td>
-                                            <td>{{ $data->nama_kecamatan }}</td>
-                                            <td>{{ $data->nama_desa }}</td>
+                                                <td>{{ $data->nama_bumdes }}</td>
+                                                <td>{{ $data->nama_kecamatan }}</td>
+                                                <td>{{ $data->nama_desa }}</td>
 
-                                            <td>
+                                                <td>
 
-                                                <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-success text-gradient px-3 mb-0" href="{{ route('bumdesa.detail', $data->id) }}"><i class="fas fa-clipboard-list me-2"></i>Detail</a>
-                                                    <a class="btn btn-link text-dark px-3 mb-0" href=""><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href=""><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                                </div>
-                                            </td>
+                                                    <div class="text-center d-flex">
+                                                        <a class="btn btn-link text-success text-gradient px-3 mb-0"
+                                                            href="{{ route('bumdesa.detail', $data->id) }}"><i
+                                                                class="fas fa-clipboard-list me-2"></i>Detail</a>
+                                                        <a class="btn btn-link text-dark px-3 mb-0"
+                                                            href="{{ route('bumdesa.edit', $data->id) }}"><i
+                                                                class="fas fa-pencil-alt text-dark me-2"
+                                                                aria-hidden="true"></i>Edit</a>
+                                                        <form action="{{ route('bumdesa.destroy', $data->id) }}"
+                                                            method="post">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button
+                                                                onclick="return confirm ('Apakah Anda Ingin Menghapus Data Tersebut?')"
+                                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                                type="submit" value="Delete"><i
+                                                                    class="far fa-trash-alt me-2"></i>Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
 
 
-                                        </tr>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
+Route::get('', function () {
     return view('percobaan');
 });
 
 
-Route::get('home', function () {
+Route::get('/', function () {
     return view('home.index');
 })->name('home');
 
@@ -34,4 +34,7 @@ Route::get('/bumdesa/create',[BUMDesaController::class, 'create'])->name('bumdes
 Route::get('/create/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 Route::post('/bumdesa/store',[BUMDesaController::class, 'store'])->name('bumdesa.store');
 Route::get('/bumdesa/{bumdes}/detail',[BUMDesaController::class, 'detail'])->name('bumdesa.detail');
+Route::get('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'edit'])->name('bumdesa.edit');
+Route::put('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'update'])->name('bumdesa.update');
+Route::delete('/bumdesa/{bumdes}/destroy',[BUMDesaController::class, 'destroy'])->name('bumdesa.destroy');
 //Route::get('/edit/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
