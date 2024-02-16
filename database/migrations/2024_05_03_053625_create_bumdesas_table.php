@@ -50,7 +50,7 @@ return new class extends Migration
 
             $table->foreign('id_kecamatan')->references('id')->on('kecamatans');
             $table->foreign('id_desa')->references('id')->on('desas');
-           // $table->foreign('id_user')->references('id')->on('users');            
+            //$table->foreign('id_user')->references('id')->on('users');
         });
     }
 

@@ -10,16 +10,16 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header pb-0">
+                        <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Tambah Data BUM Desa</p>
-                                <button class="btn btn-primary btn-sm ms-auto">Settings</button>
+                                <a class="btn-sm ms-auto" href="{{ route('bumdesa.index')}}"><button class="btn btn-primary btn-sm ms-auto">Kembali</button></a>
                             </div>
+                        </div>
                         </div>
                         <form action="{{ route('bumdesa.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
-                            
-                                
                                 <div class="card-body">
                                     <div class="row g-3">
                                     <div class="col-md-12">
