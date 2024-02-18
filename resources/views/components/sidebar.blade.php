@@ -19,6 +19,7 @@
         </a>
       </li>
       @auth
+      @can('admin','desa')
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DATA BUM DESA</h6>
       </li>
@@ -38,6 +39,8 @@
           <span class="nav-link-text ms-1">Tambah Data BUM Desa</span>
         </a>
       </li>
+      @endcan
+      @can('admin')
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akun</h6>
       </li>
@@ -57,28 +60,26 @@
           <span class="nav-link-text ms-1">Tambah Pengguna</span>
         </a>
       </li>
+      @endcan
       @endauth
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Aksi</h6>
       </li>
       @auth
-      
-        <form action="/logout" method="post">
-          @csrf
-          
-          <li class="nav-item">
-            <a class="nav-link " >
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
 
-              <button type="submit"> <i class="fa fa-sign-out text-danger text-sm opacity-10"></i></button>
+      <form action="/logout" method="post">
+        @csrf
 
-              </div>
-              <span class="nav-link-text ms-1">Keluar</span>
+        <li class="nav-item">
+          <a class="nav-link ">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <button class="bg-transparent border-0 ms-6 text-secondary" type="submit"><i class="fa fa-sign-out text-danger text-sm opacity-10"></i>
+                <span class="nav-link-text ms-3">Keluar</span></button>
+            </div>
+          </a>
+        </li>
+      </form>
 
-            </a>
-            </li>
-        </form>
-      
       @else
       <li class="nav-item">
         <a class="nav-link " href="{{ route('user.login') }}">

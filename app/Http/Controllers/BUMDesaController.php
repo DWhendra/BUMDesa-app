@@ -2,23 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bumdesa;
 use App\Models\Desa;
+use App\Models\Bumdesa;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class BUMDesaController extends Controller
 {
     public function index()
     {
-        $joinedData = DB::table('bumdesas')
-            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
-            //->join('users', 'bumdesas.id_user', '=', 'users.id')
-            ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-            ->get();
-        return view('bumdesa.index', ['bumdesa' => $joinedData]);
+        if ( Gate::allows('admin')) {
+            $joinedData = DB::table('bumdesas')
+                    ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+                    ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+                    //->join('users', 'bumdesas.id_user', '=', 'users.id')
+                    ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+                    ->get();
+                return view('bumdesa.index', ['bumdesa' => $joinedData]);
+        }elseif (Gate::allows('desa')) {
+            $joinedData = DB::table('bumdesas')
+                    ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+                    ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+                    ->join('users', 'bumdesas.id_user', '=', 'users.id')
+                    ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama_user')
+                    ->where('id_user', auth()->user()->id)
+                    ->get();
+                return view('bumdesa.index', ['bumdesa' => $joinedData]);
+        }
+    }
+
+    public function validation()
+    {
     }
 
     //OPSI 
@@ -82,8 +99,8 @@ class BUMDesaController extends Controller
     {
         // $awal=$bumdes->bukti_laporan;
         // $files = $request->file('bukti_laporan');
-        
-        $dt= [
+
+        $dt = [
             'nama_bumdes' => $request->nama_bumdes,
             'tahun_berdiri' => $request->tahun_berdiri,
             'jenis_unit' => $request->jenis_unit,
@@ -115,28 +132,26 @@ class BUMDesaController extends Controller
             'lampiran_lpj' => $request->lampiran_lpj,
             'program_kerja' => $request->program_kerja,
             'tahun_laporan' => $request->tahun_laporan,
-            'bukti_laporan' =>$request->file('bukti_laporan')
+            'bukti_laporan' => $request->file('bukti_laporan')
         ];
         // dd($dt['bukti_laporan']->getClientOriginalExtension());
         //dd($dt);
-        if(empty($dt['bukti_laporan'])){
-            $dt['bukti_laporan']= $bumdes->bukti_laporan;
+        if (empty($dt['bukti_laporan'])) {
+            $dt['bukti_laporan'] = $bumdes->bukti_laporan;
             // $bumdes->bukti_laporan = old('bukti_laporan');
             $bumdes->update($dt);
-        }
-        else{
+        } else {
             // $files = $request->file('bukti_laporan');
-            $file=public_path('/fileup/').$bumdes->bukti_laporan;
-            if(file_exists($file)){
+            $file = public_path('/fileup/') . $bumdes->bukti_laporan;
+            if (file_exists($file)) {
                 @unlink($file);
             }
             $namafile = time() . rand(100, 999) . "." . $dt['bukti_laporan']->getClientOriginalExtension();
-            $dt['bukti_laporan']->move(public_path().'/fileup', $namafile);
-            $dt['bukti_laporan']= $namafile;
+            $dt['bukti_laporan']->move(public_path() . '/fileup', $namafile);
+            $dt['bukti_laporan'] = $namafile;
             $bumdes->update($dt);
-            
         };
-       
+
         // $bumdes->update($request->all());
         return redirect()->route('bumdesa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
@@ -163,8 +178,8 @@ class BUMDesaController extends Controller
     }
     public function destroy(Bumdesa $bumdes)
     {
-        $file=public_path('/fileup/').$bumdes->bukti_laporan;
-        if(file_exists($file)){
+        $file = public_path('/fileup/') . $bumdes->bukti_laporan;
+        if (file_exists($file)) {
             @unlink($file);
         }
         $bumdes->delete();

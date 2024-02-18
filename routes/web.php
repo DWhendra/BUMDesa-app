@@ -30,7 +30,7 @@ Route::get('/', function () {
 
 
 Route::get('/bumdesa',[BUMDesaController::class, 'index'])->name('bumdesa.index')->middleware('auth');
-//Route::get('bumdesa/create',[BUMDesaController::class, 'create'])->name('bumdesa.create');
+//Route::get('/bumdesa',[BUMDesaController::class, 'validation'])->name('bumdesa.index')->middleware('auth');
 Route::get('/bumdesa/create',[BUMDesaController::class, 'create'])->name('bumdesa.create');
 Route::get('/create/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 Route::post('/bumdesa/store',[BUMDesaController::class, 'store'])->name('bumdesa.store');
@@ -40,11 +40,11 @@ Route::put('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'update'])->name(
 Route::delete('/bumdesa/{bumdes}/destroy',[BUMDesaController::class, 'destroy'])->name('bumdesa.destroy');
 //Route::get('/edit/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 
-Route::get('/user',[UserController::class, 'index'])->name('user.index');
+Route::get('/user',[UserController::class, 'index'])->name('user.index')->middleware('auth');
 Route::get('/user/login',[UserController::class, 'login'])->name('user.login')->middleware('guest');
 Route::post('/login',[UserController::class, 'authenticate']);
 Route::post('/logout',[UserController::class, 'logout']);
-Route::get('/user',[UserController::class, 'users'])->name('user.index');
+Route::get('/user',[UserController::class, 'users'])->name('user.index')->middleware('auth');
 Route::get('/user/create',[UserController::class, 'create'])->name('user.create');
 Route::post('/user/store',[UserController::class, 'store'])->name('user.store');
 Route::put('/user/{id}/edit',[UserController::class, 'update'])->name('user.update');

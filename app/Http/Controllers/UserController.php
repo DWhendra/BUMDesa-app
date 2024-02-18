@@ -11,6 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        $this->authorize('admin');
         return view('user.index');
     }
     public function login()
@@ -23,12 +24,13 @@ class UserController extends Controller
     }
     public function users()
     {
-        //$this->authorize('admin');
-        $dt = User::all();
+        $this->authorize('admin');
+        $dt = User::paginate(10);
         return view('user.index', ['users' => $dt]);
     }
     public function store(Request $request)
     {
+        $this->authorize('admin');
         $dt = $request->validate([
             'role' => 'required',
             'nama' => 'required',
@@ -41,8 +43,7 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        //$this->authorize('admin');
-        //return $id;
+        $this->authorize('admin');
         return view('user.edit', ['edit' => User::where('id', $id)->get()]);
     }
     public function update(Request $request, $id)
