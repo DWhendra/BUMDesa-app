@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BUMDesaController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,3 +51,6 @@ Route::post('/user/store',[UserController::class, 'store'])->name('user.store');
 Route::put('/user/{id}/edit',[UserController::class, 'update'])->name('user.update');
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::delete('/user/{user}/destroy',[UserController::class, 'destroy'])->name('user.destroy');
+
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index')->middleware('auth');
+Route::get('/pengumuman/create',[PengumumanController::class, 'create'])->name('pengumuman.create')->middleware('auth');

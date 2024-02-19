@@ -19,7 +19,28 @@
         </a>
       </li>
       @auth
-      @can('admin','desa')
+      @can('admin')
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DATA BUM DESA</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('bumdesa.index')?'active':''}}" href="{{ route('bumdesa.index') }}">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-collection text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Data BUM Desa</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('bumdesa.create')?'active':''}}" href="{{ route('bumdesa.create') }}">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-single-copy-04 text-success text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Tambah Data BUM Desa</span>
+        </a>
+      </li>
+      @endcan
+      @can('desa')
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DATA BUM DESA</h6>
       </li>
@@ -62,6 +83,25 @@
       </li>
       @endcan
       @endauth
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pengumuman</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('pengumuman.index')?'active':''}}" href="{{ route('pengumuman.index') }}">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-users text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Data Pengumuman</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('pengumuman.create')?'active':''}}" href="{{ route('pengumuman.create') }}">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-user-plus text-success text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Tambah Pengumuman</span>
+        </a>
+      </li>
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Aksi</h6>
       </li>
