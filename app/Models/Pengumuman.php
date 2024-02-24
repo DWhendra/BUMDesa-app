@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Pengumuman extends Model
 {
     use HasFactory;
-    protected $table = 'pengumuman';
+    protected $table = 'pengumumans';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id_user',
+        'id_desa',
+        'id_kecamatan',
         'judul',
         'deskripsi',
         'tanggal',

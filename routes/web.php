@@ -54,3 +54,7 @@ Route::delete('/user/{user}/destroy',[UserController::class, 'destroy'])->name('
 
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index')->middleware('auth');
 Route::get('/pengumuman/create',[PengumumanController::class, 'create'])->name('pengumuman.create')->middleware('auth');
+Route::post('/pengumuman/store',[PengumumanController::class, 'store'])->name('pengumuman.store');
+Route::get('/pengumuman/{pengumuman}/edit',[PengumumanController::class, 'edit'])->name('pengumuman.edit')->middleware('auth');
+Route::put('/pengumuman/{pengumuman}/edit',[PengumumanController::class, 'update'])->name('pengumuman.update');
+Route::delete('/pengumuman/{pengumuman}/destroy',[PengumumanController::class, 'destroy'])->name('pengumuman.destroy')->middleware('auth');

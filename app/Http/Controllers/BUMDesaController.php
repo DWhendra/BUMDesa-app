@@ -14,24 +14,31 @@ class BUMDesaController extends Controller
 {
     public function index()
     {
-        if ( Gate::allows('admin')) {
+        if (Gate::allows('admin')) {
             $joinedData = DB::table('bumdesas')
-                    ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
-                    ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
-                    //->join('users', 'bumdesas.id_user', '=', 'users.id')
-                    ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-                    ->get();
-                return view('bumdesa.index', ['bumdesa' => $joinedData]);
-        }elseif (Gate::allows('desa')) {
+                ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+                ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+                //->join('users', 'bumdesas.id_user', '=', 'users.id')
+                ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+                ->get();
+            return view('bumdesa.index', ['bumdesa' => $joinedData]);
+        } elseif (Gate::allows('desa')) {
             $joinedData = DB::table('bumdesas')
-                    ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
-                    ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
-                    ->join('users', 'bumdesas.id_user', '=', 'users.id')
-                    ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama_user')
-                    ->where('id_user', auth()->user()->id)
-                    ->get();
-                return view('bumdesa.index', ['bumdesa' => $joinedData]);
+                ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+                ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+                ->join('users', 'bumdesas.id_user', '=', 'users.id')
+                ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama_user')
+                ->where('id_user', auth()->user()->id)
+                ->get();
+            return view('bumdesa.index', ['bumdesa' => $joinedData]);
         }
+        $joinedData = DB::table('bumdesas')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            //->join('users', 'bumdesas.id_user', '=', 'users.id')
+            ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->get();
+        return view('bumdesa.index', ['bumdesa' => $joinedData]);
     }
 
     public function validation()

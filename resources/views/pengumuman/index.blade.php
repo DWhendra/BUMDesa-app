@@ -18,12 +18,15 @@
                                 <table id="example" class="display compact" style="width:100%">
                                     <thead class="text-center">
                                         <tr>
+                                        <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                ID Pengumuman</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Tujuan</th>
+                                                Tujuan Pengumuman</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Judul</th>
+                                                Judul Pengumuman</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Pengumuman</th>
@@ -42,7 +45,7 @@
                                         @foreach ($pengumuman as $data)
                                             <tr class="text-center w-100">
                                                 <td scope="row">{{ $data->id }}</td>
-                                                <td>{{ $data->nama_user }}</td>
+                                                <td>{{ $data->nama_desa }}</td>
                                                 <td>{{ $data->judul }}</td>
                                                 <td>{{ $data->deskripsi }}</td>
                                                 <td>{{ $data->tanggal }}</td>
@@ -50,10 +53,10 @@
                                                 <td>
                                                     <div class="text-center ">
                                                         <a class="btn btn-link text-dark px-3 mb-0"
-                                                            href=""><i
+                                                            href="{{ route('pengumuman.edit', $data->id) }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
                                                                 aria-hidden="true"></i>Edit</a>
-                                                        <form action=""
+                                                        <form action="{{ route('pengumuman.destroy', $data->id) }}"
                                                             method="post">
                                                             @method('delete')
                                                             @csrf

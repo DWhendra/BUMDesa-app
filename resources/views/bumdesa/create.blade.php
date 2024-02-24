@@ -12,7 +12,7 @@
                         <div class="card-header pb-0">
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
-                                    <p class="mb-0">Tambah Data BUM Desa</p>
+                                    <h6 class="mb-0">Tambah Data Badan Usaha Milik Desa</h6>
                                     <a class="btn-sm ms-auto" href="{{ route('bumdesa.index')}}"><button class="btn btn-primary btn-sm ms-auto">Kembali</button></a>
                                 </div>
                             </div>
