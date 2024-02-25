@@ -39,6 +39,7 @@ Route::get('/bumdesa/{bumdes}/detail',[BUMDesaController::class, 'detail'])->nam
 Route::get('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'edit'])->name('bumdesa.edit');
 Route::put('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'update'])->name('bumdesa.update');
 Route::delete('/bumdesa/{bumdes}/destroy',[BUMDesaController::class, 'destroy'])->name('bumdesa.destroy');
+Route::get('/bumdesa/search',[BUMDesaController::class, 'search'])->name('bumdesa.search');
 //Route::get('/edit/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 
 Route::get('/user',[UserController::class, 'index'])->name('user.index')->middleware('auth');
