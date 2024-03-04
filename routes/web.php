@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\IndikatorController;
+use App\Http\Controllers\KategoriAspekController;
+use App\Http\Controllers\PoinAspekController;
+use App\Http\Controllers\SubkategoriAspekController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -76,9 +80,14 @@ Route::get('/evaluasi', function () {
 //     return view('evaluasi.indikator.index');
 // })->name('indikator.index');
 
-Route::get('/evaluasi/indikator', [EvaluasiController::class, 'index_indikator'])->name('indikator.index')->middleware('auth');
-Route::get('/evaluasi/indikator/create', [EvaluasiController::class, 'create_indikator'])->name('indikator.create')->middleware('auth');
-Route::get('/evaluasi/kategori_aspek', [EvaluasiController::class, 'index_kategori_aspek'])->name('kategori_aspek.index')->middleware('auth');
-Route::get('/evaluasi/aspek', [EvaluasiController::class, 'index_aspek'])->name('aspek.index')->middleware('auth');
-Route::get('/evaluasi/poin', [EvaluasiController::class, 'index_poin'])->name('poin.index')->middleware('auth');
+// Route::get('/evaluasi/indikator', [EvaluasiController::class, 'index_indikator'])->name('indikator.index')->middleware('auth');
+// Route::get('/evaluasi/indikator/create', [EvaluasiController::class, 'create_indikator'])->name('indikator.create')->middleware('auth');
+// Route::post('/evaluasi/indikator/store',[EvaluasiController::class, 'store_indikator'])->name('indikator.store');
+// Route::get('/evaluasi/kategori_aspek', [EvaluasiController::class, 'index_kategori_aspek'])->name('kategori_aspek.index')->middleware('auth');
+// Route::get('/evaluasi/aspek', [EvaluasiController::class, 'index_aspek'])->name('aspek.index')->middleware('auth');
+// Route::get('/evaluasi/poin', [EvaluasiController::class, 'index_poin'])->name('poin.index')->middleware('auth');
 
+Route::resource('evaluasi/indikator', IndikatorController::class);
+Route::resource('evaluasi/kategori_aspek', KategoriAspekController::class);
+Route::resource('evaluasi/subkategori_aspek', SubkategoriAspekController::class);
+Route::resource('evaluasi/poin_aspek', PoinAspekController::class);

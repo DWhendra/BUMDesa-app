@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('poins', function (Blueprint $table) {
+        Schema::create('subkategori_aspeks', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('nama');
-            $table->string('tahun');
-            $table->unsignedBigInteger('id_aspek');
-            $table->foreign('id_aspek')->references('id')->on('aspeks');
+            $table->integer('skor');
+            $table->unsignedBigInteger('id_kategori_aspek');
+
+            $table->foreign('id_kategori_aspek')->references('id')->on('kategori_aspeks');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('poins');
+        Schema::dropIfExists('subkategori_aspeks');
     }
 };

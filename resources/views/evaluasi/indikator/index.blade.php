@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('indikator.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    <a href="{{ route('indikator.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('kategori_aspek.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    <a href="{{ route('kategori_aspek.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('aspek.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    <a href="{{ route('subkategori_aspek.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('poin.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    <a href="{{ route('poin_aspek.index') }}"><button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
                                 </li>
                             </ul>
@@ -82,7 +82,7 @@
                                 <h6 class="mb-2">INDIKATOR</h6>
                             </div>
                             <div class="col-12 text-end pb-3">
-                                <a class="btn bg-gradient-primary mb-0" href="{{ route('indikator.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Tambah Indikator</a>
+                                <a class="btn bg-gradient-primary mb-0" href="{{route('indikator.create')}}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Tambah Indikator</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -92,10 +92,12 @@
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             ID Indikator</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Aspek</th>
+                                            Nama bumdes</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Desa</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Skor</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Kecamatan</th>
+                                        <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Hasil</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Keterangan</th>
@@ -106,7 +108,7 @@
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Dibuat</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Diedit</th>
+                                            Diedit</th> -->
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Aksi</th>
                                     </tr>
@@ -115,18 +117,18 @@
                                     @foreach ($indikators as $data)
                                     <tr class="text-center w-100">
                                         <td scope="row">{{ $data->id }}</td>
-                                        <td>{{ $data->aspek }}</td>
-                                        <td>{{ $data->skor }}</td>
-                                        <td>{{ $data->hasil }}</td>
-                                        <td>{{ $data->keterangan }}</td>
+                                        <td>{{ $data->nama_bumdes }}</td>
+                                        <td>{{ $data->desa }}</td>
+                                        <td>{{ $data->kecamatan }}</td>
+                                        <!-- <td>{{ $data->keterangan }}</td>
                                         <td>{{ $data->tahun }}</td>
                                         <td>{{ $data->id_user }}</td>
                                         <td>{{ $data->created_at }}</td>
-                                        <td>{{ $data->updated_at }}</td>
+                                        <td>{{ $data->updated_at }}</td> -->
                                         <td>
                                             <div class="text-center ">
-                                                <a class="btn btn-link text-dark px-3 mb-0" href=""><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                                <form action="" method="post">
+                                                <a class="btn btn-link text-dark px-3 mb-0" href="{{route('indikator.edit', $data->id)}}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                <form action="{{route('indikator.destroy', $data->id)}}" method="post">
                                                     @method('delete')
                                                     @csrf
                                                     <button onclick="return confirm ('Apakah Anda Ingin Menghapus Data Tersebut?')" class="btn btn-link text-danger text-gradient px-3 mb-0" type="submit" value="Delete"><i class="far fa-trash-alt me-2"></i>Hapus</button>

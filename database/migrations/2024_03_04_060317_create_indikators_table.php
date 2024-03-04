@@ -13,14 +13,10 @@ return new class extends Migration
     {
         Schema::create('indikators', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_bumdes');
+            $table->string('desa');
+            $table->string('kecamatan');
             $table->timestamps();
-            $table->string('aspek');
-            $table->string('skor');
-            $table->string('hasil');
-            $table->string('keterangan');
-            $table->string('tahun');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

@@ -8,14 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Indikator extends Model
 {
     use HasFactory;
-    protected $table = 'indikators';
-    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'aspek',
-        'skor',
-        'hasil',
-        'keterangan',
-        'tahun',
-        'id_user',
+        'nama_bumdes',
+        'desa',
+        'kecamatan',
     ];
 }

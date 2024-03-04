@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('kategori_aspeks', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('nama');
-            $table->string('skor');
-            $table->string('tahun');
-            $table->unsignedBigInteger('id_indikator');
-            $table->foreign('id_indikator')->references('id')->on('indikators');
+            $table->integer('skor');
+            $table->timestamps();
         });
     }
 
