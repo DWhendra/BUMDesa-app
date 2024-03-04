@@ -14,12 +14,12 @@
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
                                     <h6 class="mb-0">Tambah Data Indikator</h6>
-                                    <a class="btn-sm ms-auto" href="{{ route('indikator.index')}}"><button class="btn btn-primary btn-sm ms-auto">Kembali</button></a>
+                                    <a class="btn-sm ms-auto" href="{{ route('kategori_aspek.index')}}"><button class="btn btn-primary btn-sm ms-auto">Kembali</button></a>
                                 </div>
                             </div>
                         </div>
                  
-                        <form action="{{ route('indikator.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('kategori_aspek.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('post')
                             

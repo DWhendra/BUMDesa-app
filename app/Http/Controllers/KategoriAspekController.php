@@ -20,7 +20,7 @@ class KategoriAspekController extends Controller
      */
     public function create()
     {
-        // 
+        return view("evaluasi.kategori_aspek.create"); 
     }
 
     /**
@@ -28,7 +28,8 @@ class KategoriAspekController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        KategoriAspek::create($request->all());
+        return redirect()->route("kategori_aspek.index");
     }
 
     /**
@@ -44,7 +45,7 @@ class KategoriAspekController extends Controller
      */
     public function edit(KategoriAspek $kategoriAspek)
     {
-        //
+        return view("evaluasi.kategori_aspek.edit", ['kategoriaspek'=>$kategoriAspek]);
     }
 
     /**
@@ -52,7 +53,9 @@ class KategoriAspekController extends Controller
      */
     public function update(Request $request, KategoriAspek $kategoriAspek)
     {
-        //
+        $kategoriAspek->update($request->all());
+
+        return redirect()->route('kategori_aspek.index')->with('success','');
     }
 
     /**
@@ -60,6 +63,7 @@ class KategoriAspekController extends Controller
      */
     public function destroy(KategoriAspek $kategoriAspek)
     {
-        //
+        $kategoriAspek->delete();
+        return redirect()->route("kategori_aspek.index");
     }
 }

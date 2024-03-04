@@ -49,7 +49,7 @@
                                             <i class="fa fa-sliders text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Aspek</h6>
+                                            <h6 class="mb-1 text-dark text-sm">SubKategori Aspek</h6>
                                             <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
                                         </div>
                                     </div>

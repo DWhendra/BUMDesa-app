@@ -20,7 +20,7 @@ class SubkategoriAspekController extends Controller
      */
     public function create()
     {
-        //
+        return view("evaluasi.subkategori_aspek.create");
     }
 
     /**
@@ -28,7 +28,8 @@ class SubkategoriAspekController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SubkategoriAspek::create($request->all());
+        return redirect()->route("subkategori_aspek.index");
     }
 
     /**
@@ -44,7 +45,7 @@ class SubkategoriAspekController extends Controller
      */
     public function edit(SubkategoriAspek $subkategoriAspek)
     {
-        //
+        return view("evaluasi.subkategori_aspek.edit", ['subkategoriaspek'=>$subkategoriAspek]);
     }
 
     /**
@@ -52,7 +53,9 @@ class SubkategoriAspekController extends Controller
      */
     public function update(Request $request, SubkategoriAspek $subkategoriAspek)
     {
-        //
+        $subkategoriAspek->update($request->all());
+
+        return redirect()->route('subkategori_aspek.index')->with('success','');
     }
 
     /**
@@ -60,6 +63,7 @@ class SubkategoriAspekController extends Controller
      */
     public function destroy(SubkategoriAspek $subkategoriAspek)
     {
-        //
+        $subkategoriAspek->delete();
+        return redirect()->route("subkategori_aspek.index");
     }
 }
