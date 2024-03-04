@@ -21,7 +21,7 @@ class BUMDesaController extends Controller
                 //->join('users', 'bumdesas.id_user', '=', 'users.id')
                 ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
                 ->get();
-            return view('bumdesa.index', ['bumdesa' => $joinedData]);
+            return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
         } elseif (Gate::allows('desa')) {
             $joinedData = DB::table('bumdesas')
                 ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
@@ -30,7 +30,7 @@ class BUMDesaController extends Controller
                 ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama_user')
                 ->where('id_user', auth()->user()->id)
                 ->get();
-            return view('bumdesa.index', ['bumdesa' => $joinedData]);
+            return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
         }
         $joinedData = DB::table('bumdesas')
             ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
@@ -38,7 +38,7 @@ class BUMDesaController extends Controller
             //->join('users', 'bumdesas.id_user', '=', 'users.id')
             ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
             ->get();
-        return view('bumdesa.index', ['bumdesa' => $joinedData]);
+        return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
     }
 
     public function validation()
@@ -191,5 +191,28 @@ class BUMDesaController extends Controller
         }
         $bumdes->delete();
         return redirect()->route('bumdesa.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function search(Request $request)
+    {
+        $searchQuery = $request->search;
+        $desaNotUploads = DB::table('users')
+            ->select('users.id', 'users.nama', 'users.role')
+            ->leftJoin('bumdesas', function ($join) use ($searchQuery) {
+                $join->on('users.id', '=', 'bumdesas.id_user')
+                    ->where('bumdesas.tahun_laporan', '=', $searchQuery);
+            })
+            ->whereNull('bumdesas.id')
+            ->get();
+        //dd($desaNotUploads);
+        $joinedData = DB::table('bumdesas')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->join('users', 'bumdesas.id_user', '=', 'users.id')
+            ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama_user')
+            ->get();
+        $desaNotUploadCount = $desaNotUploads->count() - 2;
+
+        return view('bumdesa.index', ['bumdesa' => $joinedData, 'desaNotUploads' => $desaNotUploads, 'desaNotUploadCount' => $desaNotUploadCount, 'dtpencarian' => $searchQuery, 'isSearching' => true]);
     }
 }

@@ -109,6 +109,27 @@
       @endauth
       @can('admin')
       <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Evaluasi BUM DESA</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('evaluasi.index')?'active':''}}" href="{{ route('evaluasi.index') }}">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-list text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Evaluasi</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('user.create')?'active':''}}" href="">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-plus-square-o text-success text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Aspek Penilaian</span>
+        </a>
+      </li>
+      @endcan
+      @can('admin')
+      <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akun</h6>
       </li>
       <li class="nav-item">

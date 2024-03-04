@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Unique;
 
@@ -30,12 +31,14 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
+        $max=DB::table('test')->select('point')->get();
+        $max2= $max[0]->point;
         $this->authorize('admin');
         $dt = $request->validate([
             'role' => 'required',
             'nama' => 'required',
             'username' => ['required', 'unique:users'],
-            'password' => 'required|min:5'
+            'password' => "required|min:8"
 
         ]);
         User::create($dt);

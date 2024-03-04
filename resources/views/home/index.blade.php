@@ -1,11 +1,11 @@
 <x-app>
-    <x-slot:sidebar>
-        <x-sidebar></x-sidebar>
-    </x-slot:sidebar>
-    <x-slot:topmenu>
-        <x-topmenu></x-topmenu>
-        
-        <div class="container-fluid py-4">
+  <x-slot:sidebar>
+    <x-sidebar></x-sidebar>
+  </x-slot:sidebar>
+  <x-slot:topmenu>
+    <x-topmenu></x-topmenu>
+
+    <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
@@ -412,6 +412,6 @@
         </div>
       </footer>
     </div>
-  </main>
-    </x-slot:topmenu>
+    </main>
+  </x-slot:topmenu>
 </x-app>
