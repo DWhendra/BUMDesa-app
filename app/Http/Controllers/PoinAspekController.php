@@ -20,7 +20,7 @@ class PoinAspekController extends Controller
      */
     public function create()
     {
-        //
+        return view("evaluasi.poin_aspek.create");
     }
 
     /**
@@ -28,7 +28,8 @@ class PoinAspekController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        PoinAspek::create($request->all());
+        return redirect()->route("poin_aspek.index");
     }
 
     /**
@@ -44,7 +45,7 @@ class PoinAspekController extends Controller
      */
     public function edit(PoinAspek $poinAspek)
     {
-        //
+        return view("evaluasi.poin_aspek.edit", ['poinaspek'=>$poinAspek]);
     }
 
     /**
@@ -52,7 +53,9 @@ class PoinAspekController extends Controller
      */
     public function update(Request $request, PoinAspek $poinAspek)
     {
-        //
+        $poinAspek->update($request->all());
+
+        return redirect()->route('poin_aspek.index')->with('success','');
     }
 
     /**
@@ -60,6 +63,7 @@ class PoinAspekController extends Controller
      */
     public function destroy(PoinAspek $poinAspek)
     {
-        //
+        $poinAspek->delete();
+        return redirect()->route("poin_aspek.index");
     }
 }

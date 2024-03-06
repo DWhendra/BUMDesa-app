@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('skor');
             $table->unsignedBigInteger('id_kategori_aspek');
-
             $table->foreign('id_kategori_aspek')->references('id')->on('kategori_aspeks');
             $table->timestamps();
         });

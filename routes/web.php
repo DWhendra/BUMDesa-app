@@ -72,9 +72,9 @@ Route::get('/pengumuman/{pengumuman}/edit',[PengumumanController::class, 'edit']
 Route::put('/pengumuman/{pengumuman}/edit',[PengumumanController::class, 'update'])->name('pengumuman.update');
 Route::delete('/pengumuman/{pengumuman}/destroy',[PengumumanController::class, 'destroy'])->name('pengumuman.destroy')->middleware('auth');
 
-Route::get('/evaluasi', function () {
-    return view('evaluasi.index');
-})->name('evaluasi.index');
+// Route::get('/evaluasi', function () {
+//     return view('evaluasi.index');
+// })->name('evaluasi.index');
 
 // Route::get('/evaluasi/indikator', function () {
 //     return view('evaluasi.indikator.index');
@@ -87,6 +87,7 @@ Route::get('/evaluasi', function () {
 // Route::get('/evaluasi/aspek', [EvaluasiController::class, 'index_aspek'])->name('aspek.index')->middleware('auth');
 // Route::get('/evaluasi/poin', [EvaluasiController::class, 'index_poin'])->name('poin.index')->middleware('auth');
 
+Route::get('/evaluasi', [EvaluasiController::class, 'index'])->name('evaluasi.index')->middleware('auth');
 Route::resource('evaluasi/indikator', IndikatorController::class);
 Route::resource('evaluasi/kategori_aspek', KategoriAspekController::class);
 Route::resource('evaluasi/subkategori_aspek', SubkategoriAspekController::class);

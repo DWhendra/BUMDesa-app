@@ -54,7 +54,7 @@
                                                 <input value="{{ $subkategoriaspek->id_kategori_aspek }}" name="id_kategori_aspek"
                                                     type="text" class="form-control" id="floatingInput"
                                                     placeholder="nama" required>
-                                                <label for="floatingInput">Id SubKategori Aspek</label>
+                                                <label for="floatingInput">Id Kategori Aspek</label>
                                             </div>
                                         </div>
                                     </div>

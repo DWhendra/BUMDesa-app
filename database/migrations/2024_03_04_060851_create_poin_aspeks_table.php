@@ -12,7 +12,6 @@ return new class extends Migration {
     {
         Schema::create('poin_aspeks', function (Blueprint $table) {
             $table->id();
-
             $table->string('nama');
             $table->integer('skor');
             $table->unsignedBigInteger('id_subkategori_aspek');

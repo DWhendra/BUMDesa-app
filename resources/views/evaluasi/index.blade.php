@@ -22,7 +22,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark text-sm">Indikator</h6>
-                                            <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
+                                            <span class="text-xs">{{$jumlahindikator}} Indikator</span>
                                         </div>
                                     </div>
                                     <div class="d-flex">
@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark text-sm">Kategori Aspek</h6>
-                                            <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
+                                            <span class="text-xs">{{$jumlahkategoriaspek}} Kategori Aspek</span>
                                         </div>
                                     </div>
                                     <div class="d-flex">
@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark text-sm">SubKategori Aspek</h6>
-                                            <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
+                                            <span class="text-xs">{{$jumlahsubkategoriaspek}} SubKategori Aspek</span>
                                         </div>
                                     </div>
                                     <div class="d-flex">
@@ -63,8 +63,8 @@
                                             <i class="fa fa-tachometer text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Poin</h6>
-                                            <span class="text-xs font-weight-bold">+ 430</span>
+                                            <h6 class="mb-1 text-dark text-sm">Poin Aspek</h6>
+                                            <span class="text-xs">{{$jumlahpoinaspek}} Poin Aspek</span>
                                         </div>
                                     </div>
                                     <div class="d-flex">
