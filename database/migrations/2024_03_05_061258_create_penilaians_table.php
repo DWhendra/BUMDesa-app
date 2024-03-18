@@ -13,16 +13,20 @@ return new class extends Migration
     {
         Schema::create('penilaians', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_kategori_aspek');
-            $table->unsignedBigInteger('id_subkategori_aspek');
-            $table->unsignedBigInteger('id_poin_aspek');
-            $table->string('hasil');
-            $table->string('keterangan');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_kecamatan');
+            $table->unsignedBigInteger('id_desa');
+            $table->unsignedBigInteger('id_bumdesa');
             $table->string('tahun');
+            $table->string('1_1_nilai');
+            $table->string('1_1_keterangan');
+            $table->string('1_2_nilai');
+            $table->string('1_2_keterangan');
+            $table->foreign('id_kecamatan')->references('id')->on('kecamatans');
+            $table->foreign('id_desa')->references('id')->on('desas');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_bumdesa')->references('id')->on('bumdesas');
             $table->timestamps();
-            $table->foreign('id_kategori_aspek')->references('id')->on('kategori_aspeks');
-            $table->foreign('id_subkategori_aspek')->references('id')->on('subkategori_aspeks');
-            $table->foreign('id_poin_aspek')->references('id')->on('poin_aspeks');
         });
     }
 

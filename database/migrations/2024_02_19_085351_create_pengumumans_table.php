@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_kecamatan');
             $table->string('judul');
             $table->string('deskripsi');
+            //$table->nullableMorphs('deskripsi');
             $table->string('tanggal');
             $table->string('status');
             $table->timestamps();

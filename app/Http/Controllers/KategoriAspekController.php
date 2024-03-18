@@ -15,6 +15,12 @@ class KategoriAspekController extends Controller
         return view("evaluasi.kategori_aspek.index", ["kategoriaspek"=> KategoriAspek::all()]);
     }
 
+
+    public function kategori(){
+        return response()->json([
+            'data'=> KategoriAspek::all()
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

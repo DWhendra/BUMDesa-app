@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Indikator;
+use App\Models\KategoriAspek;
 use App\Models\Penilaian;
+use App\Models\SubkategoriAspek;
 use Illuminate\Http\Request;
 
 class PenilaianController extends Controller
@@ -20,7 +23,7 @@ class PenilaianController extends Controller
      */
     public function create()
     {
-        //
+        return view('penilaian.create', ['indikator' => Indikator::all(),'kategori_aspek' => KategoriAspek::all(),'subkategori_aspek' => SubkategoriAspek::all()]);
     }
 
     /**
@@ -61,5 +64,10 @@ class PenilaianController extends Controller
     public function destroy(Penilaian $penilaian)
     {
         //
+    }
+    public function subkategoriaspek($id_opsi)
+    {
+        $subkategori_aspek = SubkategoriAspek::where('id_kategori_aspek', $id_opsi)->get();
+        return response()->json($subkategori_aspek);
     }
 }

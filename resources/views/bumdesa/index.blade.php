@@ -222,7 +222,7 @@
                     {{-- <li class="list-group-item list-group-item-danger"></li> --}}
                     @else
                     <li class="list-group-item list-group-item-danger">
-                        {{ Str::Upper($desaNotUpload->nama) }} <a class=" float-end" href="{{ route('pengumuman.create', $desaNotUpload->id) }}"><button class="btn btn-warning btn-sm m-0" type="button">Buat Pengumuman</button></a>
+                        {{ Str::Upper($desaNotUpload->nama) }} <a class=" float-end" href="{{ route('pengumuman.create', $desaNotUpload->id) }}"><button class="btn btn-success btn-sm m-0" type="button">Buatkan Pengumuman</button></a>
                     </li>
 
                     @endif

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\KategoriAspekController;
+use App\Http\Controllers\KelembagaanController;
 use App\Http\Controllers\PoinAspekController;
 use App\Http\Controllers\SubkategoriAspekController;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BUMDesaController;
 use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PenilaianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,7 +90,15 @@ Route::delete('/pengumuman/{pengumuman}/destroy',[PengumumanController::class, '
 // Route::get('/evaluasi/poin', [EvaluasiController::class, 'index_poin'])->name('poin.index')->middleware('auth');
 
 Route::get('/evaluasi', [EvaluasiController::class, 'index'])->name('evaluasi.index')->middleware('auth');
+//Route::resource('/evaluasi', EvaluasiController::class);
 Route::resource('evaluasi/indikator', IndikatorController::class);
 Route::resource('evaluasi/kategori_aspek', KategoriAspekController::class);
 Route::resource('evaluasi/subkategori_aspek', SubkategoriAspekController::class);
 Route::resource('evaluasi/poin_aspek', PoinAspekController::class);
+Route::resource('/penilaian', PenilaianController::class);
+
+Route::get('/kategori-aspek', [KategoriAspekController::class, 'kategori'])->name('kategori');
+Route::get('penilaian/create/{id}',[PenilaianController::class, 'subkategoriaspek'])->name('penilaian.subkategoriaspek');
+
+Route::resource('/kelembagaan', KelembagaanController::class);
+Route::get('/coba', [KelembagaanController::class,'coba']);
