@@ -56,6 +56,13 @@ return new class extends Migration
             $table->string('ket_5_cb')->nullable();
             $table->string('ket_5_cc')->nullable();
             $table->string('total_nilai')->nullable();
+            $table->string('tim_1')->nullable();
+            $table->string('tim_2')->nullable();
+            $table->string('tim_3')->nullable();
+            $table->string('tim_4')->nullable();
+            $table->string('tim_5')->nullable();
+            $table->string('tim_6')->nullable();
+            $table->string('tim_7')->nullable();
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_kecamatan')->references('id')->on('kecamatans');
             $table->foreign('id_desa')->references('id')->on('desas');
