@@ -24,13 +24,6 @@ class KelembagaanController extends Controller
                 ->get();
             return view('kelembagaan.index', ['kelembagaans' => $joinedData,'isSearching'=>false]);
     }
-    public function coba()
-    {
-        $coba=Kelembagaan::where("id_bumdesa",1)->first();
-        $hasilnilai=$coba->nilai_1_a+$coba->nilai_1_b;
-        return $hasilnilai;
-
-    }
     /**
      * Show the form for creating a new resource.
      */

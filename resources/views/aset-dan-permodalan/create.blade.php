@@ -15,7 +15,7 @@
                             <h6 class="mb-0 p-4 text-center">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN USAHA MILIK DESA
                                 KABUPATEN BADUNG </h6>
                         </div>
-                        <form action="{{ route('kelembagaan.store') }}" method="post">
+                        <form action="{{ route('aset-dan-permodalan.store') }}" method="post">
                             @csrf
                             @method('POST')
                             <div class="row g-3">
@@ -79,8 +79,8 @@
                                     <td class="text-center">5</td>
                                 </tr>
                                 <tr>
-                                    <td class="bg-success text-white text-center">I</td>
-                                    <td class="bg-success text-white">KELEMBAGAAN (10%)</td>
+                                    <td class="bg-success text-white text-center">V</td>
+                                    <td class="bg-success text-white">ASET DAN PERMODALAN (10%)</td>
                                     <td class="bg-success text-white text-center">100</td>
                                     <td class="bg-success text-white"></td>
                                     <td class="bg-success text-white"></td>
@@ -88,224 +88,72 @@
                                 <!--DARI SINI -->
                                 <tr>
                                     <td></td>
-                                    <th>1. KETERSEDIAAN KANTOR BUM DESA</th>
+                                    <th>1. Buku Aset</th>
                                     <td class="text-center">20</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="ps-4">A. Memiliki Kantor Sendiri</td>
-                                    <td class="text-center">11-20</td>
-                                    <td><input name="nilai_1_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
+                                    <td class="ps-4">A. Ada dan lengkap</td>
+                                    <td class="text-center">10-20</td>
+                                    <td><input name="nilai_1_a" type="number" class="form-control text-center" placeholder="10 - 20" ></td>
                                     <td><textarea name="ket_1_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="ps-4">B. Menumpang Di Kantor /aset/desa/sewa</td>
-                                    <td class="text-center">1-10</td>
-                                    <td><input name="nilai_1_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
+                                    <td class="ps-4">B. Ada dan belum lengkap</td>
+                                    <td class="text-center">1-9</td>
+                                    <td><input name="nilai_1_b" type="number" class="form-control text-center" placeholder="1 - 9" ></td>
                                     <td><textarea name="ket_1_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="ps-4">C. Tidak Ada</td>
+                                    <td class="ps-4">C. Tidak ada</td>
                                     <td class="text-center">0</td>
                                     <td><input name="nilai_1_c" type="number" class="form-control text-center" placeholder="0" ></td>
                                     <td><textarea name="ket_1_c" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
                                 </tr>
-
                                 <!--DARI SINI -->
                                 <tr>
                                     <td></td>
-                                    <th>2. PERANGKAT ORGANISASI BUM DESA</th>
-                                    <td class="text-center">20</td>
+                                    <th>2. Perkembangan Modal BUMDesa</th>
+                                    <td class="text-center">80</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="ps-4">A. Ada dan lengkap (Musdes, Penasehat, Pengawas dan Pelaksanan
-                                        Operasional <br> ( Direktur, Sekretaris, Bendahara, Manajer dan Pegawai BUMDesa).
+                                    <td class="ps-4">A. s/d 50% dari total modal
                                     </td>
-                                    <td class="text-center">11-20</td>
-                                    <td><input name="nilai_2_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
+                                    <td class="text-center">20</td>
+                                    <td><input name="nilai_2_a" type="number" class="form-control text-center" placeholder="20" ></td>
                                     <td><textarea name="ket_2_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="ps-4">B. Ada dan tidak lengkap
-                                    </td>
-                                    <td class="text-center">1-10</td>
-                                    <td><input name="nilai_2_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
+                                    <td class="ps-4">B.  51% s/d 100% dari total modal </td>
+                                    <td class="text-center">40</td>
+                                    <td><input name="nilai_2_b" type="number" class="form-control text-center" placeholder="40" ></td>
                                     <td><textarea name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
                                 </tr>
+
                                 <tr>
                                     <td></td>
-                                    <td class="ps-4">C. Tidak Ada</td>
-                                    <td class="text-center">0</td>
-                                    <td><input name="nilai_2_c" type="number" class="form-control text-center" placeholder="0" ></td>
+                                    <td class="ps-4">C.  101% s/d 150% dari total modal</td>
+                                    <td class="text-center">60</td>
+                                    <td><input name="nilai_2_c" type="number" class="form-control text-center" placeholder="60" ></td>
                                     <td><textarea name="ket_2_c" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
                                 </tr>
 
+                                <tr>
+                                    <td></td>
+                                    <td class="ps-4">D. 150% keatas dari total modal</td>
+                                    <td class="text-center">80</td>
+                                    <td><input name="nilai_2_d" type="number" class="form-control text-center" placeholder="80" ></td>
+                                    <td><textarea name="ket_2_d" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                </tr>
                                 <!-- SAMPAI SINI  -->
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th> 3. Ketersediaan Informasi/Papan Nama BUM Desa</th>
-                                    <td class="text-center">15</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Ada dan lengkap
-                                    </td>
-                                    <td class="text-center">1-15</td>
-                                    <td><input name="nilai_3_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
-                                    <td><textarea name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Tidak Ada</td>
-                                    <td class="text-center">0</td>
-                                    <td><input name="nilai_3_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                                </tr>
-
-                                <!-- SAMPAI SINI  -->
-
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th>4. Ketersediaan Informasi Papan Struktur Perangkat Organisasi BUM Desa</th>
-                                    <td class="text-center">15</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Ada dan lengkap
-                                    </td>
-                                    <td class="text-center">1-15</td>
-                                    <td><input name="nilai_4_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
-                                    <td><textarea name="ket_4_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Tidak Ada</td>
-                                    <td class="text-center">0</td>
-                                    <td><input name="nilai_4_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_4_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                                </tr>
-
-                                <!-- SAMPAI SINI  -->
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th>5. Sarana Penunjang lain (Meubeler, Komputer, mesin ketik, kendaraan bermotor)</th>
-                                    <td class="text-center">30</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Meubelir
-                                    </td>
-                                    <td class="text-center">10</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-5">a.  Milik Pemerintah Desa/Pihak Lain </td>
-                                    <td class="text-center">3</td>
-                                    <td><input name="nilai_5_aa" type="number" class="form-control text-center" placeholder="3" ></td>
-                                    <td><textarea name="ket_5_aa" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-5">b. Hibah
-                                    </td>
-                                    <td class="text-center">5</td>
-                                    <td><input name="nilai_5_ab" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea name="ket_5_ab" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-5">c. Milik Bum Desa
-                                    </td>
-                                    <td class="text-center">10</td>
-                                    <td><input name="nilai_5_ac" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea name="ket_5_ac" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Alat Transportasi</td>
-                                    <td class="text-center">10</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                  <td></td>
-                                  <td class="ps-5">a.  Milik Pemerintah Desa/Pihak Lain </td>
-                                  <td class="text-center">3</td>
-                                  <td><input name="nilai_5_ba" type="number" class="form-control text-center" placeholder="3" ></td>
-                                    <td><textarea name="ket_5_ba" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">b. Hibah
-                                  </td>
-                                  <td class="text-center">5</td>
-                                  <td><input name="nilai_5_bb" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea name="ket_5_bb" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">c. Milik Bum Desa
-                                  </td>
-                                  <td class="text-center">10</td>
-                                  <td><input name="nilai_5_bc" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea name="ket_5_bc" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                              </tr>
-
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-4">C. IT dan Alat Pendukung Kerja</td>
-                                  <td class="text-center">10</td>
-                                  <td></td>
-                                  <td></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">a. Komputer & Printer, HP, Wifi, WEB</td>
-                                  <td class="text-center">10</td>
-                                  <td><input name="nilai_5_ca" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea name="ket_5_ca" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">b. Komputer & Printer, WIFI, WEB
-                                  </td>
-                                  <td class="text-center">5</td>
-                                  <td><input name="nilai_5_cb" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea name="ket_5_cb" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">c.  Tidak Ada</td>
-                                  <td class="text-center">0</td>
-                                  <td><input name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_5_cc" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
-                              </tr>
-                                <!-- SAMPAI SINI  -->
-
-
 
                                 <tr>
                                     <td></td>
@@ -343,7 +191,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_4" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input name="tim_4" type="text" class="form-control" id="floatingInput" placeholder="name" required>
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 4</label>
                                 </div>
                             </div>
@@ -374,7 +222,7 @@
                         </div>
                         <br><button type="submit" class="btn btn-success btn-lg w-100" type="submit">SIMPAN</button>
                     </form>
-                    <a href="{{route('kelembagaan.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
+                    <a href="{{route('aset-dan-permodalan.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
                     </div>
                 </div>
             </div>

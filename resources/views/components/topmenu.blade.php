@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       @auth
       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Anda Login Sebagai</a></li>
+        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Selamat Datang,</a></li>
       </ol>
       <h6 class="font-weight-bolder text-white mb-0">{{ Str::upper(auth()->user()->nama) }}</h6>
       @endauth
@@ -19,7 +19,7 @@
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item d-flex align-items-center">
           <a href="{{ route('user.login') }}" class="nav-link text-white font-weight-bold px-0">
-            <span class="d-sm-inline d-none">Selamat Datang, {{ Str::upper(auth()->user()->nama) }}</span>
+            {{-- <span class="d-sm-inline d-none">Selamat Datang, {{ Str::upper(auth()->user()->nama) }}</span> --}}
           </a>
         </li>
       </ul>

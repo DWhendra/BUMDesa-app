@@ -15,13 +15,17 @@
                             <h6 class="mb-0 p-4 text-center">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN USAHA MILIK DESA
                                 KABUPATEN BADUNG </h6>
                         </div>
-                        <form action="{{ route('kelembagaan.store') }}" method="post">
+
+
+
+                        <form action="{{ route('kelembagaan.update', $dt->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('POST')
+                            @method('put')
+
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                        <input value="{{$dt->bumdesa}}" name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
                                         <label for="floatingInput">Nama BUM Desa</label>
                                     </div>
                                 </div>
@@ -37,24 +41,38 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <div class="form-floating">
-                                            <select class="form-select input" name="id_kecamatan" id="kecamatan" aria-label="Floating label select example" required>
-                                                <option>Pilih Kecamatan</option>
-                                                @foreach ($kecamatan as $data)
-                                                <option value="<?php echo $data->id ?>"><?php echo $data['nama_kecamatan'] ?></option>
-                                                @endforeach
-                                            </select>
-                                            <label for="floatingSelect">Kecamatan</label>
+                                            <div class="form-floating">
+                                                <select class="form-select input" name="id_kecamatan"
+                                                    id="kecamatan" aria-label="Floating label select example">
+                                                    <option>Pilih Kecamatan</option>
+                                                    @foreach ($kecamatan as $data)
+                                                        <option <?php if ($dt->id_kecamatan == $data->id) {
+                                                            echo 'selected';
+                                                        } ?> value="<?php echo $data->id; ?>">
+                                                            <?php echo $data['nama_kecamatan']; ?></option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="floatingSelect">Kecamatan</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <div class="form-floating">
-                                            <select class="form-select input" name="id_desa" id="desa" aria-label="Floating label select example" required>
-
-                                            </select>
-                                            <!-- <input name="nama_desa" type="text" class="form-control" id="floatingInput" placeholder="nama"> -->
-                                            <label for="floatingInput">Desa</label>
+                                            <div class="form-floating">
+                                                <select class="form-select input" name="id_desa" id="desa"
+                                                    aria-label="Floating label select example">
+                                                    <option>Pilih Kecamatan</option>
+                                                    @foreach ($desa as $data)
+                                                        <option <?php if ($dt->id_desa == $data->id) {
+                                                            echo 'selected';
+                                                        } ?> value="<?php echo $data->id; ?>">
+                                                            <?php echo $data['nama_desa']; ?></option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="floatingInput">Desa</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -97,22 +115,22 @@
                                     <td></td>
                                     <td class="ps-4">A. Memiliki Kantor Sendiri</td>
                                     <td class="text-center">11-20</td>
-                                    <td><input name="nilai_1_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
-                                    <td><textarea name="ket_1_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_1_a}}" name="nilai_1_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
+                                    <td><textarea name="ket_1_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_a}}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td class="ps-4">B. Menumpang Di Kantor /aset/desa/sewa</td>
                                     <td class="text-center">1-10</td>
-                                    <td><input name="nilai_1_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
-                                    <td><textarea name="ket_1_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_1_b}}" name="nilai_1_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
+                                    <td><textarea name="ket_1_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_b}}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td class="ps-4">C. Tidak Ada</td>
                                     <td class="text-center">0</td>
-                                    <td><input name="nilai_1_c" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_1_c" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_1_c}}" name="nilai_1_c" type="number" class="form-control text-center" placeholder="0" ></td>
+                                    <td><textarea name="ket_1_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_c}}</textarea></td>
                                 </tr>
 
                                 <!--DARI SINI -->
@@ -129,23 +147,23 @@
                                         Operasional <br> ( Direktur, Sekretaris, Bendahara, Manajer dan Pegawai BUMDesa).
                                     </td>
                                     <td class="text-center">11-20</td>
-                                    <td><input name="nilai_2_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
-                                    <td><textarea name="ket_2_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_2_a}}" name="nilai_2_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
+                                    <td><textarea name="ket_2_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_a}}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td class="ps-4">B. Ada dan tidak lengkap
                                     </td>
                                     <td class="text-center">1-10</td>
-                                    <td><input name="nilai_2_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
-                                    <td><textarea name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_2_b}}" name="nilai_2_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
+                                    <td><textarea name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_b}}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td class="ps-4">C. Tidak Ada</td>
                                     <td class="text-center">0</td>
-                                    <td><input name="nilai_2_c" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_2_c" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_2_c}}" name="nilai_2_c" type="number" class="form-control text-center" placeholder="0" ></td>
+                                    <td><textarea name="ket_2_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_c}}</textarea></td>
                                 </tr>
 
                                 <!-- SAMPAI SINI  -->
@@ -162,16 +180,16 @@
                                     <td class="ps-4">A. Ada dan lengkap
                                     </td>
                                     <td class="text-center">1-15</td>
-                                    <td><input name="nilai_3_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
-                                    <td><textarea name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_3_a}}" name="nilai_3_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
+                                    <td><textarea name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_a}}</textarea></td>
                                 </tr>
 
                                 <tr>
                                     <td></td>
                                     <td class="ps-4">B. Tidak Ada</td>
                                     <td class="text-center">0</td>
-                                    <td><input name="nilai_3_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_3_b}}" name="nilai_3_b" type="number" class="form-control text-center" placeholder="0" ></td>
+                                    <td><textarea name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_b}}</textarea></td>
                                 </tr>
 
                                 <!-- SAMPAI SINI  -->
@@ -189,16 +207,16 @@
                                     <td class="ps-4">A. Ada dan lengkap
                                     </td>
                                     <td class="text-center">1-15</td>
-                                    <td><input name="nilai_4_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
-                                    <td><textarea name="ket_4_a" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_4_a}}" name="nilai_4_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
+                                    <td><textarea name="ket_4_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_a}}</textarea></td>
                                 </tr>
 
                                 <tr>
                                     <td></td>
                                     <td class="ps-4">B. Tidak Ada</td>
                                     <td class="text-center">0</td>
-                                    <td><input name="nilai_4_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_4_b" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_4_b}}" name="nilai_4_b" type="number" class="form-control text-center" placeholder="0" ></td>
+                                    <td><textarea name="ket_4_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_b}}</textarea></td>
                                 </tr>
 
                                 <!-- SAMPAI SINI  -->
@@ -222,24 +240,24 @@
                                     <td></td>
                                     <td class="ps-5">a.  Milik Pemerintah Desa/Pihak Lain </td>
                                     <td class="text-center">3</td>
-                                    <td><input name="nilai_5_aa" type="number" class="form-control text-center" placeholder="3" ></td>
-                                    <td><textarea name="ket_5_aa" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_5_aa}}" name="nilai_5_aa" type="number" class="form-control text-center" placeholder="3" ></td>
+                                    <td><textarea name="ket_5_aa" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_aa}}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td class="ps-5">b. Hibah
                                     </td>
                                     <td class="text-center">5</td>
-                                    <td><input name="nilai_5_ab" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea name="ket_5_ab" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_5_ab}}" name="nilai_5_ab" type="number" class="form-control text-center" placeholder="5" ></td>
+                                    <td><textarea name="ket_5_ab" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ab}}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td class="ps-5">c. Milik Bum Desa
                                     </td>
                                     <td class="text-center">10</td>
-                                    <td><input name="nilai_5_ac" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea name="ket_5_ac" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                    <td><input value="{{$dt->nilai_5_ac}}" name="nilai_5_ac" type="number" class="form-control text-center" placeholder="10" ></td>
+                                    <td><textarea name="ket_5_ac" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ac}}</textarea></td>
                                 </tr>
 
                                 <tr>
@@ -254,24 +272,24 @@
                                   <td></td>
                                   <td class="ps-5">a.  Milik Pemerintah Desa/Pihak Lain </td>
                                   <td class="text-center">3</td>
-                                  <td><input name="nilai_5_ba" type="number" class="form-control text-center" placeholder="3" ></td>
-                                    <td><textarea name="ket_5_ba" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                  <td><input value="{{$dt->nilai_5_ba}}" name="nilai_5_ba" type="number" class="form-control text-center" placeholder="3" ></td>
+                                    <td><textarea name="ket_5_ba" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ba}}</textarea></td>
                               </tr>
                               <tr>
                                   <td></td>
                                   <td class="ps-5">b. Hibah
                                   </td>
                                   <td class="text-center">5</td>
-                                  <td><input name="nilai_5_bb" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea name="ket_5_bb" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                  <td><input value="{{$dt->nilai_5_bb}}" name="nilai_5_bb" type="number" class="form-control text-center" placeholder="5" ></td>
+                                    <td><textarea name="ket_5_bb" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_bb}}</textarea></td>
                               </tr>
                               <tr>
                                   <td></td>
                                   <td class="ps-5">c. Milik Bum Desa
                                   </td>
                                   <td class="text-center">10</td>
-                                  <td><input name="nilai_5_bc" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea name="ket_5_bc" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                  <td><input value="{{$dt->nilai_5_bc}}" name="nilai_5_bc" type="number" class="form-control text-center" placeholder="10" ></td>
+                                    <td><textarea name="ket_5_bc" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_bc}}</textarea></td>
                               </tr>
 
                               <tr>
@@ -285,23 +303,23 @@
                                   <td></td>
                                   <td class="ps-5">a. Komputer & Printer, HP, Wifi, WEB</td>
                                   <td class="text-center">10</td>
-                                  <td><input name="nilai_5_ca" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea name="ket_5_ca" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                  <td><input value="{{$dt->nilai_5_ca}}" name="nilai_5_ca" type="number" class="form-control text-center" placeholder="10" ></td>
+                                    <td><textarea name="ket_5_ca" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ca}}</textarea></td>
                               </tr>
                               <tr>
                                   <td></td>
                                   <td class="ps-5">b. Komputer & Printer, WIFI, WEB
                                   </td>
                                   <td class="text-center">5</td>
-                                  <td><input name="nilai_5_cb" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea name="ket_5_cb" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                  <td><input value="{{$dt->nilai_5_cb}}" name="nilai_5_cb" type="number" class="form-control text-center" placeholder="5" ></td>
+                                    <td><textarea name="ket_5_cb" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_cb}}</textarea></td>
                               </tr>
                               <tr>
                                   <td></td>
                                   <td class="ps-5">c.  Tidak Ada</td>
                                   <td class="text-center">0</td>
-                                  <td><input name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea name="ket_5_cc" class="form-control" placeholder="Keterangan" style="height: 42px"></textarea></td>
+                                  <td><input value="{{$dt->nilai_5_cc}}" name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
+                                    <td><textarea name="ket_5_cc" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_cc}}</textarea></td>
                               </tr>
                                 <!-- SAMPAI SINI  -->
 
@@ -319,7 +337,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_1" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input value="{{$dt->tim_1}}" name="tim_1" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 1</label>
                                 </div>
                             </div>
@@ -327,7 +345,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_2" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input value="{{$dt->tim_2}}" name="tim_2" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 2</label>
                                 </div>
                             </div>
@@ -335,7 +353,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_3" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input value="{{$dt->tim_3}}" name="tim_3" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 3</label>
                                 </div>
                             </div>
@@ -343,7 +361,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_4" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input value="{{$dt->tim_4}}" name="tim_4" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 4</label>
                                 </div>
                             </div>
@@ -351,7 +369,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_5" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input value="{{$dt->tim_5}}" name="tim_5" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 5</label>
                                 </div>
                             </div>
@@ -359,7 +377,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_6" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input value="{{$dt->tim_6}}" name="tim_6" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 6</label>
                                 </div>
                             </div>
@@ -367,7 +385,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input name="tim_7" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                    <input value="{{$dt->tim_7}}" name="tim_7" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 7</label>
                                 </div>
                             </div>
@@ -375,6 +393,7 @@
                         <br><button type="submit" class="btn btn-success btn-lg w-100" type="submit">SIMPAN</button>
                     </form>
                     <a href="{{route('kelembagaan.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
+
                     </div>
                 </div>
             </div>

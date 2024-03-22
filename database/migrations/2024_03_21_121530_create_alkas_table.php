@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manajemens', function (Blueprint $table) {
+        Schema::create('alkas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->string('bumdesa');
@@ -19,16 +19,26 @@ return new class extends Migration
             $table->unsignedBigInteger('id_desa');
             $table->integer('nilai_1_a')->nullable();
             $table->integer('nilai_1_b')->nullable();
+            $table->integer('nilai_1_c')->nullable();
+            $table->integer('nilai_1_d')->nullable();
             $table->string('ket_1_a')->nullable();
             $table->string('ket_1_b')->nullable();
+            $table->string('ket_1_c')->nullable();
+            $table->string('ket_1_d')->nullable();
             $table->integer('nilai_2_a')->nullable();
             $table->integer('nilai_2_b')->nullable();
+            $table->integer('nilai_2_c')->nullable();
+            $table->integer('nilai_2_d')->nullable();
             $table->string('ket_2_a')->nullable();
             $table->string('ket_2_b')->nullable();
+            $table->string('ket_2_c')->nullable();
+            $table->string('ket_2_d')->nullable();
             $table->integer('nilai_3_a')->nullable();
             $table->integer('nilai_3_b')->nullable();
+            $table->integer('nilai_3_c')->nullable();
             $table->string('ket_3_a')->nullable();
             $table->string('ket_3_b')->nullable();
+            $table->string('ket_3_c')->nullable();
             $table->integer('nilai_4_a')->nullable();
             $table->integer('nilai_4_b')->nullable();
             $table->string('ket_4_a')->nullable();
@@ -37,10 +47,6 @@ return new class extends Migration
             $table->integer('nilai_5_b')->nullable();
             $table->string('ket_5_a')->nullable();
             $table->string('ket_5_b')->nullable();
-            $table->integer('nilai_6_a')->nullable();
-            $table->integer('nilai_6_b')->nullable();
-            $table->string('ket_6_a')->nullable();
-            $table->string('ket_6_b')->nullable();
             $table->string('total_nilai')->nullable();
             $table->string('tim_1')->nullable();
             $table->string('tim_2')->nullable();
@@ -61,6 +67,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('manajemens');
+        Schema::dropIfExists('alkas');
     }
 };

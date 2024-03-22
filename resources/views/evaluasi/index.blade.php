@@ -38,29 +38,11 @@
                                             <i class="fa fa-bars text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Tambah Kelembagaan</h6>
-                                            <span class="text-xs"> Kelembagaan</span>
-                                        </div>
+                                            <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Manajemen</h6>                                        </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('kelembagaan.index') }}"><button
-                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
-                                    </div>
-                                </li>
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                            <i class="fa fa-pie-chart text-white opacity-10"></i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Kategori Aspek</h6>
-                                            <span class="text-xs">{{ $jumlahkategoriaspek }} Kategori Aspek</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <a href="{{ route('kategori_aspek.index') }}"><button
+                                        <a href="{{ route('manajemen.index') }}"><button
                                                 class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
@@ -72,12 +54,29 @@
                                             <i class="fa fa-sliders text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">SubKategori Aspek</h6>
-                                            <span class="text-xs">{{ $jumlahsubkategoriaspek }} SubKategori Aspek</span>
+                                            <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Usaha Dan Unit Usaha</h6>
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('subkategori_aspek.index') }}"><button
+                                        <a href="{{ route('usaha-dan-unit-usaha.index') }}"><button
+                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    </div>
+                                </li>
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Kerjasama Dan Inovasi</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="{{ route('kerjasama-dan-inovasi.index') }}"><button
                                                 class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
@@ -86,15 +85,15 @@
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
                                     <div class="d-flex align-items-center">
                                         <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                            <i class="fa fa-tachometer text-white opacity-10"></i>
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Poin Aspek</h6>
-                                            <span class="text-xs">{{ $jumlahpoinaspek }} Poin Aspek</span>
+                                            <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Aset Dan Permodalan</h6>
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('poin_aspek.index') }}"><button
+                                        <a href="{{ route('aset-dan-permodalan.index') }}"><button
                                                 class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
@@ -133,29 +132,12 @@
                                             <i class="fa fa-bars text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Tambah Kelembagaan</h6>
-                                            <span class="text-xs"> Kelembagaan</span>
+                                            <h6 class="mb-1 text-dark text-sm">Aspek Penilaian</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Manajemen</h6>
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('kelembagaan.index') }}"><button
-                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
-                                    </div>
-                                </li>
-                                <li
-                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                            <i class="fa fa-pie-chart text-white opacity-10"></i>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Kategori Aspek</h6>
-                                            <span class="text-xs">{{ $jumlahkategoriaspek }} Kategori Aspek</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <a href="{{ route('kategori_aspek.index') }}"><button
+                                        <a href="{{ route('manajemen.create') }}"><button
                                                 class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
@@ -167,12 +149,29 @@
                                             <i class="fa fa-sliders text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">SubKategori Aspek</h6>
-                                            <span class="text-xs">{{ $jumlahsubkategoriaspek }} SubKategori Aspek</span>
+                                            <h6 class="mb-1 text-dark text-sm">Aspek Penilaian</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Usaha Dan Unit Usaha</h6>
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('subkategori_aspek.index') }}"><button
+                                        <a href="{{ route('usaha-dan-unit-usaha.create') }}"><button
+                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    </div>
+                                </li>
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Aspek Penilaian</h6>
+                                            <h6 class="mb-1 text-dark text-sm">kerjasama Dan Inovasi</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="{{ route('kerjasama-dan-inovasi.create') }}"><button
                                                 class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
@@ -181,15 +180,15 @@
                                     class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
                                     <div class="d-flex align-items-center">
                                         <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                            <i class="fa fa-tachometer text-white opacity-10"></i>
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">Poin Aspek</h6>
-                                            <span class="text-xs">{{ $jumlahpoinaspek }} Poin Aspek</span>
+                                            <h6 class="mb-1 text-dark text-sm">Aspek Penilaian</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Aset Dan Permodalan</h6>
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <a href="{{ route('poin_aspek.index') }}"><button
+                                        <a href="{{ route('aset-dan-permodalan.create') }}"><button
                                                 class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>

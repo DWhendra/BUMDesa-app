@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manajemens', function (Blueprint $table) {
+        Schema::create('kerjasama_dan_inovasis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->string('bumdesa');
@@ -35,12 +35,16 @@ return new class extends Migration
             $table->string('ket_4_b')->nullable();
             $table->integer('nilai_5_a')->nullable();
             $table->integer('nilai_5_b')->nullable();
+            $table->integer('nilai_5_c')->nullable();
+            $table->integer('nilai_5_d')->nullable();
+            $table->integer('nilai_5_e')->nullable();
+            $table->integer('nilai_5_f')->nullable();
             $table->string('ket_5_a')->nullable();
             $table->string('ket_5_b')->nullable();
-            $table->integer('nilai_6_a')->nullable();
-            $table->integer('nilai_6_b')->nullable();
-            $table->string('ket_6_a')->nullable();
-            $table->string('ket_6_b')->nullable();
+            $table->string('ket_5_c')->nullable();
+            $table->string('ket_5_d')->nullable();
+            $table->string('ket_5_e')->nullable();
+            $table->string('ket_5_f')->nullable();
             $table->string('total_nilai')->nullable();
             $table->string('tim_1')->nullable();
             $table->string('tim_2')->nullable();
@@ -61,6 +65,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('manajemens');
+        Schema::dropIfExists('kerjasama_dan_inovasis');
     }
 };

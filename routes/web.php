@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\ALKAController;
+use App\Http\Controllers\AsetDanPermodalanController;
 use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\KategoriAspekController;
 use App\Http\Controllers\KelembagaanController;
+use App\Http\Controllers\KerjasamaDanInovasiController;
+use App\Http\Controllers\ManajemenController;
 use App\Http\Controllers\PoinAspekController;
 use App\Http\Controllers\SubkategoriAspekController;
+use App\Http\Controllers\UsahaDanUnitUsahaController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -39,7 +44,6 @@ Route::get('/', function () {
 
 
 Route::get('/bumdesa',[BUMDesaController::class, 'index'])->name('bumdesa.index')->middleware('auth');
-//Route::get('/bumdesa',[BUMDesaController::class, 'validation'])->name('bumdesa.index')->middleware('auth');
 Route::get('/bumdesa/create',[BUMDesaController::class, 'create'])->name('bumdesa.create');
 Route::get('/create/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 Route::post('/bumdesa/store',[BUMDesaController::class, 'store'])->name('bumdesa.store');
@@ -101,4 +105,17 @@ Route::get('/kategori-aspek', [KategoriAspekController::class, 'kategori'])->nam
 Route::get('penilaian/create/{id}',[PenilaianController::class, 'subkategoriaspek'])->name('penilaian.subkategoriaspek');
 
 Route::resource('/kelembagaan', KelembagaanController::class);
-Route::get('/coba', [KelembagaanController::class,'coba']);
+
+Route::get('/manajemen',[ManajemenController::class, 'index'])->name('manajemen.index')->middleware('auth');
+Route::get('/manajemen/create',[ManajemenController::class, 'create'])->name('manajemen.create');
+Route::post('/manajemen/store',[ManajemenController::class, 'store'])->name('manajemen.store');
+Route::get('/manajemen/{manajemen}/show',[ManajemenController::class, 'show'])->name('manajemen.show');
+Route::get('/manajemen/{manajemen}/edit',[ManajemenController::class, 'edit'])->name('manajemen.edit');
+Route::put('/manajemen/{manajemen}/edit',[ManajemenController::class, 'update'])->name('manajemen.update');
+Route::delete('/manajemen/{manajemen}/destroy',[ManajemenController::class, 'destroy'])->name('manajemen.destroy');
+
+Route::resource('/usaha-dan-unit-usaha', UsahaDanUnitUsahaController::class);
+Route::resource('/kerjasama-dan-inovasi', KerjasamaDanInovasiController::class);
+Route::resource('/aset-dan-permodalan', AsetDanPermodalanController::class);
+Route::resource('/alka', ALKAController::class);
+
