@@ -32,10 +32,12 @@
                                                 Total Nilai</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    Nilai Persentase (10%)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($kelembagaans as $data)
+                                        @foreach ($data as $data)
                                         <tr class="text-center w-100">
                                             <td scope="row">{{ $data->id }}</td>
 
@@ -44,6 +46,7 @@
                                             <td>{{ $data->nama_desa }}</td>
                                             <td>{{ $data->nama }}</td>
                                             <td>{{ $data->total_nilai }}</td>
+                                            <td>{{ $data->nilai_persentase }}</td>
 
                                             <td>
 

@@ -6,10 +6,12 @@ use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\KategoriAspekController;
 use App\Http\Controllers\KelembagaanController;
 use App\Http\Controllers\KerjasamaDanInovasiController;
+use App\Http\Controllers\KeuntunganDanManfaatController;
 use App\Http\Controllers\ManajemenController;
 use App\Http\Controllers\PoinAspekController;
 use App\Http\Controllers\SubkategoriAspekController;
 use App\Http\Controllers\UsahaDanUnitUsahaController;
+use App\Models\KeuntunganDanManfaat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -94,28 +96,38 @@ Route::delete('/pengumuman/{pengumuman}/destroy',[PengumumanController::class, '
 // Route::get('/evaluasi/poin', [EvaluasiController::class, 'index_poin'])->name('poin.index')->middleware('auth');
 
 Route::get('/evaluasi', [EvaluasiController::class, 'index'])->name('evaluasi.index')->middleware('auth');
-//Route::resource('/evaluasi', EvaluasiController::class);
-Route::resource('evaluasi/indikator', IndikatorController::class);
-Route::resource('evaluasi/kategori_aspek', KategoriAspekController::class);
-Route::resource('evaluasi/subkategori_aspek', SubkategoriAspekController::class);
-Route::resource('evaluasi/poin_aspek', PoinAspekController::class);
+Route::resource('/evaluasi', EvaluasiController::class);
+// Route::resource('evaluasi/indikator', IndikatorController::class);
+// Route::resource('evaluasi/kategori_aspek', KategoriAspekController::class);
+// Route::resource('evaluasi/subkategori_aspek', SubkategoriAspekController::class);
+// Route::resource('evaluasi/poin_aspek', PoinAspekController::class);
 Route::resource('/penilaian', PenilaianController::class);
 
-Route::get('/kategori-aspek', [KategoriAspekController::class, 'kategori'])->name('kategori');
+//Route::get('/kategori-aspek', [KategoriAspekController::class, 'kategori'])->name('kategori');
 Route::get('penilaian/create/{id}',[PenilaianController::class, 'subkategoriaspek'])->name('penilaian.subkategoriaspek');
 
 Route::resource('/kelembagaan', KelembagaanController::class);
 
-Route::get('/manajemen',[ManajemenController::class, 'index'])->name('manajemen.index')->middleware('auth');
-Route::get('/manajemen/create',[ManajemenController::class, 'create'])->name('manajemen.create');
-Route::post('/manajemen/store',[ManajemenController::class, 'store'])->name('manajemen.store');
-Route::get('/manajemen/{manajemen}/show',[ManajemenController::class, 'show'])->name('manajemen.show');
-Route::get('/manajemen/{manajemen}/edit',[ManajemenController::class, 'edit'])->name('manajemen.edit');
-Route::put('/manajemen/{manajemen}/edit',[ManajemenController::class, 'update'])->name('manajemen.update');
-Route::delete('/manajemen/{manajemen}/destroy',[ManajemenController::class, 'destroy'])->name('manajemen.destroy');
+// Route::get('/manajemen',[ManajemenController::class, 'index'])->name('manajemen.index')->middleware('auth');
+// Route::get('/manajemen/create',[ManajemenController::class, 'create'])->name('manajemen.create');
+// Route::post('/manajemen/store',[ManajemenController::class, 'store'])->name('manajemen.store');
+// Route::get('/manajemen/{manajemen}/show',[ManajemenController::class, 'show'])->name('manajemen.show');
+// Route::get('/manajemen/{manajemen}/edit',[ManajemenController::class, 'edit'])->name('manajemen.edit');
+// Route::put('/manajemen/{manajemen}/edit',[ManajemenController::class, 'update'])->name('manajemen.update');
+// Route::delete('/manajemen/{manajemen}/destroy',[ManajemenController::class, 'destroy'])->name('manajemen.destroy');
 
+Route::resource('/manajemen', ManajemenController::class);
 Route::resource('/usaha-dan-unit-usaha', UsahaDanUnitUsahaController::class);
 Route::resource('/kerjasama-dan-inovasi', KerjasamaDanInovasiController::class);
 Route::resource('/aset-dan-permodalan', AsetDanPermodalanController::class);
 Route::resource('/alka', ALKAController::class);
+Route::resource('/keuntungan-dan-manfaat', KeuntunganDanManfaatController::class);
+
+// Route::get('/keuntungan-dan-manfaat',[KeuntunganDanManfaatController::class, 'index'])->name('keuntungan-dan-manfaat.index')->middleware('auth');
+// Route::get('/keuntungan-dan-manfaat/create',[KeuntunganDanManfaatController::class, 'create'])->name('keuntungan-dan-manfaat.create');
+// Route::post('/keuntungan-dan-manfaat/store',[KeuntunganDanManfaatController::class, 'store'])->name('keuntungan-dan-manfaat.store');
+// Route::get('/keuntungan-dan-manfaat/{keuntungandanmanfaat}/show',[KeuntunganDanManfaatController::class, 'show'])->name('keuntungan-dan-manfaat.show');
+// Route::get('/keuntungan-dan-manfaat/{keuntungandanmanfaat}/edit',[KeuntunganDanManfaatController::class, 'edit'])->name('keuntungan-dan-manfaat.edit');
+// Route::put('/keuntungan-dan-manfaat/{keuntungandanmanfaat}/edit',[KeuntunganDanManfaatController::class, 'update'])->name('keuntungan-dan-manfaat.update');
+// Route::delete('/keuntungan-dan-manfaat/{keuntungandanmanfaat}/destroy',[KeuntunganDanManfaatController::class, 'destroy'])->name('keuntungan-dan-manfaat.destroy');
 

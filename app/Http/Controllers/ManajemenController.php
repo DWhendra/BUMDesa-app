@@ -57,20 +57,20 @@ class ManajemenController extends Controller
         $manajemen->nilai_6_b
 
         ;
-        $manajemen->update(['total_nilai'=>$hasilnilai]);
+        $manajemen->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
         return redirect()->route("manajemen.index")->with('success','');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Manajemen $manajemen)
+    public function show(Manajemen $manajeman)
     {
         $joinedData = DB::table('manajemens')
             ->join('kecamatans', 'manajemens.id_kecamatan', '=', 'kecamatans.id')
             ->join('desas', 'manajemens.id_desa', '=', 'desas.id')
             ->select('manajemens.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-            ->where('manajemens.id', $manajemen->id)
+            ->where('manajemens.id', $manajeman->id)
             ->first();
         return view('manajemen.show', ['dt'=>$joinedData,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
     }
@@ -78,45 +78,45 @@ class ManajemenController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Manajemen $manajemen)
+    public function edit(Manajemen $manajeman)
     {
-        return view('manajemen.edit', ['dt'=>$manajemen,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        return view('manajemen.edit', ['dt'=>$manajeman,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Manajemen $manajemen)
+    public function update(Request $request, Manajemen $manajeman)
     {
-        $manajemen->update($request->all());
+        $manajeman->update($request->all());
 
-        $manajemenupdate=Manajemen::where("id",$manajemen->id)->first();
+        $manajemenupdate=Manajemen::where("id",$manajeman->id)->first();
         //dd($kelembagaan);
         $hasilnilai=
-        $manajemen->nilai_1_a+
-        $manajemen->nilai_1_b+
-        $manajemen->nilai_2_a+
-        $manajemen->nilai_2_b+
-        $manajemen->nilai_3_a+
-        $manajemen->nilai_3_b+
-        $manajemen->nilai_4_a+
-        $manajemen->nilai_4_b+
-        $manajemen->nilai_5_a+
-        $manajemen->nilai_5_b+
-        $manajemen->nilai_6_a+
-        $manajemen->nilai_6_b
+        $manajeman->nilai_1_a+
+        $manajeman->nilai_1_b+
+        $manajeman->nilai_2_a+
+        $manajeman->nilai_2_b+
+        $manajeman->nilai_3_a+
+        $manajeman->nilai_3_b+
+        $manajeman->nilai_4_a+
+        $manajeman->nilai_4_b+
+        $manajeman->nilai_5_a+
+        $manajeman->nilai_5_b+
+        $manajeman->nilai_6_a+
+        $manajeman->nilai_6_b
         ;
-        $manajemenupdate->update(['total_nilai'=>$hasilnilai]);
+        $manajemenupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
         return redirect()->route("manajemen.index")->with('success','');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Manajemen $manajemen)
+    public function destroy(Manajemen $manajeman)
     {
-        $manajemen->delete();
+        $manajeman->delete();
         return redirect()->route('manajemen.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

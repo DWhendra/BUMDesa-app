@@ -11,7 +11,7 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Data Manajemen</h6>
+                            <h6>Data Keuntungan Dan Manfaat</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -19,7 +19,7 @@
                                     <thead class="text-center">
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                ID Manajemen</th>
+                                                ID Data Keuntungan Dan Manfaat</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 NAMA BUM Desa</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -29,15 +29,15 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA PENILAI</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Total Nilai</th>
+                                                    Total Nilai</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Nilai Persentase (10%)</th>
+                                                Nilai Persentase (20%)</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($manajemen as $data)
+                                        @foreach ($data as $data)
                                         <tr class="text-center w-100">
                                             <td scope="row">{{ $data->id }}</td>
 
@@ -47,12 +47,12 @@
                                             <td>{{ $data->nama }}</td>
                                             <td>{{ $data->total_nilai }}</td>
                                             <td>{{ $data->nilai_persentase }}</td>
-                                            <td>
 
+                                            <td>
                                                 <div class="text-center ">
-                                                    <a class="btn btn-link text-success text-gradient px-3 mb-0" href="{{ route('manajemen.show', $data->id) }}"><i class="fas fa-clipboard-list me-2"></i>Detail</a>
-                                                    <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('manajemen.edit', $data->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                                                    <form action="{{ route('manajemen.destroy', $data->id) }}" method="post">
+                                                    <a class="btn btn-link text-success text-gradient px-3 mb-0" href="{{ route('keuntungan-dan-manfaat.show', $data->id) }}"><i class="fas fa-clipboard-list me-2"></i>Detail</a>
+                                                    <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('keuntungan-dan-manfaat.edit', $data->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                    <form action="{{ route('keuntungan-dan-manfaat.destroy', $data->id) }}" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button onclick="return confirm ('Apakah Anda Ingin Menghapus Data Tersebut?')" class="btn btn-link text-danger text-gradient px-3 mb-0" type="submit" value="Delete"><i class="far fa-trash-alt me-2"></i>Hapus</button>

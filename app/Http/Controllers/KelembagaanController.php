@@ -62,7 +62,8 @@ class KelembagaanController extends Controller
         $kelembagaan->nilai_5_cb+
         $kelembagaan->nilai_5_cc
         ;
-        $kelembagaan->update(['total_nilai'=>$hasilnilai]);
+        $kelembagaan->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
+
         return redirect()->route("kelembagaan.index")->with('success','');
     }
 
@@ -118,7 +119,7 @@ class KelembagaanController extends Controller
         $kelembagaan->nilai_5_cb+
         $kelembagaan->nilai_5_cc
         ;
-        $kelembagaanupdate->update(['total_nilai'=>$hasilnilai]);
+        $kelembagaanupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
         return redirect()->route("kelembagaan.index")->with('success','');
     }
 

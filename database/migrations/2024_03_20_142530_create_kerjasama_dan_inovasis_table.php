@@ -46,6 +46,7 @@ return new class extends Migration
             $table->string('ket_5_e')->nullable();
             $table->string('ket_5_f')->nullable();
             $table->string('total_nilai')->nullable();
+            $table->string('nilai_persentase')->nullable();
             $table->string('tim_1')->nullable();
             $table->string('tim_2')->nullable();
             $table->string('tim_3')->nullable();

@@ -62,269 +62,210 @@
                                 </div>
                             </div>
                             <br>
-                        <table class="table table-bordered" style="border: 1px solid black; border-collapse: collapse">
-                            <thead>
-                                <tr style="border-bottom: 1px solid black">
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col">No</th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col">Aspek Penilaian</th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col">Skor</th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col">Hasil Penilaian</th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col">Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-center">4</td>
-                                    <td class="text-center">5</td>
-                                </tr>
-                                <tr>
-                                    <td class="bg-success text-white text-center">I</td>
-                                    <td class="bg-success text-white">KELEMBAGAAN (10%)</td>
-                                    <td class="bg-success text-white text-center">100</td>
-                                    <td class="bg-success text-white"></td>
-                                    <td class="bg-success text-white"></td>
-                                </tr>
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th>1. KETERSEDIAAN KANTOR BUM DESA</th>
-                                    <td class="text-center">20</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Memiliki Kantor Sendiri</td>
-                                    <td class="text-center">11-20</td>
-                                    <td><input disabled value="{{$dt->nilai_1_a}}" name="nilai_1_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
-                                    <td><textarea disabled name="ket_1_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_a}}</textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Menumpang Di Kantor /aset/desa/sewa</td>
-                                    <td class="text-center">1-10</td>
-                                    <td><input disabled value="{{$dt->nilai_1_b}}" name="nilai_1_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
-                                    <td><textarea disabled name="ket_1_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_b}}</textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">C. Tidak Ada</td>
-                                    <td class="text-center">0</td>
-                                    <td><input disabled value="{{$dt->nilai_1_c}}" name="nilai_1_c" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea disabled name="ket_1_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_c}}</textarea></td>
-                                </tr>
-
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th>2. PERANGKAT ORGANISASI BUM DESA</th>
-                                    <td class="text-center">20</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Ada dan lengkap (Musdes, Penasehat, Pengawas dan Pelaksanan
-                                        Operasional <br> ( Direktur, Sekretaris, Bendahara, Manajer dan Pegawai BUMDesa).
-                                    </td>
-                                    <td class="text-center">11-20</td>
-                                    <td><input disabled value="{{$dt->nilai_2_a}}" name="nilai_2_a" type="number" class="form-control text-center" placeholder="11 - 20" ></td>
-                                    <td><textarea disabled name="ket_2_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_a}}</textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Ada dan tidak lengkap
-                                    </td>
-                                    <td class="text-center">1-10</td>
-                                    <td><input disabled value="{{$dt->nilai_2_b}}" name="nilai_2_b" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
-                                    <td><textarea disabled name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_b}}</textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">C. Tidak Ada</td>
-                                    <td class="text-center">0</td>
-                                    <td><input disabled value="{{$dt->nilai_2_c}}" name="nilai_2_c" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea disabled name="ket_2_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_c}}</textarea></td>
-                                </tr>
-
-                                <!-- SAMPAI SINI  -->
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th> 3. Ketersediaan Informasi/Papan Nama BUM Desa</th>
-                                    <td class="text-center">15</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Ada dan lengkap
-                                    </td>
-                                    <td class="text-center">1-15</td>
-                                    <td><input disabled value="{{$dt->nilai_3_a}}" name="nilai_3_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
-                                    <td><textarea disabled name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_a}}</textarea></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Tidak Ada</td>
-                                    <td class="text-center">0</td>
-                                    <td><input disabled value="{{$dt->nilai_3_b}}" name="nilai_3_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea disabled name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_b}}</textarea></td>
-                                </tr>
-
-                                <!-- SAMPAI SINI  -->
-
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th>4. Ketersediaan Informasi Papan Struktur Perangkat Organisasi BUM Desa</th>
-                                    <td class="text-center">15</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Ada dan lengkap
-                                    </td>
-                                    <td class="text-center">1-15</td>
-                                    <td><input disabled value="{{$dt->nilai_4_a}}" name="nilai_4_a" type="number" class="form-control text-center" placeholder="1 - 15" ></td>
-                                    <td><textarea disabled name="ket_4_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_a}}</textarea></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Tidak Ada</td>
-                                    <td class="text-center">0</td>
-                                    <td><input disabled value="{{$dt->nilai_4_b}}" name="nilai_4_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea disabled name="ket_4_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_b}}</textarea></td>
-                                </tr>
-
-                                <!-- SAMPAI SINI  -->
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td></td>
-                                    <th>5. Sarana Penunjang lain (Meubeler, Komputer, mesin ketik, kendaraan bermotor)</th>
-                                    <td class="text-center">30</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">A. Meubelir
-                                    </td>
-                                    <td class="text-center">10</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-5">a.  Milik Pemerintah Desa/Pihak Lain </td>
-                                    <td class="text-center">3</td>
-                                    <td><input disabled value="{{$dt->nilai_5_aa}}" name="nilai_5_aa" type="number" class="form-control text-center" placeholder="3" ></td>
-                                    <td><textarea disabled name="ket_5_aa" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_aa}}</textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-5">b. Hibah
-                                    </td>
-                                    <td class="text-center">5</td>
-                                    <td><input disabled value="{{$dt->nilai_5_ab}}" name="nilai_5_ab" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea disabled name="ket_5_ab" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ab}}</textarea></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-5">c. Milik Bum Desa
-                                    </td>
-                                    <td class="text-center">10</td>
-                                    <td><input disabled value="{{$dt->nilai_5_ac}}" name="nilai_5_ac" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea disabled name="ket_5_ac" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ac}}</textarea></td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-4">B. Alat Transportasi</td>
-                                    <td class="text-center">10</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                  <td></td>
-                                  <td class="ps-5">a.  Milik Pemerintah Desa/Pihak Lain </td>
-                                  <td class="text-center">3</td>
-                                  <td><input disabled value="{{$dt->nilai_5_ba}}" name="nilai_5_ba" type="number" class="form-control text-center" placeholder="3" ></td>
-                                    <td><textarea disabled name="ket_5_ba" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ba}}</textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">b. Hibah
-                                  </td>
-                                  <td class="text-center">5</td>
-                                  <td><input disabled value="{{$dt->nilai_5_bb}}" name="nilai_5_bb" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea disabled name="ket_5_bb" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_bb}}</textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">c. Milik Bum Desa
-                                  </td>
-                                  <td class="text-center">10</td>
-                                  <td><input disabled value="{{$dt->nilai_5_bc}}" name="nilai_5_bc" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea disabled name="ket_5_bc" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_bc}}</textarea></td>
-                              </tr>
-
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-4">C. IT dan Alat Pendukung Kerja</td>
-                                  <td class="text-center">10</td>
-                                  <td></td>
-                                  <td></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">a. Komputer & Printer, HP, Wifi, WEB</td>
-                                  <td class="text-center">10</td>
-                                  <td><input disabled value="{{$dt->nilai_5_ca}}" name="nilai_5_ca" type="number" class="form-control text-center" placeholder="10" ></td>
-                                    <td><textarea disabled name="ket_5_ca" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_ca}}</textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">b. Komputer & Printer, WIFI, WEB
-                                  </td>
-                                  <td class="text-center">5</td>
-                                  <td><input disabled value="{{$dt->nilai_5_cb}}" name="nilai_5_cb" type="number" class="form-control text-center" placeholder="5" ></td>
-                                    <td><textarea disabled name="ket_5_cb" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_cb}}</textarea></td>
-                              </tr>
-                              <tr>
-                                  <td></td>
-                                  <td class="ps-5">c.  Tidak Ada</td>
-                                  <td class="text-center">0</td>
-                                  <td><input disabled value="{{$dt->nilai_5_cc}}" name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
-                                    <td><textarea disabled name="ket_5_cc" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_cc}}</textarea></td>
-                              </tr>
-                                <!-- SAMPAI SINI  -->
-
-                                <tr>
-                                    <td></td>
-                                    <td class="ps-5"></td>
-                                    <td class="text-center">Total <br> Nilai</td>
-                                    <td><input disabled value="{{$dt->total_nilai}}" name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
-                                      <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-
-                            </tbody>
-
-                        </table>
+                            <table class="table table-bordered" style="border: 1px solid black; border-collapse: collapse">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid black">
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">No</th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">Aspek Penilaian</th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">Skor</th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">Hasil Penilaian</th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">4</td>
+                                        <td class="text-center">5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bg-success text-white text-center">VI</td>
+                                        <td class="bg-success text-white">Adminstrasi, Laporan Keuangan dan Akuntabilitas (10%)</td>
+                                        <td class="bg-success text-white text-center">100</td>
+                                        <td class="bg-success text-white"></td>
+                                        <td class="bg-success text-white"></td>
+                                    </tr>
+                                    <!--DARI SINI -->
+                                    <tr>
+                                        <td></td>
+                                        <th>1. Laporan Tahunan BUM Desa 2022</th>
+                                        <td class="text-center">20</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">A. Ada (Neraca, Laba rugi, perubahan modal, arus kas dan CALK)<br> melalui Musdes</td>
+                                        <td class="text-center">15-20</td>
+                                        <td><input disabled value="{{$dt->nilai_1_a}}" name="nilai_1_a" type="number" class="form-control text-center" placeholder="15 - 20" ></td>
+                                        <td><textarea disabled name="ket_1_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_a}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">B. Ada (Neraca, Laba Rugi, Perubahan Modal, Arus Kas)<br> melalui Musdes</td>
+                                        <td class="text-center">10-14</td>
+                                        <td><input disabled value="{{$dt->nilai_1_b}}" name="nilai_1_b" type="number" class="form-control text-center" placeholder="10 - 14" ></td>
+                                        <td><textarea disabled name="ket_1_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_b}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">C. Ada, (Neraca, Laba Rugi) melalui Musdes</td>
+                                        <td class="text-center">1-9</td>
+                                        <td><input disabled value="{{$dt->nilai_1_c}}" name="nilai_1_c" type="number" class="form-control text-center" placeholder="1 - 9" ></td>
+                                        <td><textarea disabled name="ket_1_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_c}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">D. Tidak Ada</td>
+                                        <td class="text-center">0</td>
+                                        <td><input disabled value="{{$dt->nilai_1_d}}" name="nilai_1_d" type="number" class="form-control text-center" placeholder="0" ></td>
+                                        <td><textarea disabled name="ket_1_d" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_d}}</textarea></td>
+                                    </tr>
+                                    <!--DARI SINI -->
+                                    <tr>
+                                        <td></td>
+                                        <th>2. Laporan Semesteran BUM Desa 2022</th>
+                                        <td class="text-center">20</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">A. Ada (Neraca, Laba rugi, perubahan modal, arus kas dan CALK)
+                                        </td>
+                                        <td class="text-center">15-20</td>
+                                        <td><input disabled value="{{$dt->nilai_2_a}}" name="nilai_2_a" type="number" class="form-control text-center" placeholder="15 - 20" ></td>
+                                        <td><textarea disabled name="ket_2_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_a}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">B. Ada (Neraca, Laba Rugi, Perubahan Modal, Arus Kas)
+                                        </td>
+                                        <td class="text-center">10-14</td>
+                                        <td><input disabled value="{{$dt->nilai_2_b}}" name="nilai_2_b" type="number" class="form-control text-center" placeholder="10 - 14" ></td>
+                                        <td><textarea disabled name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_b}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">C. Ada, (Neraca, Laba Rugi)</td>
+                                        <td class="text-center">1-9</td>
+                                        <td><input disabled value="{{$dt->nilai_2_c}}" name="nilai_2_c" type="number" class="form-control text-center" placeholder="1 - 9" ></td>
+                                        <td><textarea disabled name="ket_2_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_c}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">D. Tidak Ada</td>
+                                        <td class="text-center">0</td>
+                                        <td><input disabled value="{{$dt->nilai_2_d}}" name="nilai_2_d" type="number" class="form-control text-center" placeholder="0" ></td>
+                                        <td><textarea disabled name="ket_2_d" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_d}}</textarea></td>
+                                    </tr>
+    
+                                    <!-- SAMPAI SINI  -->
+                                    <!--DARI SINI -->
+                                    <tr>
+                                        <td></td>
+                                        <th> 3. Laporan Pengawasan Tahunan 2022</th>
+                                        <td class="text-center">20</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">A. Ada, disampaikan di Musdes 
+                                        </td>
+                                        <td class="text-center">10-20</td>
+                                        <td><input disabled value="{{$dt->nilai_3_a}}" name="nilai_3_a" type="number" class="form-control text-center" placeholder="10 - 20" ></td>
+                                        <td><textarea disabled name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_a}}</textarea></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">B. Ada tidak melalui Musdes</td>
+                                        <td class="text-center">1-9</td>
+                                        <td><input disabled value="{{$dt->nilai_3_b}}" name="nilai_3_b" type="number" class="form-control text-center" placeholder="1 - 9" ></td>
+                                        <td><textarea disabled name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_b}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">C. Tidak Ada</td>
+                                        <td class="text-center">0</td>
+                                        <td><input disabled value="{{$dt->nilai_3_c}}" name="nilai_3_c" type="number" class="form-control text-center" placeholder="0" ></td>
+                                        <td><textarea disabled name="ket_3_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_c}}</textarea></td>
+                                    </tr>
+    
+                                    <!-- SAMPAI SINI  -->
+    
+                                    <!--DARI SINI -->
+                                    <tr>
+                                        <td></td>
+                                        <th>4. Laporan Semesteran Pengawas 2022</th>
+                                        <td class="text-center">20</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">A. Ada
+                                        </td>
+                                        <td class="text-center">1-20</td>
+                                        <td><input disabled value="{{$dt->nilai_4_a}}" name="nilai_4_a" type="number" class="form-control text-center" placeholder="1 - 20" ></td>
+                                        <td><textarea disabled name="ket_4_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_a}}</textarea></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">B. Tidak Ada</td>
+                                        <td class="text-center">0</td>
+                                        <td><input disabled value="{{$dt->nilai_4_b}}" name="nilai_4_b" type="number" class="form-control text-center" placeholder="0" ></td>
+                                        <td><textarea disabled name="ket_4_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_b}}</textarea></td>
+                                    </tr>
+    
+                                    <!-- SAMPAI SINI  -->
+                                    <!--DARI SINI -->
+                                    <tr>
+                                        <td></td>
+                                        <th>5. Mekanisme menerima masukan<br> (testimoni, keluhan, pengaduan dan  saran)</th>
+                                        <td class="text-center">20</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">A. Tidak Ada
+                                        </td>
+                                        <td class="text-center">1-20</td>
+                                        <td><input disabled value="{{$dt->nilai_5_a}}" name="nilai_5_a" type="number" class="form-control text-center" placeholder="1 - 20" ></td>
+                                        <td><textarea disabled name="ket_5_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_a}}</textarea></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">B. Ada</td>
+                                        <td class="text-center">0</td>
+                                        <td><input disabled value="{{$dt->nilai_5_b}}" name="nilai_5_b" type="number" class="form-control text-center" placeholder="0" ></td>
+                                        <td><textarea disabled name="ket_5_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_b}}</textarea></td>
+                                    </tr>
+                                    <!-- SAMPAI SINI  -->
+    
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-5"></td>
+                                        <td class="text-center">Total <br> Nilai</td>
+                                        <td><input disabled value="{{$dt->total_nilai}}" name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
+                                          <td></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                     </form>
                     <div class="row g-3">
                         <div class="col-md-12">
@@ -391,7 +332,7 @@
                         </div>
                     </div>
                     @endforeach
-                    <a href="{{route('kelembagaan.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
+                    <a href="{{route('alka.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
                     </div>
                 </div>
             </div>

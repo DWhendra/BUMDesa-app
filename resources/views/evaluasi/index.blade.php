@@ -98,6 +98,41 @@
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
                                 </li>
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Adminstrasi, Laporan <br> Keuangan dan <br>
+                                                Akuntabilitas</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="{{ route('alka.index') }}"><button
+                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    </div>
+                                </li>
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Keuntungan Dan Manfaat</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="{{ route('keuntungan-dan-manfaat.index') }}"><button
+                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -189,6 +224,41 @@
                                     </div>
                                     <div class="d-flex">
                                         <a href="{{ route('aset-dan-permodalan.create') }}"><button
+                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    </div>
+                                </li>
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Aspek Penilaian</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Adminstrasi, Laporan <br> Keuangan dan <br>
+                                                Akuntabilitas</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="{{ route('alka.create') }}"><button
+                                                class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                    class="ni ni-bold-right" aria-hidden="true"></i></button></a>
+                                    </div>
+                                </li>
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                                            <i class="fa fa-sliders text-white opacity-10"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark text-sm">Aspek Penilaian</h6>
+                                            <h6 class="mb-1 text-dark text-sm">Keuntungan Dan Manfaat</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="{{ route('keuntungan-dan-manfaat.create') }}"><button
                                                 class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>

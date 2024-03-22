@@ -62,7 +62,7 @@
                                         <div class="form-floating">
                                             <div class="form-floating">
                                                 <select class="form-select input" name="id_desa" id="desa"
-                                                    aria-label="Floating label select example">
+                                                    aria-label="Floating label select example" required>
                                                     <option>Pilih Kecamatan</option>
                                                     @foreach ($desa as $data)
                                                         <option <?php if ($dt->id_desa == $data->id) {

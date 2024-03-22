@@ -15,13 +15,13 @@
                             <h6 class="mb-0 p-4 text-center">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN USAHA MILIK DESA
                                 KABUPATEN BADUNG </h6>
                         </div>
-                        <form action="{{ route('manajemen.update', $dt->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('aset-dan-permodalan.update', $dt->id) }}" method="" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input value="{{$dt->bumdesa}}" name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                        <input disabled value="{{$dt->bumdesa}}" name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
                                         <label for="floatingInput">Nama BUM Desa</label>
                                     </div>
                                 </div>
@@ -38,16 +38,7 @@
                                     <div class="form-floating mb-3">
                                         <div class="form-floating">
                                             <div class="form-floating">
-                                                <select class="form-select input" name="id_kecamatan"
-                                                    id="kecamatan" aria-label="Floating label select example">
-                                                    <option>Pilih Kecamatan</option>
-                                                    @foreach ($kecamatan as $data)
-                                                        <option <?php if ($dt->id_kecamatan == $data->id) {
-                                                            echo 'selected';
-                                                        } ?> value="<?php echo $data->id; ?>">
-                                                            <?php echo $data['nama_kecamatan']; ?></option>
-                                                    @endforeach
-                                                </select>
+                                                <input disabled value="{{$dt->nama_kecamatan}}" name="nama_kecamatan" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
                                                 <label for="floatingSelect">Kecamatan</label>
                                             </div>
                                         </div>
@@ -57,16 +48,7 @@
                                     <div class="form-floating mb-3">
                                         <div class="form-floating">
                                             <div class="form-floating">
-                                                <select class="form-select input" name="id_desa" id="desa"
-                                                    aria-label="Floating label select example" required>
-                                                    <option>Pilih Kecamatan</option>
-                                                    @foreach ($desa as $data)
-                                                        <option <?php if ($dt->id_desa == $data->id) {
-                                                            echo 'selected';
-                                                        } ?> value="<?php echo $data->id; ?>">
-                                                            <?php echo $data['nama_desa']; ?></option>
-                                                    @endforeach
-                                                </select>
+                                                <input disabled value="{{$dt->nama_desa}}" name="nama_kecamatan" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
                                                 <label for="floatingInput">Desa</label>
                                             </div>
                                         </div>
@@ -93,8 +75,8 @@
                                         <td class="text-center">5</td>
                                     </tr>
                                     <tr>
-                                        <td class="bg-success text-white text-center">II</td>
-                                        <td class="bg-success text-white">MANAJEMEN (10%)</td>
+                                        <td class="bg-success text-white text-center">VII</td>
+                                        <td class="bg-success text-white">KEUNTUNGAN DAN MANFAAT (20%)</td>
                                         <td class="bg-success text-white text-center">100</td>
                                         <td class="bg-success text-white"></td>
                                         <td class="bg-success text-white"></td>
@@ -102,154 +84,133 @@
                                     <!--DARI SINI -->
                                     <tr>
                                         <td></td>
-                                        <th>1. Rencana Program Kerja BUM Desa</th>
+                                        <th>1. Kontribusi tarhadap PADesa 2022</th>
+                                        <td class="text-center">40</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">A. < 50 Juta</td>
+                                        <td class="text-center">10</td>
+                                        <td><input disabled value="{{$dt->nilai_1_a}}" name="nilai_1_a" type="number" class="form-control text-center" placeholder="10" ></td>
+                                        <td><textarea disabled name="ket_1_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_a}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">B. 50 juta s/d < 150 Juta</td>
+                                        <td class="text-center">20</td>
+                                        <td><input disabled value="{{$dt->nilai_1_b}}" name="nilai_1_b" type="number" class="form-control text-center" placeholder="20" ></td>
+                                        <td><textarea disabled name="ket_1_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_b}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">C. 150 Juta s/d < 300 Juta</td>
+                                        <td class="text-center">30</td>
+                                        <td><input disabled value="{{$dt->nilai_1_c}}" name="nilai_1_c" type="number" class="form-control text-center" placeholder="30" ></td>
+                                        <td><textarea disabled name="ket_1_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_c}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">D. 300 Juta keatas</td>
+                                        <td class="text-center">40</td>
+                                        <td><input disabled value="{{$dt->nilai_1_d}}" name="nilai_1_d" type="number" class="form-control text-center" placeholder="40" ></td>
+                                        <td><textarea disabled name="ket_1_d" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_d}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">E. Nihil atau rugi</td>
+                                        <td class="text-center">0</td>
+                                        <td><input disabled value="{{$dt->nilai_1_e}}" name="nilai_1_e" type="number" class="form-control text-center" placeholder="0" ></td>
+                                        <td><textarea disabled name="ket_1_e" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_e}}</textarea></td>
+                                    </tr>
+                                    <!--DARI SINI -->
+                                    <tr>
+                                        <td></td>
+                                        <th>2. Penyerapan Tenaga Kerja</th>
                                         <td class="text-center">30</td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td class="ps-4">A. Ada</td>
-                                        <td class="text-center">1-30</td>
-                                        <td><input value="{{$dt->nilai_1_a}}" name="nilai_1_a" type="number" class="form-control text-center" placeholder="1 - 30" ></td>
-                                        <td><textarea name="ket_1_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_a}}</textarea></td>
+                                        <td class="ps-4">A. s.d 3 orang
+                                        </td>
+                                        <td class="text-center">15</td>
+                                        <td><input disabled value="{{$dt->nilai_2_a}}" name="nilai_2_a" type="number" class="form-control text-center" placeholder="15" ></td>
+                                        <td><textarea disabled name="ket_2_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_a}}</textarea></td>
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td class="ps-4">B. Tidak Ada</td>
-                                        <td class="text-center">0</td>
-                                        <td><input value="{{$dt->nilai_1_b}}" name="nilai_1_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                        <td><textarea name="ket_1_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_1_b}}</textarea></td>
-                                    </tr>
-
-                                    <!--DARI SINI -->
-                                    <tr>
-                                        <td></td>
-                                        <th>2. Pedoman/SOP Pengelolaan SDM dan Pegawai BUM Desa</th>
+                                        <td class="ps-4">B.  s.d 5 orang</td>
                                         <td class="text-center">20</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input disabled value="{{$dt->nilai_2_b}}" name="nilai_2_b" type="number" class="form-control text-center" placeholder="20" ></td>
+                                        <td><textarea disabled name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_b}}</textarea></td>
                                     </tr>
+    
                                     <tr>
                                         <td></td>
-                                        <td class="ps-4">A. Ada</td>
-                                        <td class="text-center">1-20</td>
-                                        <td><input value="{{$dt->nilai_2_a}}" name="nilai_2_a" type="number" class="form-control text-center" placeholder="1 - 20" ></td>
-                                        <td><textarea name="ket_2_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_a}}</textarea></td>
+                                        <td class="ps-4">C.  s.d 10 orang</td>
+                                        <td class="text-center">25</td>
+                                        <td><input disabled value="{{$dt->nilai_2_c}}" name="nilai_2_c" type="number" class="form-control text-center" placeholder="25" ></td>
+                                        <td><textarea disabled name="ket_2_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_c}}</textarea></td>
                                     </tr>
+    
                                     <tr>
                                         <td></td>
-                                        <td class="ps-4">B. Tidak Ada
-                                        </td>
-                                        <td class="text-center">0</td>
-                                        <td><input value="{{$dt->nilai_2_b}}" name="nilai_2_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                        <td><textarea name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_b}}</textarea></td>
+                                        <td class="ps-4">D. s.d 20 orang</td>
+                                        <td class="text-center">30</td>
+                                        <td><input disabled value="{{$dt->nilai_2_d}}" name="nilai_2_d" type="number" class="form-control text-center" placeholder="30" ></td>
+                                        <td><textarea disabled name="ket_2_d" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_d}}</textarea></td>
                                     </tr>
-
                                     <!-- SAMPAI SINI  -->
                                     <!--DARI SINI -->
                                     <tr>
                                         <td></td>
-                                        <th> 3. Pedoman/SOP Kegiatan Usaha BUMDesa</th>
+                                        <th>3. Penerima manfaat layanan/usaha</th>
+                                        <td class="text-center">30</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">A. s.d 10 orang
+                                        </td>
+                                        <td class="text-center">15</td>
+                                        <td><input disabled value="{{$dt->nilai_3_a}}" name="nilai_3_a" type="number" class="form-control text-center" placeholder="15" ></td>
+                                        <td><textarea disabled name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_a}}</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="ps-4">B.  s.d 50 orang</td>
                                         <td class="text-center">20</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input disabled value="{{$dt->nilai_3_b}}" name="nilai_3_b" type="number" class="form-control text-center" placeholder="20" ></td>
+                                        <td><textarea disabled name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_b}}</textarea></td>
                                     </tr>
+    
                                     <tr>
                                         <td></td>
-                                        <td class="ps-4">A. Ada
-                                        </td>
-                                        <td class="text-center">1-20</td>
-                                        <td><input value="{{$dt->nilai_3_a}}" name="nilai_3_a" type="number" class="form-control text-center" placeholder="1 - 20" ></td>
-                                        <td><textarea name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_a}}</textarea></td>
+                                        <td class="ps-4">C.  s.d 100 orang</td>
+                                        <td class="text-center">25</td>
+                                        <td><input disabled value="{{$dt->nilai_3_c}}" name="nilai_3_c" type="number" class="form-control text-center" placeholder="25" ></td>
+                                        <td><textarea disabled name="ket_3_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_c}}</textarea></td>
                                     </tr>
-
+    
                                     <tr>
                                         <td></td>
-                                        <td class="ps-4">B. Tidak Ada</td>
-                                        <td class="text-center">0</td>
-                                        <td><input value="{{$dt->nilai_3_b}}" name="nilai_3_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                        <td><textarea name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_b}}</textarea></td>
-                                    </tr>
-
-                                    <!-- SAMPAI SINI  -->
-
-                                    <!--DARI SINI -->
-                                    <tr>
-                                        <td></td>
-                                        <th>4. Pedoman/SOP Keuangan/Kebijakan Akuntansi BUM Desa</th>
-                                        <td class="text-center">10</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td class="ps-4">A. Ada
-                                        </td>
-                                        <td class="text-center">1-10</td>
-                                        <td><input value="{{$dt->nilai_4_a}}" name="nilai_4_a" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
-                                        <td><textarea name="ket_4_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_a}}</textarea></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td class="ps-4">B. Tidak Ada</td>
-                                        <td class="text-center">0</td>
-                                        <td><input value="{{$dt->nilai_4_b}}" name="nilai_4_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                        <td><textarea name="ket_4_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_b}}</textarea></td>
-                                    </tr>
-
-                                    <!-- SAMPAI SINI  -->
-                                    <!--DARI SINI -->
-                                    <tr>
-                                        <td></td>
-                                        <th>5. Pedoman/SOP Pemasaran BUM Desa</th>
-                                        <td class="text-center">10</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td class="ps-4">A. Ada
-                                        </td>
-                                        <td class="text-center">1-10</td>
-                                        <td><input value="{{$dt->nilai_5_a}}" name="nilai_5_a" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
-                                        <td><textarea name="ket_5_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_a}}</textarea></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td class="ps-4">B. Tidak Ada</td>
-                                        <td class="text-center">0</td>
-                                        <td><input value="{{$dt->nilai_5_b}}" name="nilai_5_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                        <td><textarea name="ket_5_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_b}}</textarea></td>
+                                        <td class="ps-4">D. lebih dari 100 orang</td>
+                                        <td class="text-center">30</td>
+                                        <td><input disabled value="{{$dt->nilai_3_d}}" name="nilai_3_d" type="number" class="form-control text-center" placeholder="30" ></td>
+                                        <td><textarea disabled name="ket_3_d" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_d}}</textarea></td>
                                     </tr>
                                     <!-- SAMPAI SINI  -->
-                                    <!--DARI SINI -->
                                     <tr>
                                         <td></td>
-                                        <th>6. Pemanfaatan Teknologi Digital</th>
-                                        <td class="text-center">10</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="ps-5"></td>
+                                        <td class="text-center">Total <br> Nilai</td>
+                                        <td><input disabled value="{{$dt->total_nilai}}" name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
+                                          <td></td>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td class="ps-4">A. Ada
-                                        </td>
-                                        <td class="text-center">1-10</td>
-                                        <td><input value="{{$dt->nilai_6_a}}" name="nilai_6_a" type="number" class="form-control text-center" placeholder="1 - 10" ></td>
-                                        <td><textarea name="ket_6_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_6_a}}</textarea></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td class="ps-4">B. Tidak Ada</td>
-                                        <td class="text-center">0</td>
-                                        <td><input value="{{$dt->nilai_6_b}}" name="nilai_6_b" type="number" class="form-control text-center" placeholder="0" ></td>
-                                        <td><textarea name="ket_6_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_6_b}}</textarea></td>
-                                    </tr>
-                                    <!-- SAMPAI SINI  -->
                                     <tr>
                                         <td></td>
                                         <td></td>
@@ -262,7 +223,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input value="{{$dt->tim_1}}" name="tim_1" type="text" class="form-control" id="floatingInput" placeholder="name" >
+                                    <input disabled value="{{$dt->tim_1}}" name="tim_1" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 1</label>
                                 </div>
                             </div>
@@ -270,7 +231,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input value="{{$dt->tim_2}}" name="tim_2" type="text" class="form-control" id="floatingInput" placeholder="name" >
+                                    <input disabled value="{{$dt->tim_2}}" name="tim_2" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 2</label>
                                 </div>
                             </div>
@@ -278,7 +239,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input value="{{$dt->tim_3}}" name="tim_3" type="text" class="form-control" id="floatingInput" placeholder="name" >
+                                    <input disabled value="{{$dt->tim_3}}" name="tim_3" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 3</label>
                                 </div>
                             </div>
@@ -286,7 +247,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input value="{{$dt->tim_4}}" name="tim_4" type="text" class="form-control" id="floatingInput" placeholder="name" >
+                                    <input disabled value="{{$dt->tim_4}}" name="tim_4" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 4</label>
                                 </div>
                             </div>
@@ -294,7 +255,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input value="{{$dt->tim_5}}" name="tim_5" type="text" class="form-control" id="floatingInput" placeholder="name" >
+                                    <input disabled value="{{$dt->tim_5}}" name="tim_5" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 5</label>
                                 </div>
                             </div>
@@ -302,7 +263,7 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input value="{{$dt->tim_6}}" name="tim_6" type="text" class="form-control" id="floatingInput" placeholder="name" >
+                                    <input disabled value="{{$dt->tim_6}}" name="tim_6" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 6</label>
                                 </div>
                             </div>
@@ -310,14 +271,13 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input value="{{$dt->tim_7}}" name="tim_7" type="text" class="form-control" id="floatingInput" placeholder="name" >
+                                    <input disabled value="{{$dt->tim_7}}" name="tim_7" type="text" class="form-control" id="floatingInput" placeholder="name" >
                                     <label for="floatingInput">Tim Pembina dan Evaluasi 7</label>
                                 </div>
                             </div>
                         </div>
-                        <br><button type="submit" class="btn btn-success btn-lg w-100" type="submit">SIMPAN</button>
                     </form>
-                    <a href="{{route('manajemen.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
+                    <a href="{{route('keuntungan-dan-manfaat.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
 
                     </div>
                 </div>

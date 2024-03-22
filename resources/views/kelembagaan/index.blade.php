@@ -29,7 +29,9 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA PENILAI</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                    Total Nilai</th>
+                                                Total Nilai</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Nilai Persentase (10%)</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
                                         </tr>
@@ -44,7 +46,7 @@
                                             <td>{{ $data->nama_desa }}</td>
                                             <td>{{ $data->nama }}</td>
                                             <td>{{ $data->total_nilai }}</td>
-
+                                            <td>{{ $data->nilai_persentase }}</td>
                                             <td>
 
                                                 <div class="text-center ">
