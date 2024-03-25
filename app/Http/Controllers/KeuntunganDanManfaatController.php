@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desa;
-use App\Models\Kecamatan;
-use App\Models\KeuntunganDanManfaat;
 use App\Models\User;
+use App\Models\Bumdesa;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\KeuntunganDanManfaat;
 
 
 class KeuntunganDanManfaatController extends Controller
@@ -18,11 +19,12 @@ class KeuntunganDanManfaatController extends Controller
     public function index()
     {
         $joinedData = DB::table('keuntungan_dan_manfaats')
-                ->join('kecamatans', 'keuntungan_dan_manfaats.id_kecamatan', '=', 'kecamatans.id')
-                ->join('desas', 'keuntungan_dan_manfaats.id_desa', '=', 'desas.id')
-                ->join('users', 'keuntungan_dan_manfaats.id_user', '=', 'users.id')
-                ->select('keuntungan_dan_manfaats.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama')
-                ->get();
+            ->join('bumdesas', 'keuntungan_dan_manfaats.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'keuntungan_dan_manfaats.id_user', '=', 'users.id')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->select('keuntungan_dan_manfaats.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan','desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->get();
             return view('keuntungan-dan-manfaat.index', ['data' => $joinedData]);
     }
 
@@ -31,7 +33,7 @@ class KeuntunganDanManfaatController extends Controller
      */
     public function create()
     {
-        return view('keuntungan-dan-manfaat.create', ['user'=>User::all()],['kecamatan' => Kecamatan::all()]);
+        return view('keuntungan-dan-manfaat.create', ['dt' => Bumdesa::all()]);
     }
 
     /**
@@ -67,20 +69,31 @@ class KeuntunganDanManfaatController extends Controller
     public function show(KeuntunganDanManfaat $keuntungan_dan_manfaat)
     {
         $joinedData = DB::table('keuntungan_dan_manfaats')
-            ->join('kecamatans', 'keuntungan_dan_manfaats.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'keuntungan_dan_manfaats.id_desa', '=', 'desas.id')
-            ->select('keuntungan_dan_manfaats.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->join('bumdesas', 'keuntungan_dan_manfaats.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'keuntungan_dan_manfaats.id_user', '=', 'users.id')
+            ->select('keuntungan_dan_manfaats.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
             ->where('keuntungan_dan_manfaats.id', $keuntungan_dan_manfaat->id)
             ->first();
-        return view('keuntungan-dan-manfaat.show', ['dt'=>$joinedData,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        return view('keuntungan-dan-manfaat.show', ['dt'=>$joinedData]);
     }
+    public function detail($id_bumdesa,$tahun)
+    {
+        $data = KeuntunganDanManfaat::where('id_bumdesa', $id_bumdesa)->where('tahun', $tahun)->firstOrFail();
 
+        return view('keuntungan-dan-manfaat.detail', ['dt'=>$data]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(KeuntunganDanManfaat $keuntungan_dan_manfaat)
     {
-        return view('keuntungan-dan-manfaat.edit', ['dt'=>$keuntungan_dan_manfaat,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        $joinedData = DB::table('keuntungan_dan_manfaats')
+            ->join('bumdesas', 'keuntungan_dan_manfaats.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'keuntungan_dan_manfaats.id_user', '=', 'users.id')
+            ->select('keuntungan_dan_manfaats.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+            ->where('keuntungan_dan_manfaats.id', $keuntungan_dan_manfaat->id)
+            ->first();
+        return view('keuntungan-dan-manfaat.edit', ['dt'=>$joinedData]);
     }
 
     /**

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ALKA;
 use App\Models\Desa;
-use App\Models\Kecamatan;
 use App\Models\User;
+use App\Models\Bumdesa;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,11 +18,12 @@ class ALKAController extends Controller
     public function index()
     {
         $joinedData = DB::table('alkas')
-                ->join('kecamatans', 'alkas.id_kecamatan', '=', 'kecamatans.id')
-                ->join('desas', 'alkas.id_desa', '=', 'desas.id')
-                ->join('users', 'alkas.id_user', '=', 'users.id')
-                ->select('alkas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama')
-                ->get();
+            ->join('bumdesas', 'alkas.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'alkas.id_user', '=', 'users.id')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->select('alkas.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan','desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->get();
             return view('alka.index', ['data' => $joinedData]);
     }
 
@@ -30,7 +32,7 @@ class ALKAController extends Controller
      */
     public function create()
     {
-        return view('alka.create', ['user'=>User::all()],['kecamatan' => Kecamatan::all()]);
+        return view('alka.create', ['dt' => Bumdesa::all()]);
     }
 
     /**
@@ -69,20 +71,31 @@ class ALKAController extends Controller
     public function show(ALKA $alka)
     {
         $joinedData = DB::table('alkas')
-            ->join('kecamatans', 'alkas.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'alkas.id_desa', '=', 'desas.id')
-            ->select('alkas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-            ->where('alkas.id', $alka->id)
-            ->get();
+        ->join('bumdesas', 'alkas.id_bumdesa', '=', 'bumdesas.id')
+        ->join('users', 'alkas.id_user', '=', 'users.id')
+        ->select('alkas.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+        ->where('alkas.id', $alka->id)
+        ->first();
         return view('alka.show', ['dt'=>$joinedData]);
     }
+    public function detail($id_bumdesa,$tahun)
+    {
+        $data = ALKA::where('id_bumdesa', $id_bumdesa)->where('tahun', $tahun)->firstOrFail();
 
+        return view('alka.detail', ['dt'=>$data]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(ALKA $alka)
     {
-        return view('alka.edit', ['dt'=>$alka,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        $joinedData = DB::table('alkas')
+            ->join('bumdesas', 'alkas.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'alkas.id_user', '=', 'users.id')
+            ->select('alkas.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+            ->where('alkas.id', $alka->id)
+            ->first();
+        return view('alka.edit', ['dt'=>$joinedData]);
     }
 
     /**

@@ -11,4 +11,8 @@ class Kelembagaan extends Model
     protected $table = 'kelembagaans';
     protected $primaryKey = 'id';
     protected $guarded=['id'];
+
+    public function bumdesa(){
+        return $this->belongsTo(Bumdesa::class, 'id_bumdesa');
+    }
 }

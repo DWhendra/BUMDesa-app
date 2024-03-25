@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bumdesa;
 use App\Models\Desa;
 use App\Models\Kecamatan;
 use App\Models\Manajemen;
@@ -17,11 +18,12 @@ class ManajemenController extends Controller
     public function index()
     {
         $joinedData = DB::table('manajemens')
-                ->join('kecamatans', 'manajemens.id_kecamatan', '=', 'kecamatans.id')
-                ->join('desas', 'manajemens.id_desa', '=', 'desas.id')
-                ->join('users', 'manajemens.id_user', '=', 'users.id')
-                ->select('manajemens.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama')
-                ->get();
+            ->join('bumdesas', 'manajemens.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'manajemens.id_user', '=', 'users.id')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->select('manajemens.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan','desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->get();
             return view('manajemen.index', ['manajemen' => $joinedData]);
     }
 
@@ -30,7 +32,7 @@ class ManajemenController extends Controller
      */
     public function create()
     {
-        return view('manajemen.create', ['user'=>User::all()],['kecamatan' => Kecamatan::all()]);
+        return view('manajemen.create', ['dt' => Bumdesa::all()]);
     }
 
     /**
@@ -67,21 +69,31 @@ class ManajemenController extends Controller
     public function show(Manajemen $manajeman)
     {
         $joinedData = DB::table('manajemens')
-            ->join('kecamatans', 'manajemens.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'manajemens.id_desa', '=', 'desas.id')
-            ->select('manajemens.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->join('bumdesas', 'manajemens.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'manajemens.id_user', '=', 'users.id')
+            ->select('manajemens.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
             ->where('manajemens.id', $manajeman->id)
             ->first();
-        return view('manajemen.show', ['dt'=>$joinedData,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        return view('manajemen.show', ['dt'=>$joinedData]);
     }
+    public function detail($id_bumdesa,$tahun)
+    {
+        $data = Manajemen::where('id_bumdesa', $id_bumdesa)->where('tahun', $tahun)->firstOrFail();
 
+        return view('manajemen.detail', ['dt'=>$data]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Manajemen $manajeman)
     {
-        return view('manajemen.edit', ['dt'=>$manajeman,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
-
+        $joinedData = DB::table('manajemens')
+            ->join('bumdesas', 'manajemens.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'manajemens.id_user', '=', 'users.id')
+            ->select('manajemens.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+            ->where('manajemens.id', $manajeman->id)
+            ->first();
+        return view('manajemen.edit', ['dt'=>$joinedData]);
     }
 
     /**

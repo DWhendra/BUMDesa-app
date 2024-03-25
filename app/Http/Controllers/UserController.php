@@ -31,8 +31,8 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        $max=DB::table('test')->select('point')->get();
-        $max2= $max[0]->point;
+        // $max=DB::table('test')->select('point')->get();
+        // $max2= $max[0]->point;
         $this->authorize('admin');
         $dt = $request->validate([
             'role' => 'required',

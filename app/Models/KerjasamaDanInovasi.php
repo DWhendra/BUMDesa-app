@@ -11,4 +11,8 @@ class KerjasamaDanInovasi extends Model
     protected $table = 'kerjasama_dan_inovasis';
     protected $primaryKey = 'id';
     protected $guarded=['id'];
+
+    public function bumdesa(){
+        return $this->belongsTo(Bumdesa::class, 'id_bumdesa');
+    }
 }

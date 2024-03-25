@@ -12,6 +12,11 @@
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6>Data Aset Dan Permodalan</h6>
+                            <a href="{{route('aset-dan-permodalan.create')}}">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-success btn-md ms-auto"><i class="fas fa-plus me-3"></i>Tambah Data Aset Dan Permodalan</button>
+                                </div>
+                            </a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -19,7 +24,7 @@
                                     <thead class="text-center">
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                ID Data Aset Dan Permodalan</th>
+                                                ID Adminstrasi, Laporan Keuangan dan Akuntabilitas</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 NAMA BUM Desa</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -29,25 +34,26 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA PENILAI</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                    Total Nilai</th>
+                                                TAHUN</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Nilai Persentase (10%)</th>
+                                                Total Nilai</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Nilai Persentase (10%)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($data as $data)
                                         <tr class="text-center w-100">
                                             <td scope="row">{{ $data->id }}</td>
-
-                                            <td>{{ $data->bumdesa }}</td>
+                                            <td>{{ $data->nama_bumdes }}</td>
                                             <td>{{ $data->nama_kecamatan }}</td>
                                             <td>{{ $data->nama_desa }}</td>
                                             <td>{{ $data->nama }}</td>
+                                            <td>{{ $data->tahun }}</td>
                                             <td>{{ $data->total_nilai }}</td>
                                             <td>{{ $data->nilai_persentase }}</td>
-
                                             <td>
 
                                                 <div class="text-center ">

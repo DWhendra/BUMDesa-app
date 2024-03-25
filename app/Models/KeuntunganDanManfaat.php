@@ -11,4 +11,7 @@ class KeuntunganDanManfaat extends Model
     protected $table = 'keuntungan_dan_manfaats';
     protected $primaryKey = 'id';
     protected $guarded=['id'];
+    public function bumdesa(){
+        return $this->belongsTo(Bumdesa::class, 'id_bumdesa');
+    }
 }

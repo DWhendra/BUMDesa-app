@@ -46,9 +46,13 @@ class Bumdesa extends Model
         'tahun_laporan',
         'bukti_laporan',
     ];
-    
+
     public function kecamatans()
     {
         return $this->belongsTo(Kecamatan::class);
+    }
+
+    public function kelembagaan(){
+        return $this->hasMany(Kelembagaan::class,'id_bumdesa');
     }
 }

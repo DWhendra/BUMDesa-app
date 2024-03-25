@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Desa;
 use App\Models\User;
+use App\Models\Bumdesa;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use App\Models\AsetDanPermodalan;
@@ -17,12 +18,13 @@ class AsetDanPermodalanController extends Controller
     public function index()
     {
         $joinedData = DB::table('aset_dan_permodalans')
-                ->join('kecamatans', 'aset_dan_permodalans.id_kecamatan', '=', 'kecamatans.id')
-                ->join('desas', 'aset_dan_permodalans.id_desa', '=', 'desas.id')
-                ->join('users', 'aset_dan_permodalans.id_user', '=', 'users.id')
-                ->select('aset_dan_permodalans.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama')
-                ->get();
-            return view('aset-dan-permodalan.index', ['data' => $joinedData,'isSearching'=>false]);
+            ->join('bumdesas', 'aset_dan_permodalans.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'aset_dan_permodalans.id_user', '=', 'users.id')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->select('aset_dan_permodalans.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan','desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->get();
+            return view('aset-dan-permodalan.index', ['data' => $joinedData]);
     }
 
     /**
@@ -30,7 +32,7 @@ class AsetDanPermodalanController extends Controller
      */
     public function create()
     {
-        return view('aset-dan-permodalan.create', ['user'=>User::all()],['kecamatan' => Kecamatan::all()]);
+        return view('aset-dan-permodalan.create', ['dt' => Bumdesa::all()]);
     }
 
     /**
@@ -61,20 +63,31 @@ class AsetDanPermodalanController extends Controller
     public function show(AsetDanPermodalan $asetDanPermodalan)
     {
         $joinedData = DB::table('aset_dan_permodalans')
-            ->join('kecamatans', 'aset_dan_permodalans.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'aset_dan_permodalans.id_desa', '=', 'desas.id')
-            ->select('aset_dan_permodalans.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->join('bumdesas', 'aset_dan_permodalans.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'aset_dan_permodalans.id_user', '=', 'users.id')
+            ->select('aset_dan_permodalans.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
             ->where('aset_dan_permodalans.id', $asetDanPermodalan->id)
             ->first();
-        return view('aset-dan-permodalan.show', ['dt'=>$joinedData,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        return view('aset-dan-permodalan.show', ['dt'=>$joinedData]);
     }
+    public function detail($id_bumdesa,$tahun)
+    {
+        $data = AsetDanPermodalan::where('id_bumdesa', $id_bumdesa)->where('tahun', $tahun)->firstOrFail();
 
+        return view('aset-dan-permodalan.detail', ['dt'=>$data]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(AsetDanPermodalan $asetDanPermodalan)
     {
-        return view('aset-dan-permodalan.edit', ['dt'=>$asetDanPermodalan,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        $joinedData = DB::table('aset_dan_permodalans')
+            ->join('bumdesas', 'aset_dan_permodalans.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'aset_dan_permodalans.id_user', '=', 'users.id')
+            ->select('aset_dan_permodalans.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+            ->where('aset_dan_permodalans.id', $asetDanPermodalan->id)
+            ->first();
+        return view('aset-dan-permodalan.edit', ['dt'=>$joinedData]);
     }
 
     /**

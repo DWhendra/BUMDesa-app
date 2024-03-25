@@ -107,10 +107,11 @@
       </li>
       @endcan
       @endauth
-      @can('admin')
+      @canany(['admin', 'pegawai', 'desa'])
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Evaluasi BUM DESA</h6>
       </li>
+      @canany(['admin', 'pegawai'])
       <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('evaluasi.index')?'active':''}}" href="{{ route('evaluasi.index') }}">
           <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -119,15 +120,16 @@
           <span class="nav-link-text ms-1">Evaluasi</span>
         </a>
       </li>
+      @endcanany
       <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('penilaian.create')?'active':''}}" href="{{ route('penilaian.create') }}">
+        <a class="nav-link {{ request()->routeIs('rekapitulasi.index')?'active':''}}" href="{{ route('rekapitulasi.index') }}">
           <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa fa-plus-square-o text-success text-sm opacity-10"></i>
           </div>
-          <span class="nav-link-text ms-1">Penilaian</span>
+          <span class="nav-link-text ms-1">Rekapitulasi</span>
         </a>
       </li>
-      @endcan
+      @endcanany
       @can('admin')
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akun</h6>
@@ -150,7 +152,7 @@
       </li>
       @endcan
       @endauth
-      
+
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Aksi</h6>
       </li>

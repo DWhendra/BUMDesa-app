@@ -11,4 +11,7 @@ class AsetDanPermodalan extends Model
     protected $table = 'aset_dan_permodalans';
     protected $primaryKey = 'id';
     protected $guarded=['id'];
+    public function bumdesa(){
+        return $this->belongsTo(Bumdesa::class, 'id_bumdesa');
+    }
 }

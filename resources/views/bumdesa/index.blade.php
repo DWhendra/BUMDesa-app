@@ -20,8 +20,6 @@
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 ID BUM Desa</th>
-                                            <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                            Username</th> -->
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 NAMA BUM Desa</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -36,11 +34,9 @@
                                         @foreach ($bumdesa as $data2)
                                         <tr class="text-center w-100">
                                             <td scope="row">{{ $data2->id }}</td>
-
                                             <td>{{ $data2->nama_bumdes }}</td>
                                             <td>{{ $data2->nama_kecamatan }}</td>
                                             <td>{{ $data2->nama_desa }}</td>
-
                                             <td>
 
                                                 <div class="text-center ">
@@ -53,8 +49,6 @@
                                                     </form>
                                                 </div>
                                             </td>
-
-
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -206,7 +200,7 @@
                             </div>
                         </div>
                     </form><br>
-                    
+
                 </div>
             </div>
         </div>

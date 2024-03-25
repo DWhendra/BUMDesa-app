@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desa;
-use App\Models\Kecamatan;
 use App\Models\User;
+use App\Models\Bumdesa;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use App\Models\UsahaDanUnitUsaha;
 use Illuminate\Support\Facades\DB;
@@ -17,12 +18,13 @@ class UsahaDanUnitUsahaController extends Controller
     public function index()
     {
         $joinedData = DB::table('usaha_dan_unit_usahas')
-                ->join('kecamatans', 'usaha_dan_unit_usahas.id_kecamatan', '=', 'kecamatans.id')
-                ->join('desas', 'usaha_dan_unit_usahas.id_desa', '=', 'desas.id')
-                ->join('users', 'usaha_dan_unit_usahas.id_user', '=', 'users.id')
-                ->select('usaha_dan_unit_usahas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama')
-                ->get();
-            return view('usaha-dan-unit-usaha.index', ['usaha' => $joinedData,'isSearching'=>false]);
+            ->join('bumdesas', 'usaha_dan_unit_usahas.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'usaha_dan_unit_usahas.id_user', '=', 'users.id')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->select('usaha_dan_unit_usahas.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan','desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->get();
+        return view('usaha-dan-unit-usaha.index', ['usaha' => $joinedData]);
     }
 
     /**
@@ -30,7 +32,7 @@ class UsahaDanUnitUsahaController extends Controller
      */
     public function create()
     {
-        return view('usaha-dan-unit-usaha.create', ['user'=>User::all()],['kecamatan' => Kecamatan::all()]);
+        return view('usaha-dan-unit-usaha.create', ['dt' => Bumdesa::all()]);
     }
 
     /**
@@ -70,12 +72,12 @@ class UsahaDanUnitUsahaController extends Controller
     public function show(UsahaDanUnitUsaha $usahaDanUnitUsaha)
     {
         $joinedData = DB::table('usaha_dan_unit_usahas')
-            ->join('kecamatans', 'usaha_dan_unit_usahas.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'usaha_dan_unit_usahas.id_desa', '=', 'desas.id')
-            ->select('usaha_dan_unit_usahas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->join('bumdesas', 'usaha_dan_unit_usahas.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'usaha_dan_unit_usahas.id_user', '=', 'users.id')
+            ->select('usaha_dan_unit_usahas.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
             ->where('usaha_dan_unit_usahas.id', $usahaDanUnitUsaha->id)
             ->first();
-        return view('usaha-dan-unit-usaha.show', ['dt'=>$joinedData,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        return view('usaha-dan-unit-usaha.show', ['dt'=>$joinedData]);
     }
 
     /**
@@ -83,9 +85,20 @@ class UsahaDanUnitUsahaController extends Controller
      */
     public function edit(UsahaDanUnitUsaha $usahaDanUnitUsaha)
     {
-        return view('usaha-dan-unit-usaha.edit', ['dt'=>$usahaDanUnitUsaha,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        $joinedData = DB::table('usaha_dan_unit_usahas')
+        ->join('bumdesas', 'usaha_dan_unit_usahas.id_bumdesa', '=', 'bumdesas.id')
+        ->join('users', 'usaha_dan_unit_usahas.id_user', '=', 'users.id')
+        ->select('usaha_dan_unit_usahas.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+        ->where('usaha_dan_unit_usahas.id', $usahaDanUnitUsaha->id)
+        ->first();
+        return view('usaha-dan-unit-usaha.edit', ['dt'=>$joinedData]);
     }
+    public function detail($id_bumdesa,$tahun)
+    {
+        $data = UsahaDanUnitUsaha::where('id_bumdesa', $id_bumdesa)->where('tahun', $tahun)->firstOrFail();
 
+        return view('usaha-dan-unit-usaha.detail', ['dt'=>$data]);
+    }
     /**
      * Update the specified resource in storage.
      */

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bumdesa;
 use App\Models\Desa;
 use App\Models\User;
 use App\Models\Kecamatan;
@@ -17,10 +18,11 @@ class KelembagaanController extends Controller
     public function index()
     {
         $joinedData = DB::table('kelembagaans')
-                ->join('kecamatans', 'kelembagaans.id_kecamatan', '=', 'kecamatans.id')
-                ->join('desas', 'kelembagaans.id_desa', '=', 'desas.id')
+                ->join('bumdesas', 'kelembagaans.id_bumdesa', '=', 'bumdesas.id')
                 ->join('users', 'kelembagaans.id_user', '=', 'users.id')
-                ->select('kelembagaans.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama')
+                ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+                ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+                ->select('kelembagaans.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan','desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
                 ->get();
             return view('kelembagaan.index', ['kelembagaans' => $joinedData,'isSearching'=>false]);
     }
@@ -29,7 +31,7 @@ class KelembagaanController extends Controller
      */
     public function create()
     {
-        return view('kelembagaan.create', ['user'=>User::all()],['kecamatan' => Kecamatan::all()]);
+        return view('kelembagaan.create', ['dt' => Bumdesa::all()]);
     }
 
     /**
@@ -38,9 +40,7 @@ class KelembagaanController extends Controller
     public function store(Request $request)
     {
         $kelembagaanbaru=Kelembagaan::create($request->all());
-
         $kelembagaan=Kelembagaan::where("id",$kelembagaanbaru->id)->first();
-        //dd($kelembagaan);
         $hasilnilai=
         $kelembagaan->nilai_1_a+
         $kelembagaan->nilai_1_b+
@@ -73,12 +73,18 @@ class KelembagaanController extends Controller
     public function show(Kelembagaan $kelembagaan)
     {
         $joinedData = DB::table('kelembagaans')
-            ->join('kecamatans', 'kelembagaans.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'kelembagaans.id_desa', '=', 'desas.id')
-            ->select('kelembagaans.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->join('bumdesas', 'kelembagaans.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'kelembagaans.id_user', '=', 'users.id')
+            ->select('kelembagaans.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
             ->where('kelembagaans.id', $kelembagaan->id)
-            ->get();
+            ->first();
         return view('kelembagaan.show', ['dt'=>$joinedData]);
+    }
+    public function detail($id_bumdesa,$tahun)
+    {
+        $data = Kelembagaan::where('id_bumdesa', $id_bumdesa)->where('tahun', $tahun)->firstOrFail();
+
+        return view('kelembagaan.detail', ['dt'=>$data]);
     }
 
     /**
@@ -86,7 +92,13 @@ class KelembagaanController extends Controller
      */
     public function edit(Kelembagaan $kelembagaan)
     {
-        return view('kelembagaan.edit', ['dt'=>$kelembagaan,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        $joinedData = DB::table('kelembagaans')
+            ->join('bumdesas', 'kelembagaans.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'kelembagaans.id_user', '=', 'users.id')
+            ->select('kelembagaans.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+            ->where('kelembagaans.id', $kelembagaan->id)
+            ->first();
+        return view('kelembagaan.edit', ['dt'=>$joinedData]);
     }
 
     /**

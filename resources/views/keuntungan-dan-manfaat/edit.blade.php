@@ -19,57 +19,22 @@
                             @csrf
                             @method('PUT')
                             <div class="row g-3">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-floating mb-3">
-                                        <input value="{{$dt->bumdesa}}" name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
-                                        <label for="floatingInput">Nama BUM Desa</label>
+                                        <input disabled value="{{$dt->nama_bumdes}}" name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>                                        <label for="floatingInput">Nama BUM Desa</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-floating mb-3">
                                         <input hidden name="id_user" type="text" value="{{Str::upper(auth()->user()->id )}}">
                                         <input disabled value="{{ Str::upper(auth()->user()->nama) }}" name="id_user" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
                                         <label for="floatingInput">Nama Pengisi</label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-floating mb-3">
-                                        <div class="form-floating">
-                                            <div class="form-floating">
-                                                <select class="form-select input" name="id_kecamatan"
-                                                    id="kecamatan" aria-label="Floating label select example">
-                                                    <option>Pilih Kecamatan</option>
-                                                    @foreach ($kecamatan as $data)
-                                                        <option <?php if ($dt->id_kecamatan == $data->id) {
-                                                            echo 'selected';
-                                                        } ?> value="<?php echo $data->id; ?>">
-                                                            <?php echo $data['nama_kecamatan']; ?></option>
-                                                    @endforeach
-                                                </select>
-                                                <label for="floatingSelect">Kecamatan</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <div class="form-floating">
-                                            <div class="form-floating">
-                                                <select class="form-select input" name="id_desa" id="desa"
-                                                    aria-label="Floating label select example" required>
-                                                    <option>Pilih Kecamatan</option>
-                                                    @foreach ($desa as $data)
-                                                        <option <?php if ($dt->id_desa == $data->id) {
-                                                            echo 'selected';
-                                                        } ?> value="<?php echo $data->id; ?>">
-                                                            <?php echo $data['nama_desa']; ?></option>
-                                                    @endforeach
-                                                </select>
-                                                <label for="floatingInput">Desa</label>
-                                            </div>
-                                        </div>
+                                        <input value="{{$dt->tahun}}" name="tahun" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
+                                        <label for="floatingInput">Tahun</label>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +130,7 @@
                                         <td><input value="{{$dt->nilai_2_b}}" name="nilai_2_b" type="number" class="form-control text-center" placeholder="20" ></td>
                                         <td><textarea name="ket_2_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_b}}</textarea></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-4">C.  s.d 10 orang</td>
@@ -173,7 +138,7 @@
                                         <td><input value="{{$dt->nilai_2_c}}" name="nilai_2_c" type="number" class="form-control text-center" placeholder="25" ></td>
                                         <td><textarea name="ket_2_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_c}}</textarea></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-4">D. s.d 20 orang</td>
@@ -205,7 +170,7 @@
                                         <td><input value="{{$dt->nilai_3_b}}" name="nilai_3_b" type="number" class="form-control text-center" placeholder="20" ></td>
                                         <td><textarea name="ket_3_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_b}}</textarea></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-4">C.  s.d 100 orang</td>
@@ -213,7 +178,7 @@
                                         <td><input value="{{$dt->nilai_3_c}}" name="nilai_3_c" type="number" class="form-control text-center" placeholder="25" ></td>
                                         <td><textarea name="ket_3_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_c}}</textarea></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-4">D. lebih dari 100 orang</td>

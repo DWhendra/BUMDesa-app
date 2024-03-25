@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desa;
-use App\Models\Kecamatan;
 use App\Models\User;
+use App\Models\Bumdesa;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\KerjasamaDanInovasi;
@@ -17,12 +18,13 @@ class KerjasamaDanInovasiController extends Controller
     public function index()
     {
         $joinedData = DB::table('kerjasama_dan_inovasis')
-                ->join('kecamatans', 'kerjasama_dan_inovasis.id_kecamatan', '=', 'kecamatans.id')
-                ->join('desas', 'kerjasama_dan_inovasis.id_desa', '=', 'desas.id')
-                ->join('users', 'kerjasama_dan_inovasis.id_user', '=', 'users.id')
-                ->select('kerjasama_dan_inovasis.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama')
-                ->get();
-            return view('kerjasama-dan-inovasi.index', ['data' => $joinedData,'isSearching'=>false]);
+            ->join('bumdesas', 'kerjasama_dan_inovasis.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'kerjasama_dan_inovasis.id_user', '=', 'users.id')
+            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+            ->select('kerjasama_dan_inovasis.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan','desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->get();
+            return view('kerjasama-dan-inovasi.index', ['data' => $joinedData]);
     }
 
     /**
@@ -30,7 +32,7 @@ class KerjasamaDanInovasiController extends Controller
      */
     public function create()
     {
-        return view('kerjasama-dan-inovasi.create', ['user'=>User::all()],['kecamatan' => Kecamatan::all()]);
+        return view('kerjasama-dan-inovasi.create', ['dt' => Bumdesa::all()]);
     }
 
     /**
@@ -68,12 +70,18 @@ class KerjasamaDanInovasiController extends Controller
     public function show(KerjasamaDanInovasi $kerjasamaDanInovasi)
     {
         $joinedData = DB::table('kerjasama_dan_inovasis')
-            ->join('kecamatans', 'kerjasama_dan_inovasis.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'kerjasama_dan_inovasis.id_desa', '=', 'desas.id')
-            ->select('kerjasama_dan_inovasis.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-            ->where('kerjasama_dan_inovasis.id', $kerjasamaDanInovasi->id)
-            ->first();
-        return view('kerjasama-dan-inovasi.show', ['dt'=>$joinedData,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        ->join('bumdesas', 'kerjasama_dan_inovasis.id_bumdesa', '=', 'bumdesas.id')
+        ->join('users', 'kerjasama_dan_inovasis.id_user', '=', 'users.id')
+        ->select('kerjasama_dan_inovasis.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+        ->where('kerjasama_dan_inovasis.id', $kerjasamaDanInovasi->id)
+        ->first();
+        return view('kerjasama-dan-inovasi.show', ['dt'=>$joinedData]);
+    }
+    public function detail($id_bumdesa,$tahun)
+    {
+        $data = KerjasamaDanInovasi::where('id_bumdesa', $id_bumdesa)->where('tahun', $tahun)->firstOrFail();
+
+        return view('kerjasama-dan-inovasi.detail', ['dt'=>$data]);
     }
 
     /**
@@ -81,7 +89,13 @@ class KerjasamaDanInovasiController extends Controller
      */
     public function edit(KerjasamaDanInovasi $kerjasamaDanInovasi)
     {
-        return view('kerjasama-dan-inovasi.edit', ['dt'=>$kerjasamaDanInovasi,'kecamatan' => Kecamatan::all(),'desa' => Desa::all()]);
+        $joinedData = DB::table('kerjasama_dan_inovasis')
+            ->join('bumdesas', 'kerjasama_dan_inovasis.id_bumdesa', '=', 'bumdesas.id')
+            ->join('users', 'kerjasama_dan_inovasis.id_user', '=', 'users.id')
+            ->select('kerjasama_dan_inovasis.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan')
+            ->where('kerjasama_dan_inovasis.id', $kerjasamaDanInovasi->id)
+            ->first();
+        return view('kerjasama-dan-inovasi.edit', ['dt'=>$joinedData]);
     }
 
     /**

@@ -22,11 +22,11 @@ class PengumumanController extends Controller
     }
     public function create()
     {
-        $this->authorize('admin');
+        //$this->authorize('admin');
         return view('pengumuman.create', ['pengumuman' => Pengumuman::all(),'user'=>User::all()],['kecamatan' => Kecamatan::all()]);
     }
     public function store(Request $request){
-        $this->authorize('admin');
+        // $this->authorize('admin');
         $dtpengumuman=$request->validate([
             'id_kecamatan'=>'required',
             'id_desa'=>'required',

@@ -4,6 +4,7 @@
 
     </x-slot:sidebar>
     <x-slot:topmenu>
+        @canany(['admin', 'pegawai'])
         <x-topmenu></x-topmenu>
 
         <div class="container-fluid py-4">
@@ -24,7 +25,7 @@
                             {{-- <input hidden name="id_user" type="text" value="{{Str::upper(auth()->user()->id )}}"> --}}
                             <div class="card-body">
                                 <div class="row g-3">
-                                    
+
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
@@ -168,5 +169,6 @@
             });
         </script>
         @include('sweetalert::alert')
+        @endcanany
     </x-slot:topmenu>
 </x-app>

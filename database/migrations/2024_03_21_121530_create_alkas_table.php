@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('alkas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
-            $table->string('bumdesa');
-            $table->unsignedBigInteger('id_kecamatan');
-            $table->unsignedBigInteger('id_desa');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->unsignedBigInteger('id_bumdesa');
+            $table->foreign('id_bumdesa')->references('id')->on('bumdesas');
+            $table->string('tahun')->nullable();
             $table->integer('nilai_1_a')->nullable();
             $table->integer('nilai_1_b')->nullable();
             $table->integer('nilai_1_c')->nullable();
@@ -56,9 +57,6 @@ return new class extends Migration
             $table->string('tim_5')->nullable();
             $table->string('tim_6')->nullable();
             $table->string('tim_7')->nullable();
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_kecamatan')->references('id')->on('kecamatans');
-            $table->foreign('id_desa')->references('id')->on('desas');
             $table->timestamps();
         });
     }

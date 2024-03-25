@@ -12,6 +12,11 @@
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6>Data Adminstrasi, Laporan Keuangan dan Akuntabilitas</h6>
+                            <a href="{{route('alka.create')}}">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-success btn-md ms-auto"><i class="fas fa-plus me-3"></i>Tambah Data Adminstrasi, Laporan Keuangan dan Akuntabilitas</button>
+                                </div>
+                            </a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -29,6 +34,8 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 NAMA PENILAI</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                TAHUN</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Total Nilai</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
@@ -40,14 +47,13 @@
                                         @foreach ($data as $data)
                                         <tr class="text-center w-100">
                                             <td scope="row">{{ $data->id }}</td>
-
-                                            <td>{{ $data->bumdesa }}</td>
+                                            <td>{{ $data->nama_bumdes }}</td>
                                             <td>{{ $data->nama_kecamatan }}</td>
                                             <td>{{ $data->nama_desa }}</td>
                                             <td>{{ $data->nama }}</td>
+                                            <td>{{ $data->tahun }}</td>
                                             <td>{{ $data->total_nilai }}</td>
                                             <td>{{ $data->nilai_persentase }}</td>
-
                                             <td>
 
                                                 <div class="text-center ">

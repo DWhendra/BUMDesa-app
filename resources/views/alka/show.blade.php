@@ -16,19 +16,13 @@
                                 KABUPATEN BADUNG </h6>
                         </div>
 
-
-                        @foreach ($dt as $dt)
-
-
-                        <form method="" enctype="multipart/form-data">
+                        <form action="{{ route('alka.update', $dt->id) }}" method="" enctype="multipart/form-data">
                             @csrf
                             @method('put')
-
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input  disabled value="{{$dt->bumdesa}}" name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
-                                        <label for="floatingInput">Nama BUM Desa</label>
+                                        <input disabled value="{{$dt->nama_bumdes}}" name="bumdesa" type="text" class="form-control" id="floatingInput" placeholder="nama" required>                                        <label for="floatingInput">Nama BUM Desa</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -36,28 +30,6 @@
                                         <input hidden name="id_user" type="text" value="{{Str::upper(auth()->user()->id )}}">
                                         <input disabled value="{{ Str::upper(auth()->user()->nama) }}" name="id_user" type="text" class="form-control" id="floatingInput" placeholder="nama" required>
                                         <label for="floatingInput">Nama Pengisi</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <div class="form-floating">
-                                            <div class="form-floating">
-                                                <input disabled value="{{$dt->nama_kecamatan}}" name="nama_kecamatan" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                                <label for="floatingSelect">Kecamatan</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <div class="form-floating">
-                                            <div class="form-floating">
-                                                <input disabled value="{{$dt->nama_desa}}" name="nama_kecamatan" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                                <label for="floatingInput">Desa</label>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +133,7 @@
                                         <td><input disabled value="{{$dt->nilai_2_d}}" name="nilai_2_d" type="number" class="form-control text-center" placeholder="0" ></td>
                                         <td><textarea disabled name="ket_2_d" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_2_d}}</textarea></td>
                                     </tr>
-    
+
                                     <!-- SAMPAI SINI  -->
                                     <!--DARI SINI -->
                                     <tr>
@@ -173,13 +145,13 @@
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td class="ps-4">A. Ada, disampaikan di Musdes 
+                                        <td class="ps-4">A. Ada, disampaikan di Musdes
                                         </td>
                                         <td class="text-center">10-20</td>
                                         <td><input disabled value="{{$dt->nilai_3_a}}" name="nilai_3_a" type="number" class="form-control text-center" placeholder="10 - 20" ></td>
                                         <td><textarea disabled name="ket_3_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_a}}</textarea></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-4">B. Ada tidak melalui Musdes</td>
@@ -194,9 +166,9 @@
                                         <td><input disabled value="{{$dt->nilai_3_c}}" name="nilai_3_c" type="number" class="form-control text-center" placeholder="0" ></td>
                                         <td><textarea disabled name="ket_3_c" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_3_c}}</textarea></td>
                                     </tr>
-    
+
                                     <!-- SAMPAI SINI  -->
-    
+
                                     <!--DARI SINI -->
                                     <tr>
                                         <td></td>
@@ -213,7 +185,7 @@
                                         <td><input disabled value="{{$dt->nilai_4_a}}" name="nilai_4_a" type="number" class="form-control text-center" placeholder="1 - 20" ></td>
                                         <td><textarea disabled name="ket_4_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_a}}</textarea></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-4">B. Tidak Ada</td>
@@ -221,7 +193,7 @@
                                         <td><input disabled value="{{$dt->nilai_4_b}}" name="nilai_4_b" type="number" class="form-control text-center" placeholder="0" ></td>
                                         <td><textarea disabled name="ket_4_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_4_b}}</textarea></td>
                                     </tr>
-    
+
                                     <!-- SAMPAI SINI  -->
                                     <!--DARI SINI -->
                                     <tr>
@@ -239,7 +211,7 @@
                                         <td><input disabled value="{{$dt->nilai_5_a}}" name="nilai_5_a" type="number" class="form-control text-center" placeholder="1 - 20" ></td>
                                         <td><textarea disabled name="ket_5_a" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_a}}</textarea></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-4">B. Ada</td>
@@ -248,7 +220,7 @@
                                         <td><textarea disabled name="ket_5_b" class="form-control" placeholder="Keterangan" style="height: 42px">{{$dt->ket_5_b}}</textarea></td>
                                     </tr>
                                     <!-- SAMPAI SINI  -->
-    
+
                                     <tr>
                                         <td></td>
                                         <td class="ps-5"></td>
@@ -256,7 +228,7 @@
                                         <td><input disabled value="{{$dt->total_nilai}}" name="nilai_5_cc" type="number" class="form-control text-center" placeholder="0" ></td>
                                           <td></td>
                                     </tr>
-    
+
                                     <tr>
                                         <td></td>
                                         <td></td>
@@ -331,7 +303,6 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
                     <a href="{{route('alka.index')}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
                     </div>
                 </div>

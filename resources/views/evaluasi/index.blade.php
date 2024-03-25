@@ -12,11 +12,12 @@
                     <div class="card">
                         <div class="card-header pb-0 p-3">
                             <h6 class="mb-0">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN USAHA MILIK DESA
-                                KABUPATEN BADUNG (MANUAL) </h6>
+                                KABUPATEN BADUNG (DATA) </h6>
                         </div>
                         <div class="card-body p-3">
                             <ul class="list-group">
-                                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                     <div class="d-flex align-items-center">
                                         <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
                                             <i class="fa fa-bars text-white opacity-10"></i>
@@ -32,14 +33,16 @@
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
                                 </li>
-                                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                     <div class="d-flex align-items-center">
                                         <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
                                             <i class="fa fa-bars text-white opacity-10"></i>
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
-                                            <h6 class="mb-1 text-dark text-sm">Manajemen</h6>                                        </div>
+                                            <h6 class="mb-1 text-dark text-sm">Manajemen</h6>
+                                        </div>
                                     </div>
                                     <div class="d-flex">
                                         <a href="{{ route('manajemen.index') }}"><button
@@ -106,7 +109,8 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark text-sm">Data Aspek</h6>
-                                            <h6 class="mb-1 text-dark text-sm">Adminstrasi, Laporan <br> Keuangan dan <br>
+                                            <h6 class="mb-1 text-dark text-sm">Adminstrasi, Laporan <br> Keuangan dan
+                                                <br>
                                                 Akuntabilitas</h6>
                                         </div>
                                     </div>
@@ -140,12 +144,14 @@
                 <div class="col-lg-3">
                     <div class="card">
                         <div class="card-header pb-0 p-3">
-                            <h6 class="mb-0">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN USAHA MILIK DESA
+                            <h6 class="mb-0">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN USAHA MILIK
+                                DESA
                                 KABUPATEN BADUNG (PENILAIAN) </h6>
                         </div>
                         <div class="card-body p-3">
                             <ul class="list-group">
-                                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                     <div class="d-flex align-items-center">
                                         <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
                                             <i class="fa fa-bars text-white opacity-10"></i>
@@ -161,7 +167,8 @@
                                                     class="ni ni-bold-right" aria-hidden="true"></i></button></a>
                                     </div>
                                 </li>
-                                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                <li
+                                    class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                     <div class="d-flex align-items-center">
                                         <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
                                             <i class="fa fa-bars text-white opacity-10"></i>
@@ -236,7 +243,8 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark text-sm">Aspek Penilaian</h6>
-                                            <h6 class="mb-1 text-dark text-sm">Adminstrasi, Laporan <br> Keuangan dan <br>
+                                            <h6 class="mb-1 text-dark text-sm">Adminstrasi, Laporan <br> Keuangan dan
+                                                <br>
                                                 Akuntabilitas</h6>
                                         </div>
                                     </div>
