@@ -38,9 +38,10 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Total Nilai</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                AKSI</th>
+                                                    Nilai Persentase (10%)</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Nilai Persentase (10%)</th>
+                                                AKSI</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>

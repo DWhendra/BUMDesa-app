@@ -12,11 +12,10 @@
                         <div class="card-header pb-0 pt-3 bg-transparent">
                             <h6 class="text-capitalize"><b>DINAS PEMBERDAYAAN MASYARAKAT DAN DESA</b> KABUPATEN BADUNG</h6>
                         </div>
-                        <div class="card-body">
-                            <iframe width="737"
-                                height="450"
-                                src="https://www.youtube.com/embed/42uN0zSuh-U?autoplay=1&mute=1&controls=0"
-                                frameborder="0"></iframe>
+                        <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center"><iframe width="590"
+                            height="400"
+                            src="https://www.youtube.com/embed/42uN0zSuh-U?autoplay=1&mute=1&controls=0"
+                            frameborder="0"></iframe>
                         </div>
                     </div>
                 </div>
