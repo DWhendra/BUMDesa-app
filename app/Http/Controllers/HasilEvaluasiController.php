@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Indikator;
-use App\Models\KategoriAspek;
-use App\Models\Penilaian;
-use App\Models\SubkategoriAspek;
+use App\Models\HasilEvaluasi;
 use Illuminate\Http\Request;
 
-class PenilaianController extends Controller
+class HasilEvaluasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +20,7 @@ class PenilaianController extends Controller
      */
     public function create()
     {
-        return view('penilaian.create', ['indikator' => Indikator::all(),'kategori_aspek' => KategoriAspek::all(),'subkategori_aspek' => SubkategoriAspek::all()]);
+        //
     }
 
     /**
@@ -37,7 +34,7 @@ class PenilaianController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Penilaian $penilaian)
+    public function show(HasilEvaluasi $hasilEvaluasi)
     {
         //
     }
@@ -45,7 +42,7 @@ class PenilaianController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Penilaian $penilaian)
+    public function edit(HasilEvaluasi $hasilEvaluasi)
     {
         //
     }
@@ -53,7 +50,7 @@ class PenilaianController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Penilaian $penilaian)
+    public function update(Request $request, HasilEvaluasi $hasilEvaluasi)
     {
         //
     }
@@ -61,13 +58,8 @@ class PenilaianController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Penilaian $penilaian)
+    public function destroy(HasilEvaluasi $hasilEvaluasi)
     {
         //
-    }
-    public function subkategoriaspek($id_opsi)
-    {
-        $subkategori_aspek = SubkategoriAspek::where('id_kategori_aspek', $id_opsi)->get();
-        return response()->json($subkategori_aspek);
     }
 }

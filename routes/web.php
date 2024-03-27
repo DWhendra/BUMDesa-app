@@ -104,7 +104,7 @@ Route::delete('/pengumuman/{pengumuman}/destroy',[PengumumanController::class, '
 // Route::resource('evaluasi/subkategori_aspek', SubkategoriAspekController::class);
 // Route::resource('evaluasi/poin_aspek', PoinAspekController::class);
 
-Route::resource('/evaluasi', EvaluasiController::class);
+Route::resource('/indikator', IndikatorController::class);
 
 Route::resource('/kelembagaan', KelembagaanController::class);
 Route::resource('/manajemen', ManajemenController::class);
@@ -125,16 +125,3 @@ Route::get('/detail-kerjasama-dan-inovasi/{id_bumdesa}/{tahun}', [KerjasamaDanIn
 Route::get('/detail-aset-dan-permodalan/{id_bumdesa}/{tahun}', [AsetDanPermodalanController::class,'detail'])->name('aset-dan-permodalan.detail')->middleware('auth');
 Route::get('/detail-alka/{id_bumdesa}/{tahun}', [ALKAController::class,'detail'])->name('alka.detail')->middleware('auth');
 Route::get('/detail-keuntungan-dan-manfaat/{id_bumdesa}/{tahun}', [KeuntunganDanManfaatController::class,'detail'])->name('keuntungan-dan-manfaat.detail')->middleware('auth');
-
-// route::get('/cobarekap',function(){
-//     // $kelembagaan=Kelembagaan::where('id_bumdesa',2)->first();
-
-//         $data1 = Kelembagaan::where('id_bumdesa',2)->select('total_nilai')->get()->pluck('total_nilai')->sum();
-//         $data2 = KerjasamaDanInovasi::where('id_bumdesa',2)->select('total_nilai')->get()->pluck('total_nilai')->sum();
-//         $data3 = KeuntunganDanManfaat::where('id_bumdesa',2)->select('total_nilai')->get()->pluck('total_nilai')->sum();
-//         $totalSum = $data1 + $data2 + $data3;
-//     return $totalSum;
-// });
-
-
-

@@ -141,10 +141,7 @@ class HasilRekapitulasiController extends Controller
     public function store(Request $request)
     {
         $dt = $request->validate([
-
             'tahun' => ['unique:hasil_rekapitulasis']
-
-
         ]);
         HasilRekapitulasi::create($dt);
         return view('hasil-rekapitulasi.index', ['tahun' => HasilRekapitulasi::all()]);
