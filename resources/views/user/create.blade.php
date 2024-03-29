@@ -5,6 +5,7 @@
     </x-slot:sidebar>
     <x-slot:topmenu>
         <x-topmenu></x-topmenu>
+        @canany(['admin', 'pegawai'])
 
         <div class="container-fluid py-4">
             <div class="row">
@@ -44,7 +45,9 @@
                                     <div class="col-md-6 form-floating">
                                         <select class="form-select @error('role')is-invalid @enderror" name="role" id="">
                                             <option value="">Pilih Role</option>
+                                            @can('admin')
                                             <option value="admin">ADMIN</option>
+                                            @endcan
                                             <option value="desa">DESA</option>
                                             <option value="pegawai">PEGAWAI</option>
                                         </select>
@@ -97,5 +100,6 @@
         </div>
         </div>
         @include('sweetalert::alert')
+        @endcanany
     </x-slot:topmenu>
 </x-app>

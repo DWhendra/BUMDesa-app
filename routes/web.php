@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HasilEvaluasiController;
 use App\Models\Kelembagaan;
 use Illuminate\Support\Facades\DB;
 use App\Models\KerjasamaDanInovasi;
@@ -125,3 +126,7 @@ Route::get('/detail-kerjasama-dan-inovasi/{id_bumdesa}/{tahun}', [KerjasamaDanIn
 Route::get('/detail-aset-dan-permodalan/{id_bumdesa}/{tahun}', [AsetDanPermodalanController::class,'detail'])->name('aset-dan-permodalan.detail')->middleware('auth');
 Route::get('/detail-alka/{id_bumdesa}/{tahun}', [ALKAController::class,'detail'])->name('alka.detail')->middleware('auth');
 Route::get('/detail-keuntungan-dan-manfaat/{id_bumdesa}/{tahun}', [KeuntunganDanManfaatController::class,'detail'])->name('keuntungan-dan-manfaat.detail')->middleware('auth');
+
+// Route::resource('/hasil-evaluasi', HasilEvaluasiController::class)->middleware('auth');
+
+Route::post('/hasil-evaluasi/{tahun}',[HasilEvaluasiController::class, 'storehasil'])->name('hasil-evaluasi.store');

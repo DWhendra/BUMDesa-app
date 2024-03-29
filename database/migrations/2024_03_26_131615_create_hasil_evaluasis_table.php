@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('hasil_evaluasis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('id_bumdesa');
+            $table->foreign('id_bumdesa')->references('id')->on('bumdesas');
+            $table->string('tahun')->nullable();
+            $table->string('total')->nullable();
         });
     }
 

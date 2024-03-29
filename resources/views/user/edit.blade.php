@@ -48,7 +48,9 @@
                                             <div class="form-floating">
                                                 <div class="form-floating">
                                                     <select class="form-select input" name="role" id="" aria-label="Floating label select example">
+                                                        @can('admin')
                                                         <option @if($dt->role =='admin' ) selected @endif value="admin">Admin</option>
+                                                        @endcan
                                                         <option @if($dt->role =='desa' ) selected @endif value="desa">Desa</option>
                                                         <option @if($dt->role =='pegawai' ) selected @endif value="pegawai">Pegawai</option>
                                                     </select>

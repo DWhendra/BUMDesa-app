@@ -6,13 +6,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\Unique;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $this->authorize('admin');
         return view('user.index');
     }
     public function login()
@@ -25,15 +25,29 @@ class UserController extends Controller
     }
     public function users()
     {
-        $this->authorize('admin');
+
+        if (Gate::allows('admin')) {
+            $dt = User::paginate(10);
+            return view('user.index', ['users' => $dt]);
+        } elseif (Gate::allows('desa')) {
+            $joinedData = DB::table('users')
+            ->join('kecamatans', 'users.id_kecamatan', '=', 'kecamatans.id')
+            ->join('desas', 'users.id_desa', '=', 'desas.id')
+            ->select('users.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+            ->where('id_user', auth()->user()->id)
+            ->first();
+            return view('user.index', ['users' => $joinedData]);
+        }
         $dt = User::paginate(10);
-        return view('user.index', ['users' => $dt]);
+            return view('user.index', ['users' => $dt]);
+
+
+
     }
     public function store(Request $request)
     {
         // $max=DB::table('test')->select('point')->get();
         // $max2= $max[0]->point;
-        $this->authorize('admin');
         $dt = $request->validate([
             'role' => 'required',
             'nama' => 'required',
@@ -46,7 +60,6 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        $this->authorize('admin');
         return view('user.edit', ['edit' => User::where('id', $id)->get()]);
     }
     public function update(Request $request, $id)

@@ -30,7 +30,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-success btn-lg w-100" type="submit">SIMPAN</button>
                             </div>
-                            </form>
                           </tbody>
                         </table>
                       </div>
@@ -54,6 +53,11 @@
                                                     @method('delete')
                                                     @csrf
                                                     <button onclick="return confirm ('Apakah Anda Ingin Menghapus Tahun Tersebut?')" class="btn btn-link text-danger btn-md text-gradient px-3 mb-0" type="submit" value="Delete"><i class="far fa-trash-alt me-2"></i></button>
+                                                </form>
+                                                <form action="{{ route('hasil-evaluasi.store', ['tahun'=>$data->tahun], ['id_bumdes'=>$data->id]) }}" method="post">
+                                                    @method('post')
+                                                    @csrf
+                                                    <a class=" float-end"><button class="btn btn-info btn-md m-0" type="submit">Hasil Ranking</button></a>
                                                 </form>
                                                 <a class=" float-end" href="{{ route('rekapitulasi.tampilan', ['tahun'=>$data->tahun]) }}">
                                                 <button class="btn btn-success btn-md m-0" type="button">Lihat Rekapitulasi</button></a>

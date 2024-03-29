@@ -63,7 +63,7 @@ class UsahaDanUnitUsahaController extends Controller
         $usahadanunitusaha->nilai_6_d
         ;
         $usahadanunitusaha->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(15/100)]);
-        return redirect()->route("usaha-dan-unit-usaha.index")->with('success','');
+        return redirect()->route("usaha-dan-unit-usaha.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -127,7 +127,7 @@ class UsahaDanUnitUsahaController extends Controller
         $usahaDanUnitUsaha->nilai_6_d
         ;
         $usahaDanUnitUsahaupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(15/100)]);
-        return redirect()->route("usaha-dan-unit-usaha.index")->with('success','');
+        return redirect()->route("usaha-dan-unit-usaha.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**

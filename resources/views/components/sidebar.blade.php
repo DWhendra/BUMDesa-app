@@ -19,7 +19,7 @@
         </a>
       </li>
       @auth
-      @can('admin')
+      @canany(['admin', 'desa','pegawai'])
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DATA BUM DESA</h6>
       </li>
@@ -31,6 +31,7 @@
           <span class="nav-link-text ms-1">Data BUM Desa</span>
         </a>
       </li>
+      @canany(['admin', 'desa'])
       <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('bumdesa.create')?'active':''}}" href="{{ route('bumdesa.create') }}">
           <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -39,41 +40,8 @@
           <span class="nav-link-text ms-1">Tambah Data BUM Desa</span>
         </a>
       </li>
-      @endcan
-      @can('desa')
-      <li class="nav-item mt-3">
-        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DATA BUM DESA</h6>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('bumdesa.index')?'active':''}}" href="{{ route('bumdesa.index') }}">
-          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="ni ni-collection text-info text-sm opacity-10"></i>
-          </div>
-          <span class="nav-link-text ms-1">Data BUM Desa</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('bumdesa.create')?'active':''}}" href="{{ route('bumdesa.create') }}">
-          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa fa-plus text-success text-sm opacity-10"></i>
-          </div>
-          <span class="nav-link-text ms-1">Tambah Data BUM Desa</span>
-        </a>
-      </li>
-      @endcan
-      @can('pegawai')
-      <li class="nav-item mt-3">
-        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DATA BUM DESA</h6>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('bumdesa.index')?'active':''}}" href="{{ route('bumdesa.index') }}">
-          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="ni ni-collection text-info text-sm opacity-10"></i>
-          </div>
-          <span class="nav-link-text ms-1">Data BUM Desa</span>
-        </a>
-      </li>
-      @endcan
+      @endcanany
+      @endcanany
       @auth
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pengumuman</h6>
@@ -86,7 +54,7 @@
           <span class="nav-link-text ms-1">Data Pengumuman</span>
         </a>
       </li>
-      @can('admin')
+      @canany(['admin', 'pegawai'])
       <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('pengumuman.create')?'active':''}}" href="{{ route('pengumuman.create') }}">
           <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -95,17 +63,7 @@
           <span class="nav-link-text ms-1">Tambah Pengumuman</span>
         </a>
       </li>
-      @endcan
-      @can('pegawai')
-      <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('pengumuman.create')?'active':''}}" href="{{ route('pengumuman.create') }}">
-          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa fa-plus-circle text-success text-sm opacity-10"></i>
-          </div>
-          <span class="nav-link-text ms-1">Tambah Pengumuman</span>
-        </a>
-      </li>
-      @endcan
+      @endcanany
       @endauth
       @canany(['admin', 'pegawai', 'desa'])
       <li class="nav-item mt-3">
@@ -130,7 +88,7 @@
         </a>
       </li>
       @endcanany
-      @can('admin')
+      @canany(['admin', 'pegawai', 'desa'])
       <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akun</h6>
       </li>
@@ -142,6 +100,7 @@
           <span class="nav-link-text ms-1">Data Pengguna</span>
         </a>
       </li>
+      @canany(['admin', 'pegawai'])
       <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('user.create')?'active':''}}" href="{{ route('user.create') }}">
           <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -150,7 +109,8 @@
           <span class="nav-link-text ms-1">Tambah Pengguna</span>
         </a>
       </li>
-      @endcan
+      @endcanany
+      @endcanany
       @endauth
 
       <li class="nav-item mt-3">

@@ -61,7 +61,7 @@ class KerjasamaDanInovasiController extends Controller
         $kerjasamadaninovasi->nilai_5_f
         ;
         $kerjasamadaninovasi->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(25/100)]);
-        return redirect()->route("kerjasama-dan-inovasi.index")->with('success','');
+        return redirect()->route("kerjasama-dan-inovasi.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -124,7 +124,7 @@ class KerjasamaDanInovasiController extends Controller
         $kerjasamaDanInovasi->nilai_5_f
         ;
         $kerjasamaDanInovasiupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(25/100)]);
-        return redirect()->route("kerjasama-dan-inovasi.index")->with('success','');
+        return redirect()->route("kerjasama-dan-inovasi.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**

@@ -60,7 +60,7 @@ class ManajemenController extends Controller
 
         ;
         $manajemen->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
-        return redirect()->route("manajemen.index")->with('success','');
+        return redirect()->route("manajemen.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -120,7 +120,7 @@ class ManajemenController extends Controller
         $manajeman->nilai_6_b
         ;
         $manajemenupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
-        return redirect()->route("manajemen.index")->with('success','');
+        return redirect()->route("manajemen.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**

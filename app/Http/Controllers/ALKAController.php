@@ -62,7 +62,7 @@ class ALKAController extends Controller
         $alka->nilai_5_b
         ;
         $alka->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
-        return redirect()->route("alka.index")->with('success','');
+        return redirect()->route("alka.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -125,7 +125,7 @@ class ALKAController extends Controller
         $alka->nilai_5_b
         ;
         $kelembagaanupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
-        return redirect()->route("alka.index")->with('success','');
+        return redirect()->route("alka.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**

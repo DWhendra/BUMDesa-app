@@ -64,7 +64,7 @@ class KelembagaanController extends Controller
         ;
         $kelembagaan->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
 
-        return redirect()->route("kelembagaan.index")->with('success','');
+        return redirect()->route("kelembagaan.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -132,7 +132,7 @@ class KelembagaanController extends Controller
         $kelembagaan->nilai_5_cc
         ;
         $kelembagaanupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
-        return redirect()->route("kelembagaan.index")->with('success','');
+        return redirect()->route("kelembagaan.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**

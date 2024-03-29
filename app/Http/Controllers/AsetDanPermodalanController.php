@@ -54,7 +54,7 @@ class AsetDanPermodalanController extends Controller
         $asetDanPermodalan->nilai_2_d
         ;
         $asetDanPermodalan->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
-        return redirect()->route("aset-dan-permodalan.index")->with('success','');
+        return redirect()->route("aset-dan-permodalan.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -109,7 +109,7 @@ class AsetDanPermodalanController extends Controller
         $asetDanPermodalan->nilai_2_d
         ;
         $asetDanPermodalanupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(10/100)]);
-        return redirect()->route("aset-dan-permodalan.index")->with('success','');
+        return redirect()->route("aset-dan-permodalan.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**

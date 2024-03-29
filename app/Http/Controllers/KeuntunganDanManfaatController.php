@@ -60,7 +60,7 @@ class KeuntunganDanManfaatController extends Controller
         $keuntungandanmanfaat->nilai_3_d
         ;
         $keuntungandanmanfaat->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(20/100)]);
-        return redirect()->route("keuntungan-dan-manfaat.index")->with('success','');
+        return redirect()->route("keuntungan-dan-manfaat.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
@@ -121,7 +121,7 @@ class KeuntunganDanManfaatController extends Controller
         $keuntungan_dan_manfaat->nilai_3_d
         ;
         $keuntungandanmanfaatupdate->update(['total_nilai'=>$hasilnilai, 'nilai_persentase'=>$hasilnilai*(20/100)]);
-        return redirect()->route("keuntungan-dan-manfaat.index")->with('success','');
+        return redirect()->route("keuntungan-dan-manfaat.index")->with('success','Data Berhasil Disimpan!');
     }
 
     /**
