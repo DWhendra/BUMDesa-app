@@ -35,38 +35,62 @@ class HasilRekapitulasiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function tampilan($tahun)
+    public function tampilan( $tahun)
     {
-        $kelembagaan = Kelembagaan::where('tahun', $tahun)->where('id_bumdesa', 1)->firstOrFail();
-        $kerjasamaDanInovasi = KerjasamaDanInovasi::where('tahun', $tahun)->where('id_bumdesa', 1)->firstOrFail();
-        $keuntunganDanManfaat = KeuntunganDanManfaat::where('tahun', $tahun)->where('id_bumdesa', 1)->firstOrFail();
-        $manajemen = Manajemen::where('tahun', $tahun)->where('id_bumdesa', 1)->firstOrFail();
-        $usahaDanUnitUsaha = Manajemen::where('tahun', $tahun)->where('id_bumdesa', 1)->firstOrFail();
-        $ALKA = ALKA::where('tahun', $tahun)->where('id_bumdesa', 1)->firstOrFail();
-        $asetDanPermodalan = AsetDanPermodalan::where('tahun', $tahun)->where('id_bumdesa', 1)->firstOrFail();
 
-        $nilaiKelembagaan = $kelembagaan->nilai_persentase;
-        $nilaiKerjasamaDanInovasi = $kerjasamaDanInovasi->nilai_persentase;
-        $nilaiKeuntunganDanManfaat = $keuntunganDanManfaat->nilai_persentase;
-        $nilaiManajemen = $manajemen->nilai_persentase;
-        $nilaiUsahaDanUnitUsaha = $usahaDanUnitUsaha->nilai_persentase;
-        $nilaiALKA = $ALKA->nilai_persentase;
-        $nilaiAsetDanPermodalan = $asetDanPermodalan->nilai_persentase;
+        // $kelembagaan = Kelembagaan::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
+        // $kerjasamaDanInovasi = KerjasamaDanInovasi::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
+        // $keuntunganDanManfaat = KeuntunganDanManfaat::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
+        // $manajemen = Manajemen::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
+        // $usahaDanUnitUsaha = Manajemen::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
+        // $ALKA = ALKA::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
+        // $asetDanPermodalan = AsetDanPermodalan::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
 
-        $totalNilai =
-            $nilaiKelembagaan +
-            $nilaiKerjasamaDanInovasi +
-            $nilaiKeuntunganDanManfaat +
-            $nilaiManajemen +
-            $nilaiUsahaDanUnitUsaha +
-            $nilaiALKA +
-            $nilaiAsetDanPermodalan;
+        // $nilaiKelembagaan = $kelembagaan->nilai_persentase;
+        // $nilaiKerjasamaDanInovasi = $kerjasamaDanInovasi->nilai_persentase;
+        // $nilaiKeuntunganDanManfaat = $keuntunganDanManfaat->nilai_persentase;
+        // $nilaiManajemen = $manajemen->nilai_persentase;
+        // $nilaiUsahaDanUnitUsaha = $usahaDanUnitUsaha->nilai_persentase;
+        // $nilaiALKA = $ALKA->nilai_persentase;
+        // $nilaiAsetDanPermodalan = $asetDanPermodalan->nilai_persentase;
+
+        // $totalNilai =
+        //     $nilaiKelembagaan +
+        //     $nilaiKerjasamaDanInovasi +
+        //     $nilaiKeuntunganDanManfaat +
+        //     $nilaiManajemen +
+        //     $nilaiUsahaDanUnitUsaha +
+        //     $nilaiALKA +
+        //     $nilaiAsetDanPermodalan;
+
+        $joinedData = DB::table('bumdesas')
+            ->join('kelembagaans', 'bumdesas.id', '=', 'kelembagaans.id_bumdesa')
+            ->join('manajemens', 'bumdesas.id', '=', 'manajemens.id_bumdesa')
+            ->join('usaha_dan_unit_usahas', 'bumdesas.id', '=', 'usaha_dan_unit_usahas.id_bumdesa')
+            ->join('kerjasama_dan_inovasis', 'bumdesas.id', '=', 'kerjasama_dan_inovasis.id_bumdesa')
+            ->join('aset_dan_permodalans', 'bumdesas.id', '=', 'aset_dan_permodalans.id_bumdesa')
+            ->join('alkas', 'bumdesas.id', '=', 'alkas.id_bumdesa')
+            ->join('keuntungan_dan_manfaats', 'keuntungan_dan_manfaats.id', '=', 'kelembagaans.id_bumdesa')
+            ->select('bumdesas.*',
+            'kelembagaans.nilai_persentase as nilai_persentase',
+            'manajemens.nilai_persentase as nilai_persentase',
+            'usaha_dan_unit_usahas.nilai_persentase as nilai_persentase',
+            'kerjasama_dan_inovasis.nilai_persentase as nilai_persentase',
+            'aset_dan_permodalans.nilai_persentase as nilai_persentase',
+            'alkas.nilai_persentase as nilai_persentase',
+            'keuntungan_dan_manfaats.nilai_persentase as nilai_persentase'
+            )
+            ->orderBy('total_nilai', 'desc')
+            ->where('tahun_laporan', $tahun)
+            ->get();
 
             // $bumdesa = Bumdesa::where('tahun_laporan', $tahun)->get();
             // dd($bumdesa);
         return view('hasil-rekapitulasi.show', [
             'tahun' => $tahun,
-            'bumdesa' => Bumdesa::where('tahun_laporan', $tahun)->get()
+            // 'total_nilai' => $totalNilai,
+            'bumdesa' => $joinedData
+            // 'bumdesa' => Bumdesa::where('tahun_laporan', $tahun)->get()
         ]);
     }
     public function detailRekapitulasi($id_bumdesa, $tahun)
@@ -145,6 +169,21 @@ class HasilRekapitulasiController extends Controller
         ]);
         HasilRekapitulasi::create($dt);
         return view('hasil-rekapitulasi.index', ['tahun' => HasilRekapitulasi::all()]);
+    }
+
+    public function updateHasil(Request $request, $id)
+    {
+        $bumdesa = Bumdesa::find($id); // Mencari data dengan ID yang diberikan
+
+        if ($bumdesa) {
+            // Mengubah nilai kolom tertentu
+            $bumdesa->total_nilai = $request->total_nilai;
+            $bumdesa->save(); // Menyimpan perubahan
+
+            return redirect()->back()->with(['success' => 'Data Berhasil Di Setujui!']);
+        } else {
+
+        }
     }
 
     /**

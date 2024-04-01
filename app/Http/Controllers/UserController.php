@@ -31,11 +31,9 @@ class UserController extends Controller
             return view('user.index', ['users' => $dt]);
         } elseif (Gate::allows('desa')) {
             $joinedData = DB::table('users')
-            ->join('kecamatans', 'users.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'users.id_desa', '=', 'desas.id')
-            ->select('users.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-            ->where('id_user', auth()->user()->id)
-            ->first();
+            ->select('users.*')
+            ->where('id', auth()->user()->id)
+            ->get();
             return view('user.index', ['users' => $joinedData]);
         }
         $dt = User::paginate(10);

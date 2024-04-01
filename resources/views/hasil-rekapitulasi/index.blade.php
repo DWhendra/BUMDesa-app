@@ -30,6 +30,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-success btn-lg w-100" type="submit">SIMPAN</button>
                             </div>
+                            </form>
                           </tbody>
                         </table>
                       </div>

@@ -67,9 +67,9 @@ Route::post('/logout',[UserController::class, 'logout']);
 Route::get('/user',[UserController::class, 'users'])->name('user.index')->middleware('auth');
 Route::get('/user/create',[UserController::class, 'create'])->name('user.create')->middleware('auth');
 Route::post('/user/store',[UserController::class, 'store'])->name('user.store')->middleware('auth');
-Route::put('/user/{id}/edit',[UserController::class, 'update'])->name('user.update');
+Route::put('/user/{id}/edit',[UserController::class, 'update'])->name('user.update')->middleware('auth');;
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
-Route::delete('/user/{user}/destroy',[UserController::class, 'destroy'])->name('user.destroy');
+Route::delete('/user/{user}/destroy',[UserController::class, 'destroy'])->name('user.destroy')->middleware('auth');;
 
 Route::get('/test',function(){
     $max=DB::table('test')->select('point')->get();
@@ -127,6 +127,7 @@ Route::get('/detail-aset-dan-permodalan/{id_bumdesa}/{tahun}', [AsetDanPermodala
 Route::get('/detail-alka/{id_bumdesa}/{tahun}', [ALKAController::class,'detail'])->name('alka.detail')->middleware('auth');
 Route::get('/detail-keuntungan-dan-manfaat/{id_bumdesa}/{tahun}', [KeuntunganDanManfaatController::class,'detail'])->name('keuntungan-dan-manfaat.detail')->middleware('auth');
 
+Route::put('/detail-rekapitulasi/{id}', [HasilRekapitulasiController::class,'updateHasil'])->name('rekapitulasi.updateHasil')->middleware('auth');
 // Route::resource('/hasil-evaluasi', HasilEvaluasiController::class)->middleware('auth');
 
 Route::post('/hasil-evaluasi/{tahun}',[HasilEvaluasiController::class, 'storehasil'])->name('hasil-evaluasi.store');

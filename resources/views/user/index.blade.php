@@ -68,7 +68,10 @@
 
                             </div>
                         </div>
-                    </div>{{ $users->links() }}
+                    </div>
+                    @canany(['admin', 'pegawai'])
+                    {{ $users->links() }}
+                    @endcanany
                 </div>
             </div>
 

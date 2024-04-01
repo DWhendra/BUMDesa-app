@@ -95,7 +95,7 @@
                                     <td class="text-center"></td>
                                     <td class="text-center"><b>TOTAL</b></td>
                                     <td class="text-center"><b>{{ $total }}</b></td>
-                                    <td class="text-center"><b>100%</b></td>
+                                    <td class="text-center"><b>100</b></td>
                                     <td class="text-center"><b>{{ $total_nilai }}</b></td>
                                 </tr>
                                 <!-- SAMPAI SINI  -->
@@ -104,12 +104,18 @@
                         </table>
 
                     </form>
+                    <form action="{{ route('rekapitulasi.updateHasil', $bumdesa->id) }}" method="post"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
+                        <input hidden  type="text" name="total_nilai" value="{{$total_nilai}}" id="">
+                        <button type="submit" class="btn btn-success btn-lg w-100">Disetujui</button>
+                    </form>
                     <a href="{{ route('rekapitulasi.tampilan', ['tahun' => $tahun])}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
                     </div>
                 </div>
             </div>
         </div>
             @include('sweetalert::alert')
-
     </x-slot:topmenu>
 </x-app>
