@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Bumdesa;
 use App\Models\Desa;
 use App\Models\Kecamatan;
 use App\Models\User;
@@ -512,5 +513,44 @@ class DatabaseSeeder extends Seeder
             'username'=> 'Ungasan',
             'password'=>'Ungasan'
         ]);
+
+
+        // Bumdesa::create([
+        // 'id_user'=>'1',
+        // 'id_kecamatan'=>'1',
+        // 'id_desa'=>'1',
+        // 'nama_bumdes'=>'Sari Rahayu',
+        // 'tahun_berdiri'=>'2016',
+        // 'jenis_unit'=>'Perdagangan. SP. Pengelolaan Desa Wisata. Pengelolaan Sampah Desa. Pertanian',
+        // 'unit_usaha'=>'Perdagangan',
+        // 'alamat_kantor'=>'Jl I Gst Ngurah Rai - Br. Mekarsari - Carangsari ',
+        // 'npwp'=>'78978.9789789.7897',
+        // 'perdes'=>'14 tahun 2021',
+        // 'no_legalitas'=>'AHU - 00000.AHA.00.00.tahun 2022',
+        // 'email_bumdes'=>'bumdesa @gmail.com',
+        // 'email_direktur'=>'direktur @gmail.com',
+        // 'nohp_direktur'=>'8134234234234',
+        // 'tenaga_kerja'=>'data data 1',
+        // 'pengurus_bumdes'=>'data data 1',
+        // 'produk_unggulan'=>'data data 1',
+        // 'penyertaan_modal'=>'data data 1',
+        // 'laporan_keuangan'=>'data data 1',
+        // 'keuntungan_bersih'=>'data data 1',
+        // 'pad'=>'data data 1',
+        // 'program_inovasi'=>'data data 1',
+        // 'kerja_sama'=>'data data 1',
+        // 'status_kepemilikan'=>'',
+        // 'pedoman'=>'',
+        // 'lampiran_pedoman'=>'data data 1',
+        // 'bentuk_usaha'=>'',
+        // 'penggunaan_aplikasi'=>'',
+        // 'saran'=>'Mohon bimbungan dan permodalan Bundes',
+        // 'lampiran_lpj'=>'data',
+        // 'program_kerja'=>'data',
+        // 'tahun_laporan'=>'2023',
+        // 'bukti_laporan'=>''
+        // ]);
+
+
     }
 }

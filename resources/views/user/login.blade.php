@@ -41,7 +41,7 @@
             <div class="card-header text-center pt-4">
               <h5>Masuk Dengan</h5>
             </div>
-            <div class="row px-xl-5 px-sm-4 px-3">
+            {{-- <div class="row px-xl-5 px-sm-4 px-3">
               <div class="col-3 ms-auto px-1">
                 <a class="btn btn-outline-light w-100" href="">
                   <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1">
@@ -84,7 +84,7 @@
                   Atau
                 </p>
               </div>
-            </div>
+            </div> --}}
             <div class="card-body">
               <form role="form" action="/login" method="post">
                 @csrf
@@ -94,7 +94,7 @@
                 <div class="mb-3">
                   <input name="password" type="password" class="form-control" placeholder="Password" aria-label="Password" required>
                 </div>
-                
+
                 <div class="text-center">
                   <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Masuk</button>
                 </div>

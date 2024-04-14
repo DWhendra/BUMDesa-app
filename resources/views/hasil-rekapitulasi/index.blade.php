@@ -58,7 +58,6 @@
                                                 <form action="{{ route('hasil-evaluasi.store', ['tahun'=>$data->tahun], ['id_bumdes'=>$data->id]) }}" method="post">
                                                     @method('post')
                                                     @csrf
-                                                    <a class=" float-end"><button class="btn btn-info btn-md m-0" type="submit">Hasil Ranking</button></a>
                                                 </form>
                                                 <a class=" float-end" href="{{ route('rekapitulasi.tampilan', ['tahun'=>$data->tahun]) }}">
                                                 <button class="btn btn-success btn-md m-0" type="button">Lihat Rekapitulasi</button></a>

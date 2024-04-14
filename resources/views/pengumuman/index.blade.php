@@ -36,20 +36,27 @@
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Status</th>
+                                                @canany(['admin', 'pegawai'])
+
+
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 AKSI</th>
+                                                @endcanany
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($pengumuman as $data)
                                             <tr class="text-center w-100">
                                                 <td scope="row">{{ $data->id }}</td>
-                                                <td>{{ $data->nama_desa }}</td>
+                                                <td>{{ $data->nama }}</td>
                                                 <td>{{ $data->judul }}</td>
                                                 <td>{{ $data->deskripsi }}</td>
                                                 <td>{{ $data->tanggal }}</td>
                                                 <td>{{ $data->status }}</td>
+                                                @canany(['admin', 'pegawai'])
+
+
                                                 <td>
                                                     <div class="text-center ">
                                                         <a class="btn btn-link text-dark px-3 mb-0"
@@ -68,6 +75,7 @@
                                                         </form>
                                                     </div>
                                                 </td>
+                                                @endcanany
                                             </tr>
                                         @endforeach
                                     </tbody>

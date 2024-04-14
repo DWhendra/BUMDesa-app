@@ -39,13 +39,29 @@ use App\Http\Controllers\KeuntunganDanManfaatController;
 //     return view('welcome');
 // });
 
-Route::get('', function () {
-    return view('percobaan');
-});
+// Route::get('', function () {
+//     return view('percobaan');
+// });
 
 
 Route::get('/', function () {
-    return view('home.index');
+
+    // $user = Auth::user();
+    //     if ($user->role == 'admin'|| $user->role == 'pegawai') {
+    //         $joinedData = DB::table('pengumumans')
+    //             ->join('users', 'pengumumans.id_user', '=', 'users.id')
+    //             ->select('pengumumans.*', 'users.nama as nama')
+    //             ->get();
+    //         return view('components.topmenu', ['pengumuman' => $joinedData]);
+    //     } else if ($user->role == 'desa') {
+    //         $joinedData = DB::table('pengumumans')
+    //             ->join('users', 'pengumumans.id_user', '=', 'users.id')
+    //             ->select('pengumumans.*', 'users.nama as nama')
+    //             ->where('pengumumans.id_user', auth()->user()->id)
+    //             ->get();
+    //         return view('components.topmenu', ['pengumuman' => $joinedData]);
+    //     }
+        return view('home.index');
 })->name('home');
 
 
@@ -58,6 +74,7 @@ Route::get('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'edit'])->name('b
 Route::put('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'update'])->name('bumdesa.update');
 Route::delete('/bumdesa/{bumdes}/destroy',[BUMDesaController::class, 'destroy'])->name('bumdesa.destroy')->middleware('auth');
 Route::get('/bumdesa/search',[BUMDesaController::class, 'search'])->name('bumdesa.search')->middleware('auth');
+Route::get('/ekspor/bumdesa',[BUMDesaController::class, 'exportexcel'])->name('bumdesa.ekspor')->middleware('auth');
 //Route::get('/edit/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 
 Route::get('/user',[UserController::class, 'index'])->name('user.index')->middleware('auth');
@@ -106,28 +123,11 @@ Route::delete('/pengumuman/{pengumuman}/destroy',[PengumumanController::class, '
 // Route::resource('evaluasi/poin_aspek', PoinAspekController::class);
 
 Route::resource('/indikator', IndikatorController::class)->middleware('auth');
-
-Route::resource('/kelembagaan', KelembagaanController::class)->middleware('auth');
-Route::resource('/manajemen', ManajemenController::class)->middleware('auth');
-Route::resource('/usaha-dan-unit-usaha', UsahaDanUnitUsahaController::class)->middleware('auth');
-Route::resource('/kerjasama-dan-inovasi', KerjasamaDanInovasiController::class)->middleware('auth');
-Route::resource('/aset-dan-permodalan', AsetDanPermodalanController::class)->middleware('auth');
-Route::resource('/alka', ALKAController::class)->middleware('auth');
-Route::resource('/keuntungan-dan-manfaat', KeuntunganDanManfaatController::class)->middleware('auth');
+Route::get('/detail-indikator/{id_bumdesa}/{indikator}/{tahun}', [IndikatorController::class,'detail'])->name('indikator.detail')->middleware('auth');
 
 Route::resource('/rekapitulasi', HasilRekapitulasiController::class)->middleware('auth');
 Route::get('/hasil-rekpitulasi/{tahun}', [HasilRekapitulasiController::class, 'tampilan'])->name('rekapitulasi.tampilan')->middleware('auth');
 Route::get('/detail-rekapitulasi/{id_bumdesa}/{tahun}', [HasilRekapitulasiController::class,'detailRekapitulasi'])->name('rekapitulasi.detailRekapitulasi')->middleware('auth');
 
-Route::get('/detail-kelembagaan/{id_bumdesa}/{tahun}', [KelembagaanController::class,'detail'])->name('kelembagaan.detail')->middleware('auth');
-Route::get('/detail-manajemen/{id_bumdesa}/{tahun}', [ManajemenController::class,'detail'])->name('manajemen.detail')->middleware('auth');
-Route::get('/detail-usaha-dan-unit-usaha/{id_bumdesa}/{tahun}', [UsahaDanUnitUsahaController::class,'detail'])->name('usaha-dan-unit-usaha.detail')->middleware('auth');
-Route::get('/detail-kerjasama-dan-inovasi/{id_bumdesa}/{tahun}', [KerjasamaDanInovasiController::class,'detail'])->name('kerjasama-dan-inovasi.detail')->middleware('auth');
-Route::get('/detail-aset-dan-permodalan/{id_bumdesa}/{tahun}', [AsetDanPermodalanController::class,'detail'])->name('aset-dan-permodalan.detail')->middleware('auth');
-Route::get('/detail-alka/{id_bumdesa}/{tahun}', [ALKAController::class,'detail'])->name('alka.detail')->middleware('auth');
-Route::get('/detail-keuntungan-dan-manfaat/{id_bumdesa}/{tahun}', [KeuntunganDanManfaatController::class,'detail'])->name('keuntungan-dan-manfaat.detail')->middleware('auth');
-
 Route::put('/detail-rekapitulasi/{id}', [HasilRekapitulasiController::class,'updateHasil'])->name('rekapitulasi.updateHasil')->middleware('auth');
-// Route::resource('/hasil-evaluasi', HasilEvaluasiController::class)->middleware('auth');
-
-Route::post('/hasil-evaluasi/{tahun}',[HasilEvaluasiController::class, 'storehasil'])->name('hasil-evaluasi.store');
+Route::resource('/hasil-evaluasi', HasilRekapitulasiController::class)->middleware('auth');

@@ -23,8 +23,16 @@ class UserController extends Controller
     {
         return view('user.create');
     }
-    public function users()
+    public function users(Request $request)
     {
+        if ($request->has('search')) {
+            $joinedData = DB::table('users')
+                ->select('users.*')
+                ->where('nama','LIKE','%' .$request->search.'%')
+                ->paginate(10);
+                return view('user.index', ['users' => $joinedData]);
+
+        }else{
 
         if (Gate::allows('admin')) {
             $dt = User::paginate(10);
@@ -38,9 +46,7 @@ class UserController extends Controller
         }
         $dt = User::paginate(10);
             return view('user.index', ['users' => $dt]);
-
-
-
+    }
     }
     public function store(Request $request)
     {

@@ -13,12 +13,12 @@ class Bumdesa extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id_user',
+        'id_kecamatan',
+        'id_desa',
         'nama_bumdes',
         'tahun_berdiri',
         'jenis_unit',
         'unit_usaha',
-        'id_desa',
-        'id_kecamatan',
         'alamat_kantor',
         'npwp',
         'perdes',

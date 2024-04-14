@@ -14,6 +14,18 @@
                             <h6>Data Pengguna</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
+                            @canany(['admin', 'pegawai'])
+                            <div class="d-flex align-items-center">
+                                <div class="card-header">
+                                    <form action="/user" method="GET">
+                                        <div class="input-group">
+                                            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                            <input name="search" type="search" class="form-control" placeholder="Cari Nama Pengguna">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            @endcanany
                             <div class="table-responsive p-0">
                                 <table id="example" class="display compact" style="width:100%">
                                     <thead class="text-center">

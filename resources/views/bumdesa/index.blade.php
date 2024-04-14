@@ -70,6 +70,16 @@
                             <h6>Data Badan Usaha Milik Desa</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
+                            <div class="d-flex align-items-center">
+                                <div class="card-header">
+                                    <form action="/bumdesa" method="GET">
+                                        <div class="input-group">
+                                            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                            <input name="search" type="search" class="form-control" placeholder="Cari Nama BUM Desa">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <div class="table-responsive p-0">
                                 <table class="table w-100 align-items-center mb-0">
                                     <thead class="text-center">
@@ -116,6 +126,7 @@
                             </div>
                         </div>
                     </div>
+                        {{$bumdesa->links()}}
                 </div>
             </div>
         </div>
@@ -128,7 +139,18 @@
                         <div class="card-header pb-0">
                             <h6>Data Badan Usaha Milik Desa</h6>
                         </div>
+
                         <div class="card-body px-0 pt-0 pb-2">
+                            <div class="d-flex align-items-center">
+                                <div class="card-header">
+                                    <form action="/bumdesa" method="GET">
+                                        <div class="input-group">
+                                            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                            <input name="search" type="search" class="form-control" placeholder="Cari Nama BUM Desa">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <div class="table-responsive p-0">
                                 <table class="table w-100 align-items-center mb-0">
                                     <thead class="text-center">

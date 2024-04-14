@@ -3,22 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desa;
+use App\Models\User;
 use App\Models\Kecamatan;
 use App\Models\Pengumuman;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PengumumanController extends Controller
 {
     public function index(){
-        //$this->authorize('admin');
-        $joinedData = DB::table('pengumumans')
-            ->join('desas', 'pengumumans.id_desa', '=', 'desas.id')
-            ->select('pengumumans.*','desas.nama_desa as nama_desa')
-            //->where('id_user', auth()->user()->id)
-            ->get();
-        return view('pengumuman.index', ['pengumuman' => $joinedData]);
+        $user = Auth::user();
+
+        if ($user->role == 'admin'|| $user->role == 'pegawai') {
+            $joinedData = DB::table('pengumumans')
+                ->join('users', 'pengumumans.id_user', '=', 'users.id')
+                ->select('pengumumans.*', 'users.nama as nama')
+                ->get();
+            return view('pengumuman.index', ['pengumuman' => $joinedData]);
+        } else if ($user->role == 'desa') {
+            $joinedData = DB::table('pengumumans')
+                ->join('users', 'pengumumans.id_user', '=', 'users.id')
+                ->select('pengumumans.*', 'users.nama as nama')
+                ->where('pengumumans.id_user', auth()->user()->id)
+                ->get();
+
+            return view('pengumuman.index', ['pengumuman' => $joinedData]);
+        }
     }
     public function create()
     {
@@ -28,8 +39,7 @@ class PengumumanController extends Controller
     public function store(Request $request){
         // $this->authorize('admin');
         $dtpengumuman=$request->validate([
-            'id_kecamatan'=>'required',
-            'id_desa'=>'required',
+            'id_user'=>'required',
             'judul'=>'required',
             'deskripsi'=>'required',
             'tanggal'=>'required',
@@ -46,8 +56,7 @@ class PengumumanController extends Controller
     }
     public function update(Request $request,$id){
         $pengumuman=$request->validate([
-            'id_kecamatan'=>'',
-            'id_desa'=>'required',
+            'id_user'=>'required',
             'judul'=>'required',
             'deskripsi'=>'required',
             'tanggal'=>'required',

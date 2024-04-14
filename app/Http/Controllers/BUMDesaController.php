@@ -1,26 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Desa;
 use App\Models\Bumdesa;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Gate as FacadesGate;
+
 
 class BUMDesaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('search')) {
+            $joinedData = DB::table('bumdesas')
+                ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+                ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+                ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+                ->orderBy('id', 'desc')
+                ->where('nama_bumdes','LIKE','%' .$request->search.'%')
+                ->paginate(10);
+                return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
+
+        }else{
+
         if (Gate::allows('admin')) {
             $joinedData = DB::table('bumdesas')
                 ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
                 ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
                 //->join('users', 'bumdesas.id_user', '=', 'users.id')
                 ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-                ->get();
+                ->orderBy('id', 'desc')
+                ->paginate(10);
             return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
         } elseif (Gate::allows('desa')) {
             $joinedData = DB::table('bumdesas')
@@ -28,24 +41,27 @@ class BUMDesaController extends Controller
                 ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
                 ->join('users', 'bumdesas.id_user', '=', 'users.id')
                 ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan', 'users.nama as nama_user')
+                ->orderBy('id', 'desc')
                 ->where('id_user', auth()->user()->id)
                 ->get();
             return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
         }
-        $joinedData = DB::table('bumdesas')
-            ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
-            ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
-            //->join('users', 'bumdesas.id_user', '=', 'users.id')
-            ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-            ->get();
-        return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
-    }
+            $joinedData = DB::table('bumdesas')
+                ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
+                ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
+                //->join('users', 'bumdesas.id_user', '=', 'users.id')
+                ->select('bumdesas.*', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
+                ->orderBy('id', 'desc')
+                ->get();
+            return view('bumdesa.index', ['bumdesa' => $joinedData,'isSearching'=>false]);
 
+        }
+    }
     public function validation()
     {
     }
 
-    //OPSI 
+    //OPSI
     public function create()
     {
         return view('bumdesa.create', ['kecamatan' => Kecamatan::all()]);
@@ -215,4 +231,7 @@ class BUMDesaController extends Controller
 
         return view('bumdesa.index', ['bumdesa' => $joinedData, 'desaNotUploads' => $desaNotUploads, 'desaNotUploadCount' => $desaNotUploadCount, 'dtpencarian' => $searchQuery, 'isSearching' => true]);
     }
+    // public function exportexcel(){
+    //     return Excel::download(new ExportBumdesa, "DataBumdes.xlsx");
+    // }
 }

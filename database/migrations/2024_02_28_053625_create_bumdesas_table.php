@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('bumdesas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_kecamatan');
+            $table->unsignedBigInteger('id_desa');
             $table->string('nama_bumdes');
             $table->string('tahun_berdiri');
             $table->string('jenis_unit');
             $table->string('unit_usaha');
-            $table->unsignedBigInteger('id_desa');
-            $table->unsignedBigInteger('id_kecamatan');
             $table->string('alamat_kantor');
             $table->string('npwp');
             $table->string('perdes');
@@ -44,9 +44,10 @@ return new class extends Migration
             $table->string('saran');
             $table->string('lampiran_lpj');
             $table->string('program_kerja');
-            $table->timestamps();
             $table->string('tahun_laporan');
-            $table->string('bukti_laporan');
+            $table->string('bukti_laporan')->nullable();
+            $table->string('total_nilai')->nullable();
+            $table->timestamps();
             $table->foreign('id_kecamatan')->references('id')->on('kecamatans');
             $table->foreign('id_desa')->references('id')->on('desas');
             $table->foreign('id_user')->references('id')->on('users');

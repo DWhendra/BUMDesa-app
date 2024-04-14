@@ -6,6 +6,9 @@
     <x-slot:topmenu>
         <x-topmenu></x-topmenu>
 
+        @php
+            $counter = 1;
+        @endphp
         <div class="container-fluid">
             <div class="row mt-4">
 
@@ -13,37 +16,55 @@
 
                     <div class="card-body p-2 m-0">
                         <div class="card-title">
-                            <h6 class="mb-0 p-4 text-center">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN USAHA MILIK DESA
+                            <h6 class="mb-0 p-4 text-center">INDIKATOR PEMBINAAN DAN PEMBERDAYAAN SERTA EVALUASI BADAN
+                                USAHA MILIK DESA
                                 KABUPATEN BADUNG </h6>
                         </div>
-                        <form  method="post">
+                        <form method="post">
                             @csrf
                             @method('POST')
 
                             <br>
-                        <table class="table table-bordered" style="border: 1px solid black; border-collapse: collapse">
-                            <thead>
-                                <tr style="border-bottom: 1px solid black">
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col"><b>NO</b></th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col"><b>ASPEK PENILAIAN</b></th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col"><b>TOTAL NILAI</b></th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col"><b>PERSENTASE</b></th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col"><b>TOTAL PERSENTASE</b></th>
-                                    <th style="border-bottom: 1px solid black" class="text-center" scope="col"><b>AKSI</b></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                            <table class="table table-bordered"
+                                style="border: 1px solid black; border-collapse: collapse">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid black">
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">
+                                            <b>NO</b></th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">
+                                            <b>ASPEK PENILAIAN</b></th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">
+                                            <b>TOTAL NILAI</b></th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">
+                                            <b>PERSENTASE</b></th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">
+                                            <b>TOTAL PERSENTASE</b></th>
+                                        <th style="border-bottom: 1px solid black" class="text-center" scope="col">
+                                            <b>AKSI</b></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                <!--DARI SINI -->
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td class="">KELEMBAGAAN</td>
-                                    <td class="text-center">{{ $kelembagaan->total_nilai }}</td>
-                                    <td class="text-center">10%</td>
-                                    <td class="text-center">{{ $kelembagaan->nilai_persentase }}</td>
-                                    <td class="text-center"><a class="btn btn-link text-success text-gradient px-3 mb-0" href="{{ route('kelembagaan.detail', ['id_bumdesa' => $bumdesa->id, 'tahun' => $tahun]) }}"><i class="fas fa-clipboard-list me-2"></i>Detail</a></td>
-                                </tr>
-                                <tr>
+                                    @foreach ($datalengkap as $key => $data)
+
+                                        <!--DARI SINI -->
+                                        <tr>
+                                            <td class="text-center">{{ $counter }}</td>
+                                            @php
+                                                $counter++;
+                                            @endphp
+                                            <td class="text-center">{{Str::upper($data->kategori)}}</td>
+                                            <td class="text-center">{{$data->total_nilai}}</td>
+                                            <td class="text-center">{{$persentasi[$data->kategori]}}</td>
+                                            <td class="text-center">{{$data->nilai_persentase}}</td>
+                                            <td class="text-center"><a
+                                                    class="btn btn-link text-success text-gradient px-3 mb-0"
+                                                    href="{{ route('indikator.detail', ['id_bumdesa' => $data->id_bumdesa, 'indikator' => $data->kategori, 'tahun' => $data->tahun]) }}"><i
+                                                        class="fas fa-clipboard-list me-2"></i>Detail</a></td>
+                                        </tr>
+                                    @endforeach
+
+                                    {{-- <tr>
                                     <td class="text-center">2</td>
                                     <td class="">MANAJEMEN</td>
                                     <td class="text-center">{{ $manajemen->total_nilai }}</td>
@@ -90,32 +111,35 @@
                                     <td class="text-center">20%</td>
                                     <td class="text-center">{{ $keuntunganDanManfaat->nilai_persentase }}</td>
                                     <td class="text-center"><a class="btn btn-link text-success text-gradient px-3 mb-0" href="{{ route('keuntungan-dan-manfaat.detail', ['id_bumdesa' => $bumdesa->id, 'tahun' => $tahun]) }}"><i class="fas fa-clipboard-list me-2"></i>Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"><b>TOTAL</b></td>
-                                    <td class="text-center"><b>{{ $total }}</b></td>
-                                    <td class="text-center"><b>100</b></td>
-                                    <td class="text-center"><b>{{ $total_nilai }}</b></td>
-                                </tr>
-                                <!-- SAMPAI SINI  -->
+                                </tr> --}}
+                                    <tr>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"><b>TOTAL ASPEK PENILAIAN</b></td>
+                                        <td class="text-center"><b>{{ $total_nilai }}</b></td>
+                                        <td class="text-center"><b>100%</b></td>
+                                        <td class="text-center"><b>{{ $total_persentase }}</b></td>
+                                    </tr>
+                                    <!-- SAMPAI SINI  -->
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
 
-                    </form>
-                    <form action="{{ route('rekapitulasi.updateHasil', $bumdesa->id) }}" method="post"
-                        enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
-                        <input hidden  type="text" name="total_nilai" value="{{$total_nilai}}" id="">
-                        <button type="submit" class="btn btn-success btn-lg w-100">Disetujui</button>
-                    </form>
-                    <a href="{{ route('rekapitulasi.tampilan', ['tahun' => $tahun])}}"><button class="btn btn-secondary btn-lg w-100">Kembali</button></a>
+                        </form>
+                        @canany(['admin', 'pegawai'])
+                            <form action="{{ route('rekapitulasi.updateHasil', $bumdesa->id) }}" method="post"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('put')
+                                <input hidden type="text" name="total_nilai" value="{{ $total_persentase }}" id="">
+                                <button type="submit" class="btn btn-success btn-lg w-100">Disetujui</button>
+                            </form>
+                        @endcanany
+                        <a href="{{ route('rekapitulasi.tampilan', ['tahun' => $tahun]) }}"><button
+                                class="btn btn-secondary btn-lg w-100">Kembali</button></a>
                     </div>
                 </div>
             </div>
         </div>
-            @include('sweetalert::alert')
+        @include('sweetalert::alert')
     </x-slot:topmenu>
 </x-app>

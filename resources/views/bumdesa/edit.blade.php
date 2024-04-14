@@ -234,9 +234,14 @@
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-3">
-                                                <input value="{{ $bumdes->status_kepemilikan }}"
-                                                    name="status_kepemilikan" type="text" class="form-control"
-                                                    id="floatingInput" placeholder="name@example.com">
+                                                <select class="form-select input" name="status_kepemilikan" id="" aria-label="Floating label select example">
+                                                    <option @if ($bumdes->status_kepemilikan == '0') selected @endif value="0">Pilih Kepemilikan Kantor BUM Desa</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'MILIK BUM DESA') selected @endif value="MILIK BUM DESA">MILIK BUM DESA</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'MILIK DESA') selected @endif value="MILIK DESA">MILIK DESA</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'SEWA') selected @endif value="SEWA">SEWA</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'MENUMPANG') selected @endif value="MENUMPANG">MENUMPANG</option>
+                                                </select>
+                                                <!-- <input name="pedoman" type="text" class="form-control" id="floatingInput" placeholder="nama"> -->
                                                 <label for="floatingInput">Status Kepemilikan Kantor BUM Desa</label>
                                             </div>
                                         </div>
