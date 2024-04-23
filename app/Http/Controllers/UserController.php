@@ -44,8 +44,11 @@ class UserController extends Controller
             ->get();
             return view('user.index', ['users' => $joinedData]);
         }
-        $dt = User::paginate(10);
-            return view('user.index', ['users' => $dt]);
+        $joinedData = DB::table('users')
+            ->select('users.*')
+            ->where('id', auth()->user()->id)
+            ->paginate(10);
+            return view('user.index', ['users' => $joinedData]);
     }
     }
     public function store(Request $request)
@@ -99,7 +102,7 @@ class UserController extends Controller
             return redirect()->intended('/');
         }
 
-        return back()->with(['error' => 'Gagal Masuk!']);
+        return back()->with(['error' => 'Gagal Masuk!<br>Periksa Kembali Username Dan Password']);
     }
     public function logout(Request $request)
     {

@@ -50,20 +50,24 @@
                                         <li class="d-flex justify-content-between list-group-item list-group-item-info">
                                             <h4>{{ Str::Upper($data->tahun) }}</h4>
                                             <div class="d-flex gap-2">
+                                                @canany(['admin', 'pegawai'])
                                                 <form action="{{ route('rekapitulasi.destroy', $data->id) }}" method="post">
                                                     @method('delete')
                                                     @csrf
                                                     <button onclick="return confirm ('Apakah Anda Ingin Menghapus Tahun Tersebut?')" class="btn btn-link text-danger btn-md text-gradient px-3 mb-0" type="submit" value="Delete"><i class="far fa-trash-alt me-2"></i></button>
                                                 </form>
+                                                @endcanany
                                                 <form action="{{ route('hasil-evaluasi.store', ['tahun'=>$data->tahun], ['id_bumdes'=>$data->id]) }}" method="post">
                                                     @method('post')
                                                     @csrf
                                                 </form>
                                                 <a class=" float-end" href="{{ route('rekapitulasi.tampilan', ['tahun'=>$data->tahun]) }}">
                                                 <button class="btn btn-success btn-md m-0" type="button">Lihat Rekapitulasi</button></a>
+                                                @canany(['admin', 'pegawai'])
+                                                <a class=" float-end" href="{{ route('rekapitulasi.ekspor', ['tahun'=>$data->tahun]) }}" target="_blank">
+                                                <button class="btn btn-secondary btn-md m-0" type="button"><i class="fa fa-print me-3 "></i>Cetak</button></a>
+                                                @endcanany
                                             </div>
-
-
                                         </li>
 
                                     @endforeach

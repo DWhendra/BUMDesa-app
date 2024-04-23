@@ -130,7 +130,7 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
-                                <input hidden type="text" name="total_nilai" value="{{ $total_persentase }}" id="">
+                                <input hidden type="text" name="total_nilai" value="{{ $total_nilai }}" id="">
                                 <button type="submit" class="btn btn-success btn-lg w-100">Disetujui</button>
                             </form>
                         @endcanany

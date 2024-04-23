@@ -10,7 +10,6 @@
         $counter = 1;
         @endphp
 
-
         <div class="container-fluid py-4">
             <div class="row">
                 @foreach ($bumdesa as $bumdesa)
@@ -24,7 +23,8 @@
                                 <h4 class="text-center">DATA REKAPITULASI </h4><h5 class="text-center">Badan Usaha Milik Desa
                                     <b>{{ $bumdesa->nama_bumdes }}</b> </h5><h6 class="text-center"> Tahun {{ $tahun }}</h6>
                                     <h6 class="text-center">Total Penilaian {{$bumdesa->total_nilai}}</h6><br>
-                                <a
+
+                                    <a
                                     href="{{ route('rekapitulasi.detailRekapitulasi', ['id_bumdesa' => $bumdesa->id, 'tahun' => $tahun]) }}"><button
                                         class="btn btn-lg btn-success btn-md w-100" type="button">Detail Rekapitulasi</button></a>
 

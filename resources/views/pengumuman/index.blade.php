@@ -54,7 +54,7 @@
                                                 <td>{{ $data->deskripsi }}</td>
                                                 <td>{{ $data->tanggal }}</td>
                                                 <td>{{ $data->status }}</td>
-                                                @canany(['admin', 'pegawai'])
+
 
 
                                                 <td>
@@ -63,6 +63,7 @@
                                                             href="{{ route('pengumuman.edit', $data->id) }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
                                                                 aria-hidden="true"></i>Edit</a>
+                                                    @canany(['admin', 'pegawai'])
                                                         <form action="{{ route('pengumuman.destroy', $data->id) }}"
                                                             method="post">
                                                             @method('delete')
@@ -73,9 +74,10 @@
                                                                 type="submit" value="Delete"><i
                                                                     class="far fa-trash-alt me-2"></i>Hapus</button>
                                                         </form>
+                                                        @endcanany
                                                     </div>
                                                 </td>
-                                                @endcanany
+
                                             </tr>
                                         @endforeach
                                     </tbody>

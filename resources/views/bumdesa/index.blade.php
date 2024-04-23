@@ -68,18 +68,19 @@
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6>Data Badan Usaha Milik Desa</h6>
-                        </div>
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="d-flex align-items-center">
-                                <div class="card-header">
+                                <div class="d-flex justify-content-between">
                                     <form action="/bumdesa" method="GET">
                                         <div class="input-group">
                                             <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                                             <input name="search" type="search" class="form-control" placeholder="Cari Nama BUM Desa">
                                         </div>
                                     </form>
+                                    <a href="{{route('bumdesa.ekspor')}}">
+                                        <button class="btn btn-info btn-md float-end"><i class="fa fa-upload me-3 "></i>Ekspor</button>
+                                    </a>
                                 </div>
-                            </div>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table w-100 align-items-center mb-0">
                                     <thead class="text-center">
@@ -138,19 +139,19 @@
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6>Data Badan Usaha Milik Desa</h6>
-                        </div>
-
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="d-flex align-items-center">
-                                <div class="card-header">
-                                    <form action="/bumdesa" method="GET">
-                                        <div class="input-group">
-                                            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                            <input name="search" type="search" class="form-control" placeholder="Cari Nama BUM Desa">
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <form action="/bumdesa" method="GET">
+                                    <div class="input-group">
+                                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                        <input name="search" type="search" class="form-control" placeholder="Cari Nama BUM Desa">
+                                    </div>
+                                </form>
+                                <a href="{{route('bumdesa.ekspor')}}">
+                                    <button class="btn btn-info btn-md float-end"><i class="fa fa-upload me-3 "></i>Ekspor</button>
+                                </a>
                             </div>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table w-100 align-items-center mb-0">
                                     <thead class="text-center">
@@ -199,10 +200,12 @@
                             </div>
                         </div>
                     </div>
+                    {{$bumdesa->links()}}
                 </div>
             </div>
         </div>
         @endcan
+        @canany(['admin', 'pegawai'])
         <div class="container-fluid py-1 ">
             <div class="card mb-4 p-2">
                 <div class="card-header pb-0">
@@ -262,6 +265,8 @@
             </div>
             @endif
         </div>
+        @endcanany
+
         </div>
         @include('sweetalert::alert')
     </x-slot:topmenu>

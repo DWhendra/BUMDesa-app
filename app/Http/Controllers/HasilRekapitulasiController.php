@@ -39,31 +39,6 @@ class HasilRekapitulasiController extends Controller
     public function tampilan($tahun)
     {
 
-        // $kelembagaan = Kelembagaan::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
-        // $kerjasamaDanInovasi = KerjasamaDanInovasi::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
-        // $keuntunganDanManfaat = KeuntunganDanManfaat::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
-        // $manajemen = Manajemen::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
-        // $usahaDanUnitUsaha = Manajemen::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
-        // $ALKA = ALKA::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
-        // $asetDanPermodalan = AsetDanPermodalan::where('tahun', $tahun)->where('id', $bumdesa)->firstOrFail();
-
-        // $nilaiKelembagaan = $kelembagaan->nilai_persentase;
-        // $nilaiKerjasamaDanInovasi = $kerjasamaDanInovasi->nilai_persentase;
-        // $nilaiKeuntunganDanManfaat = $keuntunganDanManfaat->nilai_persentase;
-        // $nilaiManajemen = $manajemen->nilai_persentase;
-        // $nilaiUsahaDanUnitUsaha = $usahaDanUnitUsaha->nilai_persentase;
-        // $nilaiALKA = $ALKA->nilai_persentase;
-        // $nilaiAsetDanPermodalan = $asetDanPermodalan->nilai_persentase;
-
-        // $totalNilai =
-        //     $nilaiKelembagaan +
-        //     $nilaiKerjasamaDanInovasi +
-        //     $nilaiKeuntunganDanManfaat +
-        //     $nilaiManajemen +
-        //     $nilaiUsahaDanUnitUsaha +
-        //     $nilaiALKA +
-        //     $nilaiAsetDanPermodalan;
-
         $joinedData = DB::table('bumdesas')
             ->select('bumdesas.*')
             ->orderBy('total_nilai', 'desc')
@@ -237,5 +212,19 @@ class HasilRekapitulasiController extends Controller
     {
         $rekapitulasi->delete();
         return redirect()->route('rekapitulasi.index')->with(['success' => 'Tahun Berhasil Dihapus!']);
+    }
+
+    public function ekspor($tahun)
+    {
+        $joinedData = DB::table('bumdesas')
+            ->select('bumdesas.*')
+            ->orderBy('total_nilai', 'desc')
+            ->where('tahun_laporan', $tahun)
+            ->get();
+
+        return view('export.cetak-rekapitulasi', [
+            'tahun' => $tahun,
+            'bumdesa' => $joinedData
+        ]);
     }
 }

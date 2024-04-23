@@ -26,7 +26,7 @@
                                 @method('put')
                                 <div class="card-body">
                                     <div class="row g-3">
-                                        <div class="col-md-9">
+                                        <div class="col-md-12">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->nama_bumdes }}" name="nama_bumdes"
                                                     type="text" class="form-control" id="floatingInput"
@@ -34,7 +34,22 @@
                                                 <label for="floatingInput">Nama BUM Desa</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <textarea name="jenis_unit" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                            style="height: 100px">{{ $bumdes->jenis_unit }}</textarea>
+                                        <label for="floatingTextarea2">Jenis Unit Usaha BUM Desa</label>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->tahun_laporan }}" name="tahun_laporan"
+                                                    type="number" class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com" required>
+                                                <label for="floatingInput">Tahun Laporan</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->tahun_berdiri }}" name="tahun_berdiri"
                                                     type="number" class="form-control" id="floatingInput"
@@ -43,16 +58,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-floating mb-3">
-                                        <textarea value="" name="jenis_unit" class="form-control" placeholder="Leave a comment here"
-                                            id="floatingTextarea2" style="height: 100px">{{ $bumdes->jenis_unit }}</textarea>
-                                        <label for="floatingTextarea2">Jenis Unit Usaha BUM Desa</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input value="{{ $bumdes->unit_usaha }}" name="unit_usaha" type="text"
-                                            class="form-control" id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Unit Usaha Utama BUM Desa</label>
-                                    </div>
+
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
@@ -94,15 +100,25 @@
                                         </div>
                                     </div>
                                     <div class="row g-3">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->alamat_kantor }}" name="alamat_kantor"
-                                                type="text" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Alamat Kantor BUM Desa</label>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->alamat_kantor }}" name="alamat_kantor"
+                                                    type="text" class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com">
+                                                <label for="floatingInput">Alamat Kantor BUM Desa</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->unit_usaha }}" name="unit_usaha"
+                                                    type="text" class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com">
+                                                <label for="floatingInput">Unit Usaha Utama BUM Desa</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row g-3">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->npwp }}" name="npwp" type="text"
                                                     class="form-control" id="floatingInput"
@@ -110,7 +126,7 @@
                                                 <label for="floatingInput">NOMOR POKOK WAJIB PAJAK (NPWP)</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->perdes }}" name="perdes" type="text"
                                                     class="form-control" id="floatingInput"
@@ -118,7 +134,9 @@
                                                 <label for="floatingInput">NOMOR SK PENDIRIAN BUM Desa (PERDES)</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->no_legalitas }}" name="no_legalitas"
                                                     type="text" class="form-control" id="floatingInput"
@@ -126,25 +144,7 @@
                                                 <label for="floatingInput">NOMOR LEGALITAS BADAN HUKUM BUM Desa</label>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row g-3">
-                                        <div class="col-md-5">
-                                            <div class="form-floating mb-2">
-                                                <input value="{{ $bumdes->email_bumdes }}" name="email_bumdes"
-                                                    type="text" class="form-control" id="floatingInput"
-                                                    placeholder="name@example.com">
-                                                <label for="floatingInput">EMAIL BUM Desa</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-floating mb-3">
-                                                <input value="{{ $bumdes->email_direktur }}" name="email_direktur"
-                                                    type="text" class="form-control" id="floatingInput"
-                                                    placeholder="name@example.com">
-                                                <label for="floatingInput">EMAIL DIREKTUR BUM Desa</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->nohp_direktur }}" name="nohp_direktur"
                                                     type="number" class="form-control" id="floatingInput"
@@ -152,6 +152,25 @@
                                                 <label for="floatingInput">Nomor Handphone Direktur</label>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-2">
+                                                <input value="{{ $bumdes->email_bumdes }}" name="email_bumdes"
+                                                    type="text" class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com">
+                                                <label for="floatingInput">EMAIL BUM Desa</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->email_direktur }}" name="email_direktur"
+                                                    type="text" class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com">
+                                                <label for="floatingInput">EMAIL DIREKTUR BUM Desa</label>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-md-6">
@@ -173,7 +192,7 @@
                                         </div>
                                     </div>
                                     <div class="row g-3">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->produk_unggulan }}" name="produk_unggulan"
                                                     type="text" class="form-control" id="floatingInput"
@@ -181,71 +200,93 @@
                                                 <label for="floatingInput">Produk Unggulan</label>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->penyertaan_modal }}" name="penyertaan_modal"
-                                                type="text" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Penyertaan Modal</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->laporan_keuangan }}" name="laporan_keuangan"
-                                                type="text" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Laporan Keuangan Dalam 2 Tahun Terakhir</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->keuntungan_bersih }}" name="keuntungan_bersih"
-                                                type="text" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Keuntungan Bersih</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->pad }}" name="pad" type="text"
-                                                class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Penyisihan Terhadap Pendapatan Asli Desa
-                                                (PAD)</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->program_inovasi }}" name="program_inovasi"
-                                                type="text" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Program Inovasi</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->kerja_sama }}" name="kerja_sama"
-                                                type="text" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Kerja Sama</label>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->penyertaan_modal }}"
+                                                    name="penyertaan_modal" type="text" class="form-control"
+                                                    id="floatingInput" placeholder="name@example.com">
+                                                <label for="floatingInput">Penyertaan Modal</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row g-3">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <select class="form-select input" name="status_kepemilikan" id="" aria-label="Floating label select example">
-                                                    <option @if ($bumdes->status_kepemilikan == '0') selected @endif value="0">Pilih Kepemilikan Kantor BUM Desa</option>
-                                                    <option @if ($bumdes->status_kepemilikan == 'MILIK BUM DESA') selected @endif value="MILIK BUM DESA">MILIK BUM DESA</option>
-                                                    <option @if ($bumdes->status_kepemilikan == 'MILIK DESA') selected @endif value="MILIK DESA">MILIK DESA</option>
-                                                    <option @if ($bumdes->status_kepemilikan == 'SEWA') selected @endif value="SEWA">SEWA</option>
-                                                    <option @if ($bumdes->status_kepemilikan == 'MENUMPANG') selected @endif value="MENUMPANG">MENUMPANG</option>
+                                                <input value="{{ $bumdes->laporan_keuangan }}"
+                                                    name="laporan_keuangan" type="text" class="form-control"
+                                                    id="floatingInput" placeholder="name@example.com">
+                                                <label for="floatingInput">Laporan Keuangan Dalam 2 Tahun
+                                                    Terakhir</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->keuntungan_bersih }}"
+                                                    name="keuntungan_bersih" type="text" class="form-control"
+                                                    id="floatingInput" placeholder="name@example.com">
+                                                <label for="floatingInput">Keuntungan Bersih</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->pad }}" name="pad" type="text"
+                                                    class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com">
+                                                <label for="floatingInput">Penyisihan Terhadap Pendapatan Asli Desa
+                                                    (PAD)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->program_inovasi }}" name="program_inovasi"
+                                                    type="text" class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com">
+                                                <label for="floatingInput">Program Inovasi</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->kerja_sama }}" name="kerja_sama"
+                                                    type="text" class="form-control" id="floatingInput"
+                                                    placeholder="name@example.com">
+                                                <label for="floatingInput">Kerja Sama</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input value="{{ $bumdes->lampiran_pedoman }}"
+                                                    name="lampiran_pedoman" type="text" class="form-control"
+                                                    id="floatingInput" placeholder="name@example.com">
+                                                <label for="floatingInput">LAMPIRAN PEDOMAN/SOP BUM Desa dan Unit
+                                                    Usaha</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select input" name="status_kepemilikan"
+                                                    id="" aria-label="Floating label select example">
+                                                    <option @if ($bumdes->status_kepemilikan == '0') selected @endif
+                                                        value="0">Pilih Kepemilikan Kantor BUM Desa</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'MILIK BUM DESA') selected @endif
+                                                        value="MILIK BUM DESA">MILIK BUM DESA</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'MILIK DESA') selected @endif
+                                                        value="MILIK DESA">MILIK DESA</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'SEWA') selected @endif
+                                                        value="SEWA">SEWA</option>
+                                                    <option @if ($bumdes->status_kepemilikan == 'MENUMPANG') selected @endif
+                                                        value="MENUMPANG">MENUMPANG</option>
                                                 </select>
                                                 <!-- <input name="pedoman" type="text" class="form-control" id="floatingInput" placeholder="nama"> -->
                                                 <label for="floatingInput">Status Kepemilikan Kantor BUM Desa</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <select class="form-select input" name="pedoman" id=""
                                                     aria-label="Floating label select example">
@@ -260,15 +301,7 @@
                                                 <label for="floatingInput">PEDOMAN/SOP BUM Desa dan Unit Usaha</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-floating mb-3">
-                                                <input value="{{ $bumdes->lampiran_pedoman }}"
-                                                    name="lampiran_pedoman" type="text" class="form-control"
-                                                    id="floatingInput" placeholder="name@example.com">
-                                                <label for="floatingInput">LAMPIRAN PEDOMAN/SOP BUM Desa dan Unit
-                                                    Usaha</label>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-md-6">
@@ -301,16 +334,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input value="{{ $bumdes->saran }}" name="saran" type="text"
-                                                class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">USUL/SARAN Perencanaan Kedepan</label>
-                                        </div>
-                                    </div>
+
                                     <div class="row g-3">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->lampiran_lpj }}" name="lampiran_lpj"
                                                     type="text" class="form-control" id="floatingInput"
@@ -318,7 +344,7 @@
                                                 <label for="floatingInput">Lampiran LPJ 1 Tahun Terakhir</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
                                                 <input value="{{ $bumdes->program_kerja }}" name="program_kerja"
                                                     type="text" class="form-control" id="floatingInput"
@@ -326,28 +352,29 @@
                                                 <label for="floatingInput">Program Kerja BUM Desa</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input value="{{ $bumdes->tahun_laporan }}" name="tahun_laporan"
-                                                    type="number" class="form-control" id="floatingInput"
+                                                <input value="{{ $bumdes->saran }}" name="saran" type="text"
+                                                    class="form-control" id="floatingInput"
                                                     placeholder="name@example.com">
-                                                <label for="floatingInput">Tahun Laporan</label>
+                                                <label for="floatingInput">USUL/SARAN Perencanaan Kedepan</label>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="d-flex gap-3">
-                                            <p>File Sebelumnya</p>
-                                            <a href="{{ asset('fileup/' . $bumdes->bukti_laporan) }}" target="_blank"
-                                                rel="noopener noreferrer">Lihat Dokumen</a>
+                                        <div class="col-md-6">
+                                            <div class="d-flex gap-3">
+                                                <p>File Sebelumnya</p>
+                                                <a href="{{ asset('fileup/' . $bumdes->bukti_laporan) }}"
+                                                    target="_blank" rel="noopener noreferrer">Lihat Dokumen</a>
+                                            </div>
+                                            <div class="form-control">
+                                                <label for="floatingInput">Upload Dokumen Laporan</label>
+                                                <input name="bukti_laporan" type="file" class="form-control"
+                                                    placeholder="Upload Bukti Laporan">
+                                            </div>
                                         </div>
-                                        <div class="form-control">
-                                            <label for="floatingInput">Upload Dokumen Laporan</label>
-                                            <input name="bukti_laporan" type="file" class="form-control"
-                                                placeholder="Upload Bukti Laporan">
-                                        </div>
-                                    </div>
-
+                                    </div><br>
                                     <button onclick="return confirm ('Apakah Anda Ingin Mengedit Data Tersebut?')"
                                         value="update" type="submit"
                                         class="btn btn-success btn-lg w-100">SIMPAN</button>
@@ -355,10 +382,8 @@
                             </form>
                         @endforeach
                     </div>
-
                 </div>
             </main>
-
         </div>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

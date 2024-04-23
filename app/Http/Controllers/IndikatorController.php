@@ -25,7 +25,7 @@ class IndikatorController extends Controller
                 ->join('kecamatans', 'bumdesas.id_kecamatan', '=', 'kecamatans.id')
                 ->join('desas', 'bumdesas.id_desa', '=', 'desas.id')
                 ->select('indikators.*', 'users.nama as nama', 'bumdesas.nama_bumdes as nama_bumdes', 'bumdesas.tahun_laporan as tahun_laporan', 'desas.nama_desa as nama_desa', 'kecamatans.nama_kecamatan as nama_kecamatan')
-                ->where('tahun','LIKE','%' .$request->search.'%')
+                ->where('kategori','LIKE','%' .$request->search.'%')
                 ->paginate(10);
                 return view('indikator.index', ['indikator' => $joinedData]);
         }else{

@@ -74,7 +74,7 @@ Route::get('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'edit'])->name('b
 Route::put('/bumdesa/{bumdes}/edit',[BUMDesaController::class, 'update'])->name('bumdesa.update');
 Route::delete('/bumdesa/{bumdes}/destroy',[BUMDesaController::class, 'destroy'])->name('bumdesa.destroy')->middleware('auth');
 Route::get('/bumdesa/search',[BUMDesaController::class, 'search'])->name('bumdesa.search')->middleware('auth');
-Route::get('/ekspor/bumdesa',[BUMDesaController::class, 'exportexcel'])->name('bumdesa.ekspor')->middleware('auth');
+Route::get('/bumdesa/ekspor',[BUMDesaController::class, 'ekspor'])->name('bumdesa.ekspor')->middleware('auth');
 //Route::get('/edit/{id}',[BUMDesaController::class, 'desa'])->name('bumdesa.desa');
 
 Route::get('/user',[UserController::class, 'index'])->name('user.index')->middleware('auth');
@@ -131,3 +131,4 @@ Route::get('/detail-rekapitulasi/{id_bumdesa}/{tahun}', [HasilRekapitulasiContro
 
 Route::put('/detail-rekapitulasi/{id}', [HasilRekapitulasiController::class,'updateHasil'])->name('rekapitulasi.updateHasil')->middleware('auth');
 Route::resource('/hasil-evaluasi', HasilRekapitulasiController::class)->middleware('auth');
+Route::get('/cetak-rekpitulasi/{tahun}', [HasilRekapitulasiController::class, 'ekspor'])->name('rekapitulasi.ekspor')->middleware('auth');

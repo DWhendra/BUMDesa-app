@@ -16,7 +16,7 @@
                                     <form action="/indikator" method="GET">
                                         <div class="input-group ">
                                             <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                            <input name="search" type="search" class="form-control" placeholder="Cari Tahun Indikator">
+                                            <input name="search" type="search" class="form-control" placeholder="Cari Kategori Indikator">
                                         </div>
                                     </form>
                                     <a href="{{route('indikator.create')}}">
@@ -32,7 +32,7 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 ID INDIKATOR</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                INDIKATOR</th>
+                                                KATEGORI INDIKATOR</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 NAMA BUM Desa</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
