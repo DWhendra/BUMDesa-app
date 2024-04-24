@@ -14,7 +14,7 @@
                     <div class="card ">
                       <div class="card-header pb-0 p-3">
                         <div class="d-flex justify-content-between">
-                          <h6 class="mb-2">Masukkan Tahun Rekapitulasi</h6>
+                          <h6 class="mb-2">Pilih Tahun Rekapitulasi</h6>
                         </div>
                       </div>
                       <div class="table-responsive">
@@ -23,11 +23,16 @@
                             <form action="{{ route('rekapitulasi.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                             <div class="card-header pb-0 p-3">
-                                <div class="form-floating mb-3">
-                                    <input name="tahun" type="number" class="form-control" id="floatingInput"
-                                        placeholder="nama" required>
-                                    <label for="floatingInput">Tahun</label>
-                                </div>
+                                    <div class="form-floating mb-3">
+                                        <div class="form-floating">
+                                            <select class="form-select input" name="tahun"  aria-label="Floating label select example" required>
+                                                @foreach ($selecttahun as $option )
+                                                <option value="{{ $option }}">{{ $option }}</option>
+                                                @endforeach
+                                            </select>
+                                            <label for="floatingSelect">Pilih Tahun</label>
+                                        </div>
+                                    </div>
                                 <button type="submit" class="btn btn-success btn-lg w-100" type="submit">SIMPAN</button>
                             </div>
                             </form>

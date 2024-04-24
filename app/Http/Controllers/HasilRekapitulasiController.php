@@ -22,7 +22,17 @@ class HasilRekapitulasiController extends Controller
      */
     public function index()
     {
-        return view('hasil-rekapitulasi.index', ['tahun' => HasilRekapitulasi::all()]);
+        // $selecttahun = $this->generateYears(date('Y'), 1900);
+        $selecttahun = Bumdesa::select('tahun_laporan')->distinct()->pluck('tahun_laporan');
+        return view('hasil-rekapitulasi.index',compact('selecttahun'), ['tahun' => HasilRekapitulasi::all()]);
+    }
+    private function generateYears($startYear, $endYear)
+    {
+        $years = [];
+        for ($i = $startYear; $i >= $endYear; $i--) {
+            $years[] = $i;
+        }
+        return $years;
     }
 
     /**
@@ -85,14 +95,6 @@ class HasilRekapitulasiController extends Controller
 
 
         $bumdesa = Bumdesa::where('id', $id_bumdesa)->first();
-
-        // // $kelembagaan = Kelembagaan::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->firstOrFail();
-        // // $kerjasamaDanInovasi = KerjasamaDanInovasi::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->firstOrFail();
-        // // $keuntunganDanManfaat = KeuntunganDanManfaat::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->firstOrFail();
-        // // $manajemen = Manajemen::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->firstOrFail();
-        // // $usahaDanUnitUsaha = Manajemen::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->firstOrFail();
-        // // $ALKA = ALKA::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->firstOrFail();
-        // // $asetDanPermodalan = AsetDanPermodalan::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->firstOrFail();
 
         $kelembagaan = Indikator::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->where('kategori', 'kelembagaan')->firstOrFail();
         $manajemen = Indikator::where('tahun', $tahun)->where('id_bumdesa', $id_bumdesa)->where('kategori', 'manajemen')->firstOrFail();
@@ -159,11 +161,12 @@ class HasilRekapitulasiController extends Controller
     }
     public function store(Request $request)
     {
+        $selecttahun = Bumdesa::select('tahun_laporan')->distinct()->pluck('tahun_laporan');
         $dt = $request->validate([
             'tahun' => ['unique:hasil_rekapitulasis']
         ]);
         HasilRekapitulasi::create($dt);
-        return view('hasil-rekapitulasi.index', ['tahun' => HasilRekapitulasi::all()]);
+        return view('hasil-rekapitulasi.index',compact('selecttahun'), ['tahun' => HasilRekapitulasi::all()]);
     }
 
     public function updateHasil(Request $request, $id)

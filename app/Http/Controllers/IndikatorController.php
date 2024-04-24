@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\UsahaDanUnitUsaha;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class IndikatorController extends Controller
 {
@@ -67,6 +68,14 @@ class IndikatorController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'tahun' => 'required|integer|min:1000|max:' . date('Y'),
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors(['error' => 'Periksa kembali Tahun!'])
+                ->withInput();
+        } else {
         if ($request->kategori == 'kelembagaan') {
             $kelembagaanbaru = Indikator::create($request->all());
             $kelembagaan = Indikator::where("id", $kelembagaanbaru->id)->first();
@@ -210,6 +219,7 @@ class IndikatorController extends Controller
         return redirect()->route("indikator.index")->with('success', 'Data Berhasil Disimpan!');
 
     }
+    }
 
     /**
      * Display the specified resource.
@@ -238,7 +248,14 @@ class IndikatorController extends Controller
      */
     public function update(Request $request, Indikator $indikator)
     {
-        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'tahun' => 'required|integer|min:1000|max:' . date('Y'),
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors(['error' => 'Periksa kembali Tahun!'])
+                ->withInput();
+        } else {
         if ($request->kategori == 'kelembagaan') {
             $indikator->update($request->all());
             $kelembagaanupdate = Indikator::where("id", $indikator->id)->first();
@@ -386,6 +403,7 @@ class IndikatorController extends Controller
 
         }
         return redirect()->route("indikator.index")->with('success', 'Data Berhasil Disimpan!');
+    }
     }
 
     public function detail($id_bumdesa, $indikator, $tahun)

@@ -101,27 +101,6 @@ Route::get('/pengumuman/{pengumuman}/edit',[PengumumanController::class, 'edit']
 Route::put('/pengumuman/{pengumuman}/edit',[PengumumanController::class, 'update'])->name('pengumuman.update');
 Route::delete('/pengumuman/{pengumuman}/destroy',[PengumumanController::class, 'destroy'])->name('pengumuman.destroy')->middleware('auth');
 
-// Route::get('/evaluasi', function () {
-//     return view('evaluasi.index');
-// })->name('evaluasi.index');
-
-// Route::get('/evaluasi/indikator', function () {
-//     return view('evaluasi.indikator.index');
-// })->name('indikator.index');
-
-// Route::get('/evaluasi/indikator', [EvaluasiController::class, 'index_indikator'])->name('indikator.index')->middleware('auth');
-// Route::get('/evaluasi/indikator/create', [EvaluasiController::class, 'create_indikator'])->name('indikator.create')->middleware('auth');
-// Route::post('/evaluasi/indikator/store',[EvaluasiController::class, 'store_indikator'])->name('indikator.store');
-// Route::get('/evaluasi/kategori_aspek', [EvaluasiController::class, 'index_kategori_aspek'])->name('kategori_aspek.index')->middleware('auth');
-// Route::get('/evaluasi/aspek', [EvaluasiController::class, 'index_aspek'])->name('aspek.index')->middleware('auth');
-// Route::get('/evaluasi/poin', [EvaluasiController::class, 'index_poin'])->name('poin.index')->middleware('auth');
-// Route::get('/evaluasi', [EvaluasiController::class, 'index'])->name('evaluasi.index')->middleware('auth');
-// Route::resource('/penilaian', PenilaianController::class);
-// Route::resource('evaluasi/indikator', IndikatorController::class);
-// Route::resource('evaluasi/kategori_aspek', KategoriAspekController::class);
-// Route::resource('evaluasi/subkategori_aspek', SubkategoriAspekController::class);
-// Route::resource('evaluasi/poin_aspek', PoinAspekController::class);
-
 Route::resource('/indikator', IndikatorController::class)->middleware('auth');
 Route::get('/detail-indikator/{id_bumdesa}/{indikator}/{tahun}', [IndikatorController::class,'detail'])->name('indikator.detail')->middleware('auth');
 
