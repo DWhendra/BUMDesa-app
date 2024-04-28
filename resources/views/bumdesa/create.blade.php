@@ -141,7 +141,7 @@
                                     <div class="col-md-6">
                                         <div class="form-floating mb-2">
                                             <input value="{{ old('email_bumdes') }}" name="email_bumdes"
-                                                type="text" class="form-control" id="floatingInput"
+                                                type="email" class="form-control" id="floatingInput"
                                                 placeholder="nama" required>
                                             <label for="floatingInput">EMAIL BUM Desa</label>
                                         </div>
@@ -149,7 +149,7 @@
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
                                             <input value="{{ old('email_direktur') }}" name="email_direktur"
-                                                type="text" class="form-control" id="floatingInput"
+                                                type="email" class="form-control" id="floatingInput"
                                                 placeholder="nama" required>
                                             <label for="floatingInput">EMAIL DIREKTUR BUM Desa</label>
                                         </div>
